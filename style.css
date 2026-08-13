@@ -1,0 +1,1 @@
+body{font-family:Arial;background:#efe3cf;padding:20px}.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.countdown div{background:#fff;padding:10px;border-radius:12px;text-align:center}
