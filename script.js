@@ -5,13 +5,18 @@ document.addEventListener('DOMContentLoaded', () => {
       width: 370,
       height: 560,
       size: 'fixed',
-      minWidth: 300,
-      maxWidth: 500,
-      minHeight: 400,
-      maxHeight: 700,
-      maxShadowOpacity: 0.5, // Menambahkan efek bayangan realistis saat kertas ditarik
+      minWidth: 370,
+      maxWidth: 370,
+      minHeight: 560,
+      maxHeight: 560,
+      maxShadowOpacity: 0.4,
       showCover: true,
-      mobileScrollSupport: false
+      usePortrait: true,        // Memaksa mode 1 halaman di tengah (bukan 2 halaman menyamping)
+      startPage: 0,
+      drawShadow: true,
+      flippingTime: 1000,       // Durasi membalik yang pas (1 detik)
+      useMouseEvents: true,     // BIsa ditarik/drag sudut kertasnya
+      mobileScrollSupport: false // MATIKAN SCROLL biar ga bisa di-scroll
     }
   );
 
@@ -22,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const nextBtn = document.getElementById('next-btn');
   const pageNum = document.getElementById('page-num');
 
-  // Event handler untuk update angka halaman saat dibalik
+  // Update angka halaman pas dibalik
   pageFlip.on('flip', (e) => {
     pageNum.innerText = `${e.data + 1} / ${pageFlip.getPageCount()}`;
   });
