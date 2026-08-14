@@ -1,81 +1,58 @@
-const papers = Array.from(document.querySelectorAll('.paper'));
-const prevBtn = document.getElementById('prev-btn');
-const nextBtn = document.getElementById('next-btn');
-const pageIndicator = document.getElementById('page-indicator');
-const flipbook = document.getElementById('flipbook');
+const pages = Array.from(document.querySelectorAll('.page-item'));
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const pageIndicator = document.getElementById('pageIndicator');
+const bookCard = document.getElementById('bookCard');
 
-const candleArea = document.getElementById('candleArea');
-const mainFlame = document.getElementById('mainFlame');
+let currentIndex = 0;
+const totalPages = pages.length;
 
-let currentLocation = 1;
-const totalPapers = papers.length;
-const maxLocation = totalPapers + 1;
-
-// Fitur Interaktif Tiup Lilin
-if (candleArea && mainFlame) {
-  candleArea.addEventListener('click', (e) => {
-    e.stopPropagation();
-    mainFlame.classList.toggle('blown-out');
-  });
-}
-
-function updateZIndex() {
-  papers.forEach((paper, index) => {
-    if (paper.classList.contains('flipped')) {
-      paper.style.zIndex = index + 1;
+function renderPage(index) {
+  pages.forEach((page, i) => {
+    if (i === index) {
+      page.classList.add('active');
     } else {
-      paper.style.zIndex = totalPapers - index;
+      page.classList.remove('active');
     }
   });
+  pageIndicator.innerText = `${index + 1} / ${totalPages}`;
 }
 
-function goNextPage() {
-  if (currentLocation < maxLocation) {
-    const currentPaper = papers[currentLocation - 1];
-    currentPaper.classList.add('flipped');
-    currentLocation++;
-    updateZIndex();
-    updateIndicator();
+function nextPage() {
+  if (currentIndex < totalPages - 1) {
+    currentIndex++;
+    renderPage(currentIndex);
   }
 }
 
-function goPrevPage() {
-  if (currentLocation > 1) {
-    const prevPaper = papers[currentLocation - 2];
-    prevPaper.classList.remove('flipped');
-    currentLocation--;
-    updateZIndex();
-    updateIndicator();
+function prevPage() {
+  if (currentIndex > 0) {
+    currentIndex--;
+    renderPage(currentIndex);
   }
 }
 
-function updateIndicator() {
-  const displayNum = Math.min(currentLocation, totalPapers);
-  pageIndicator.innerText = `${displayNum} / ${totalPapers}`;
-}
-
-papers.forEach((paper) => {
-  paper.addEventListener('click', (e) => {
-    const rect = paper.getBoundingClientRect();
-    const clickX = e.clientX - rect.left;
-
-    if (clickX > rect.width / 2) {
-      goNextPage();
-    } else {
-      goPrevPage();
-    }
-  });
+nextBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  nextPage();
 });
 
 prevBtn.addEventListener('click', (e) => {
   e.stopPropagation();
-  goPrevPage();
+  prevPage();
 });
 
-nextBtn.addEventListener('click', (e) => {
-  e.stopPropagation();
-  goNextPage();
+// Tap sisi kanan = Next, tap sisi kiri = Prev
+bookCard.addEventListener('click', (e) => {
+  const rect = bookCard.getBoundingClientRect();
+  const clickX = e.clientX - rect.left;
+
+  if (clickX > rect.width / 2) {
+    nextPage();
+  } else {
+    prevPage();
+  }
 });
 
-// Setup Z-Index Awal
-updateZIndex();
+// Inisialisasi awal
+renderPage(currentIndex);
