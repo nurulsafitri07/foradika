@@ -6,64 +6,105 @@
   <title>A Little Book for Adika</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="bg-doodles"></div>
+  <div class="background"></div>
 
-  <section class="cover" id="cover">
-    <div class="envelope">
-      <div class="paper">
-        <p class="tiny">A little surprise for you</p>
-        <h1>A Little Book<br>for Adika</h1>
-        <p>I made this scrapbook because some memories deserve their own little place.</p>
-        <button id="openBtn">Open the scrapbook</button>
+  <div class="scene">
+    <div class="book" id="book">
+      <div class="page cover-page">
+        <div class="page-front">
+          <div class="cover-content">
+            <div class="tape left"></div>
+            <div class="tape right"></div>
+            <p class="tiny">A little scrapbook</p>
+            <h1>For Adika</h1>
+            <p class="subtitle">A collection of little moments, tiny notes, and memories that deserve their own pages.</p>
+            <div class="press-note">Tap next to flip the pages</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="page">
+        <div class="page-front">
+          <div class="paper">
+            <h2>Hello, you!</h2>
+            <p>I made this flipbook because some memories feel prettier when they are kept inside a tiny book.</p>
+            <div class="sticker">♡</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="page">
+        <div class="page-front">
+          <div class="paper">
+            <h2>Favorite photo</h2>
+            <div class="polaroid">
+              <div class="photo pink"></div>
+              <span>our favorite moment</span>
+            </div>
+            <p>The little things are usually the ones that stay the longest.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="page">
+        <div class="page-front">
+          <div class="paper">
+            <h2>Random memories</h2>
+            <div class="collage">
+              <div class="mini one"></div>
+              <div class="mini two"></div>
+              <div class="mini three"></div>
+            </div>
+            <p>Late night talks, random jokes, photos, and everything in between.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="page">
+        <div class="page-front">
+          <div class="paper">
+            <h2>A tiny timeline</h2>
+            <div class="timeline">
+              <div><strong>The beginning</strong><span>Everything started with a simple hello.</span></div>
+              <div><strong>More memories</strong><span>Slowly turning ordinary days into favorite days.</span></div>
+              <div><strong>Today</strong><span>Still collecting pages.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="page">
+        <div class="page-front">
+          <div class="paper">
+            <h2>Little letter</h2>
+            <div class="letter">
+              <p class="hand">Thank you for existing in this story.</p>
+              <p>Maybe this is just a small website, but every page was made with a lot of care.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="page">
+        <div class="page-front">
+          <div class="paper final">
+            <h2>The last page</h2>
+            <p class="hand big">See you in the next chapter ♡</p>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
 
-  <main id="book" class="hidden">
-    <section class="page intro">
-      <div class="tape t1"></div>
-      <div class="tape t2"></div>
-      <h2>Hello, you!</h2>
-      <p>This scrapbook is made with tiny notes, little memories, and all the moments that made me smile.</p>
-    </section>
-
-    <section class="page polaroids">
-      <h3>Favorite memories</h3>
-      <div class="grid">
-        <div class="photo"><div class="img"></div><span>our first photo</span></div>
-        <div class="photo tilt"><div class="img"></div><span>laughing too much</span></div>
-        <div class="photo"><div class="img"></div><span>late night talks</span></div>
-      </div>
-    </section>
-
-    <section class="page timeline">
-      <h3>Our timeline</h3>
-      <div class="note">
-        <h4>The beginning</h4>
-        <p>Everything starts with a simple conversation.</p>
-      </div>
-      <div class="note">
-        <h4>The little things</h4>
-        <p>Random messages, photos, jokes, and moments that quietly became important.</p>
-      </div>
-      <div class="note">
-        <h4>Today</h4>
-        <p>Still collecting memories, one page at a time.</p>
-      </div>
-    </section>
-
-    <section class="page letter">
-      <div class="paper-note">
-        <p class="handwriting">Thank you for being part of this story.</p>
-        <p>Maybe this is just a small website, but every page was made with a lot of love and effort.</p>
-        <p class="sign">— from me ♡</p>
-      </div>
-    </section>
-  </main>
+    <div class="controls">
+      <button id="prev">Previous</button>
+      <div class="counter"><span id="current">1</span> / <span id="total">7</span></div>
+      <button id="next">Next</button>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
