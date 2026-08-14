@@ -1,1 +1,24 @@
-const book=document.getElementById('book');const pages=[...document.querySelectorAll('.page')];let current=0;let busy=false;function render(){pages.forEach((p,i)=>{p.style.zIndex=pages.length-i;if(i<current){p.classList.add('flipped')}else{p.classList.remove('flipped')}})}function next(){if(busy||current>=pages.length)return;busy=true;current++;render();setTimeout(()=>busy=false,1450)}function prev(){if(busy||current<=0)return;busy=true;current--;render();setTimeout(()=>busy=false,1450)}book.addEventListener('click',(e)=>{const rect=book.getBoundingClientRect();const x=e.clientX-rect.left;if(x>rect.width/2){next()}else{prev()}});let startX=0;book.addEventListener('touchstart',(e)=>{startX=e.touches[0].clientX},{passive:true});book.addEventListener('touchend',(e)=>{const endX=e.changedTouches[0].clientX;const diff=endX-startX;if(Math.abs(diff)>30){if(diff<0)next();else prev();return}const rect=book.getBoundingClientRect();const x=endX-rect.left;if(x>rect.width/2){next()}else{prev()}},{passive:true});render();
+const pages = [...document.querySelectorAll('.page')];
+let current = 0;
+
+function turnNext(){
+  if(current < pages.length){
+    pages[current].classList.add('flipped');
+    current++;
+  }
+}
+function turnPrev(){
+  if(current > 0){
+    current--;
+    pages[current].classList.remove('flipped');
+  }
+}
+document.addEventListener('click', e => {
+  const x = e.clientX / window.innerWidth;
+  if(x > .55) turnNext();
+  else if(x < .45) turnPrev();
+});
+document.addEventListener('keydown', e => {
+  if(e.key === 'ArrowRight') turnNext();
+  if(e.key === 'ArrowLeft') turnPrev();
+});
