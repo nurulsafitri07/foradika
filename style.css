@@ -85,10 +85,12 @@ body {
   overflow: hidden;
 }
 
-.back {
+/* Sisi Kiri Polos Bersih */
+.back.blank-page {
   transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg);
   background-color: #F3EFE6;
+  border-left: 3px solid #E2D9C4;
 }
 
 .paper.flipped {
@@ -192,6 +194,12 @@ h2 {
   font-size: 1.05rem;
   margin-top: 6px;
   color: var(--navy-accent);
+}
+
+.polaroid-grid {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
 }
 
 /* Cover Styling */
@@ -305,12 +313,6 @@ h2 {
   color: var(--navy-accent);
   text-align: center;
   margin-top: 6px;
-}
-
-.back-cover {
-  justify-content: center;
-  align-items: center;
-  text-align: center;
 }
 
 /* Controls */
