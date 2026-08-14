@@ -136,44 +136,53 @@ h2 {
 .tape-top-left { top: 8px; left: -10px; transform: rotate(-3deg); }
 .tape-top-right { top: 8px; right: -10px; transform: rotate(4deg); }
 
-/* Polaroid */
+/* Pastikan polaroid tetap berbentuk frame putih kecil yang rapi */
 .polaroid {
-  background: white;
-  padding: 8px 8px 14px 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  border-radius: 4px;
+  background: #FFFFFF !important;
+  padding: 8px 8px 14px 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  border-radius: 6px !important;
   text-align: center;
+  margin: 8px auto !important;
+  width: 85% !important;
+  max-width: 220px !important;
   transform: rotate(-1.5deg);
-  margin: 6px 0;
+  display: block;
 }
 
-.polaroid.micro {
-  padding: 6px 6px 10px 6px;
-}
-
+/* Wadah foto di dalam polaroid */
 .photo-placeholder {
-  width: 100%;
-  height: 140px;
-  background-color: var(--dusty-blue);
-  border: 1px dashed var(--slate-blue);
+  width: 100% !important;
+  height: 140px !important; /* Batas tinggi foto agar tidak meluber */
+  max-height: 140px !important;
+  background-color: #EAF0F6;
+  border-radius: 4px;
+  overflow: hidden !important; /* Kunci agar foto tidak keluar */
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--ink-text);
-  font-size: 0.75rem;
-  border-radius: 2px;
 }
 
-.polaroid.micro .photo-placeholder { height: 85px; }
-.polaroid.large .photo-placeholder { height: 180px; }
+/* Ukuran foto polaroid mikro (jika ada halaman yang fotonya kecil) */
+.polaroid.micro .photo-placeholder {
+  height: 90px !important;
+}
 
+/* Foto di dalam polaroid */
+.scrapbook-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important; /* Foto pas di dalam kotak tanpa gepeng */
+  display: block !important;
+}
+
+/* Teks caption di bawah foto polaroid */
 .caption {
-  font-family: 'Caveat', cursive;
-  font-size: 1.05rem;
-  margin-top: 6px;
-  color: var(--navy-accent);
+  font-family: 'Caveat', cursive !important;
+  font-size: 1.15rem !important;
+  margin-top: 6px !important;
+  color: var(--navy-accent) !important;
 }
-
 /* Cover Styling */
 .cover-content {
   height: 100%;
