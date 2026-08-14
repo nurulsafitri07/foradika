@@ -1,77 +1,37 @@
-const papers = Array.from(document.querySelectorAll('.paper'));
-const prevBtn = document.getElementById('prev-btn');
-const nextBtn = document.getElementById('next-btn');
-const pageNum = document.getElementById('page-num');
-
-let currentLocation = 1;
-const numOfPapers = papers.length;
-const maxLocation = numOfPapers + 1;
-
-// Mengatur tumpukan lembaran secara presisi saat animasi berjalan
-function updateZIndex() {
-  papers.forEach((paper, index) => {
-    if (paper.classList.contains('flipped')) {
-      // Kertas yang sudah dibalik ditumpuk sesuai urutannya di kiri
-      paper.style.zIndex = index + 1;
-    } else {
-      // Kertas yang belum dibalik ditumpuk urut dari atas di kanan
-      paper.style.zIndex = numOfPapers - index;
+document.addEventListener('DOMContentLoaded', () => {
+  const pageFlip = new St.PageFlip(
+    document.getElementById('flipbook'),
+    {
+      width: 370,
+      height: 560,
+      size: 'fixed',
+      minWidth: 300,
+      maxWidth: 500,
+      minHeight: 400,
+      maxHeight: 700,
+      maxShadowOpacity: 0.5, // Menambahkan efek bayangan realistis saat kertas ditarik
+      showCover: true,
+      mobileScrollSupport: false
     }
+  );
+
+  // Load elemen-elemen halaman
+  pageFlip.loadFromHTML(document.querySelectorAll('.page'));
+
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const pageNum = document.getElementById('page-num');
+
+  // Event handler untuk update angka halaman saat dibalik
+  pageFlip.on('flip', (e) => {
+    pageNum.innerText = `${e.data + 1} / ${pageFlip.getPageCount()}`;
   });
-}
 
-function goNextPage() {
-  if (currentLocation < maxLocation) {
-    const currentPaper = papers[currentLocation - 1];
-    
-    // Beri sedikit jeda z-index saat kertas membalik ke tengah
-    currentPaper.style.zIndex = numOfPapers + 1;
-    currentPaper.classList.add('flipped');
-    
-    setTimeout(() => {
-      updateZIndex();
-    }, 300); // Sinkron dengan pertengahan animasi flip
+  prevBtn.addEventListener('click', () => {
+    pageFlip.flipPrev();
+  });
 
-    currentLocation++;
-    updateIndicator();
-  }
-}
-
-function goPrevPage() {
-  if (currentLocation > 1) {
-    const prevPaper = papers[currentLocation - 2];
-    
-    prevPaper.style.zIndex = numOfPapers + 1;
-    prevPaper.classList.remove('flipped');
-    
-    setTimeout(() => {
-      updateZIndex();
-    }, 300);
-
-    currentLocation--;
-    updateIndicator();
-  }
-}
-
-function updateIndicator() {
-  pageNum.innerText = `${currentLocation} / ${maxLocation}`;
-}
-
-papers.forEach((paper) => {
-  paper.addEventListener('click', (e) => {
-    const rect = paper.getBoundingClientRect();
-    const clickX = e.clientX - rect.left;
-
-    if (clickX > rect.width / 2) {
-      goNextPage();
-    } else {
-      goPrevPage();
-    }
+  nextBtn.addEventListener('click', () => {
+    pageFlip.flipNext();
   });
 });
-
-prevBtn.addEventListener('click', goPrevPage);
-nextBtn.addEventListener('click', goNextPage);
-
-// Inisialisasi awal
-updateZIndex();
