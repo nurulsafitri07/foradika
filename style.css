@@ -1,1 +1,151 @@
-body{font-family:Arial;background:#efe3cf;padding:20px}.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.countdown div{background:#fff;padding:10px;border-radius:12px;text-align:center}
+
+:root{
+  --bg:#f8f4ec;
+  --paper:#fffaf2;
+  --ink:#3b312c;
+  --blue:#d9e7f6;
+  --pink:#f7dbe6;
+  --tape:#f1d79c;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Poppins,sans-serif;
+  color:var(--ink);
+  background:linear-gradient(180deg,#f7f2ea,#efe7da);
+}
+.bg-doodles{
+  position:fixed; inset:0;
+  background-image:radial-gradient(#e8dccb 1px, transparent 1px);
+  background-size:18px 18px;
+  opacity:.35;
+  pointer-events:none;
+}
+.cover{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:24px;
+}
+.envelope{
+  width:min(420px,92vw);
+  background:var(--paper);
+  border:2px solid #e7d8c7;
+  border-radius:28px;
+  box-shadow:0 20px 60px rgba(90,70,50,.15);
+  padding:22px;
+  position:relative;
+}
+.envelope:before,.envelope:after{
+  content:"";
+  position:absolute;
+  width:72px;height:22px;
+  background:var(--tape);
+  top:-10px;
+  border-radius:4px;
+  opacity:.9;
+}
+.envelope:before{left:22px; transform:rotate(-8deg)}
+.envelope:after{right:22px; transform:rotate(9deg)}
+.paper{
+  background:#fffdf8;
+  border-radius:18px;
+  padding:28px;
+  border:1px dashed #e7d8c7;
+}
+.tiny{
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#8d7b6d;
+  font-size:12px;
+}
+h1{
+  font-family:Caveat,cursive;
+  font-size:54px;
+  line-height:.95;
+  margin:8px 0 14px;
+}
+button{
+  width:100%;
+  padding:14px 18px;
+  border:none;
+  border-radius:999px;
+  background:#3b312c;
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+}
+.hidden{display:none}
+#book{
+  padding:26px 16px 60px;
+  max-width:520px;
+  margin:0 auto;
+}
+.page{
+  background:var(--paper);
+  border:1px solid #eadfce;
+  border-radius:26px;
+  padding:22px;
+  margin-bottom:18px;
+  box-shadow:0 12px 30px rgba(90,70,50,.08);
+  position:relative;
+}
+.intro .tape{
+  position:absolute;
+  width:64px;height:18px;
+  background:var(--tape);
+  top:-8px;
+}
+.t1{left:18px; transform:rotate(-10deg)}
+.t2{right:18px; transform:rotate(8deg)}
+h2,h3{
+  font-family:Caveat,cursive;
+  font-size:40px;
+  margin:0 0 12px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+.photo{
+  background:white;
+  border-radius:18px;
+  padding:12px;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+.photo.tilt{transform:rotate(-4deg)}
+.img{
+  width:100%;
+  aspect-ratio:1/1;
+  border-radius:12px;
+  background:linear-gradient(135deg,var(--blue),var(--pink));
+}
+.photo span{
+  display:block;
+  margin-top:10px;
+  font-family:Caveat,cursive;
+  font-size:24px;
+}
+.note{
+  background:#fff;
+  border-left:6px solid var(--blue);
+  padding:14px;
+  border-radius:16px;
+  margin:12px 0;
+}
+.paper-note{
+  background:#fffefb;
+  border:1px dashed #d9cdbd;
+  border-radius:18px;
+  padding:18px;
+}
+.handwriting{
+  font-family:Caveat,cursive;
+  font-size:34px;
+}
+.sign{
+  text-align:right;
+  font-family:Caveat,cursive;
+  font-size:28px;
+}
