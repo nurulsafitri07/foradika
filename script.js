@@ -1,55 +1,61 @@
-const sheets = Array.from(document.querySelectorAll('.sheet'));
+const papers = Array.from(document.querySelectorAll('.paper'));
 const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
 const pageNum = document.getElementById('page-num');
 
-let currentIndex = 0;
-const totalSheets = sheets.length;
+let currentLocation = 1;
+const numOfPapers = papers.length;
 
-function updateView() {
-  sheets.forEach((sheet, index) => {
-    sheet.classList.remove('active', 'flipped-out');
-
-    if (index === currentIndex) {
-      sheet.classList.add('active');
-    } else if (index < currentIndex) {
-      sheet.classList.add('flipped-out');
+function updateZIndex() {
+  papers.forEach((paper, index) => {
+    if (paper.classList.contains('flipped')) {
+      paper.style.zIndex = index + 1;
+    } else {
+      paper.style.zIndex = numOfPapers - index;
     }
   });
-
-  pageNum.innerText = `${currentIndex + 1} / ${totalSheets}`;
 }
 
-function goNext() {
-  if (currentIndex < totalSheets - 1) {
-    currentIndex++;
-    updateView();
+function goNextPage() {
+  if (currentLocation <= numOfPapers) {
+    const currentPaper = papers[currentLocation - 1];
+    currentPaper.classList.add('flipped');
+    currentLocation++;
+    updateZIndex();
+    updateIndicator();
   }
 }
 
-function goPrev() {
-  if (currentIndex > 0) {
-    currentIndex--;
-    updateView();
+function goPrevPage() {
+  if (currentLocation > 1) {
+    const prevPaper = papers[currentLocation - 2];
+    prevPaper.classList.remove('flipped');
+    currentLocation--;
+    updateZIndex();
+    updateIndicator();
   }
 }
 
-// Tap sisi kanan kartu untuk Next, sisi kiri untuk Prev
-sheets.forEach((sheet) => {
-  sheet.addEventListener('click', (e) => {
-    const rect = sheet.getBoundingClientRect();
+function updateIndicator() {
+  const displayPage = Math.min(currentLocation, numOfPapers);
+  pageNum.innerText = `${displayPage} / ${numOfPapers}`;
+}
+
+prevBtn.onclick = goPrevPage;
+nextBtn.onclick = goNextPage;
+
+papers.forEach((paper) => {
+  paper.onclick = (e) => {
+    const rect = paper.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
 
     if (clickX > rect.width / 2) {
-      goNext();
+      goNextPage();
     } else {
-      goPrev();
+      goPrevPage();
     }
-  });
+  };
 });
 
-prevBtn.onclick = goPrev;
-nextBtn.onclick = goNext;
-
-// Mulai halaman awal
-updateView();
+// Set urutan tumpukan awal
+updateZIndex();
