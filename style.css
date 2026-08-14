@@ -137,7 +137,6 @@ h2 {
 
 .tape-top-left { top: 8px; left: -10px; transform: rotate(-3deg); }
 .tape-top-right { top: 8px; right: -10px; transform: rotate(4deg); }
-.tape-center { top: 12px; left: 35%; transform: rotate(-1deg); }
 
 /* Polaroid */
 .polaroid {
