@@ -11,12 +11,13 @@
 </head>
 <body>
 
-  <div class="story-container">
-    <div class="slides-wrapper">
+  <div class="scrapbook-wrapper">
+    <div class="flipbook" id="flipbook">
       
-      <!-- SLIDE 1: Cover Utama (For Adika) -->
-      <div class="slide active" id="slide-1">
-        <div class="card-paper cover-page">
+      <!-- PAPER 1: Cover Utama + Cover Dalam (Your Present) -->
+      <div class="paper" id="p1">
+        <!-- Front Cover (Tampilan Gambar Pertama) -->
+        <div class="front cover-page">
           <div class="washi-tape tape-left"></div>
           <div class="washi-tape tape-right"></div>
           <div class="cover-container">
@@ -30,15 +31,12 @@
             </div>
           </div>
         </div>
-      </div>
-
-      <!-- SLIDE 2: Your Present & Binder Ring -->
-      <div class="slide" id="slide-2">
-        <div class="card-paper binder-page">
+        <!-- Back Cover (Gambar 1: Binder Ring & Envelope) -->
+        <div class="back binder-page">
           <div class="binder-rings">
             <span></span><span></span><span></span><span></span><span></span><span></span>
           </div>
-          <div class="card-content center-content">
+          <div class="page-content center-content">
             <h2 class="script-maroon title-large">Your present!</h2>
             <div class="envelope-layout">
               <p class="tiny-handwritten">I hope you love it as much as I loved picking it out for you</p>
@@ -48,22 +46,20 @@
         </div>
       </div>
 
-      <!-- SLIDE 3: Cloche / Cupcake -->
-      <div class="slide" id="slide-3">
-        <div class="card-paper">
-          <div class="card-content center-content">
+      <!-- PAPER 2: Here's For Adika + Turning 21 -->
+      <div class="paper" id="p2">
+        <!-- Front Page (Cupcake / Cloche) -->
+        <div class="front">
+          <div class="page-content center-content">
             <div class="cloche-art">
               <div class="tray">🧁</div>
             </div>
             <h2 class="script-maroon title-xl">Here's For<br>Adika</h2>
           </div>
         </div>
-      </div>
-
-      <!-- SLIDE 4: Turning 21 -->
-      <div class="slide" id="slide-4">
-        <div class="card-paper">
-          <div class="card-content center-content">
+        <!-- Back Page (Turning Twenty One) -->
+        <div class="back">
+          <div class="page-content center-content">
             <h3 class="sans-blue-heading">ADIKA IS TURNING<br>TWENTY ONE</h3>
             <div class="halftone-circle">
               <div class="head-photo-placeholder">[ Foto Adika ]</div>
@@ -74,10 +70,11 @@
         </div>
       </div>
 
-      <!-- SLIDE 5: Vinyl Record -->
-      <div class="slide" id="slide-5">
-        <div class="card-paper blue-bg-card">
-          <div class="card-content center-content">
+      <!-- PAPER 3: Vinyl Record + Blow Candle -->
+      <div class="paper" id="p3">
+        <!-- Front Page (Spotify Vinyl) -->
+        <div class="front blue-bg-page">
+          <div class="page-content center-content">
             <p class="italic-sub">SONG THAT REMIND ME OF YOU</p>
             <div class="vinyl-record">
               <div class="vinyl-center">
@@ -88,12 +85,9 @@
             <div class="spotify-wave">|||•|•||||•||•|</div>
           </div>
         </div>
-      </div>
-
-      <!-- SLIDE 6: Make a Wish Candle -->
-      <div class="slide" id="slide-6">
-        <div class="card-paper">
-          <div class="card-content center-content">
+        <!-- Back Page (Make a Wish Candle) -->
+        <div class="back">
+          <div class="page-content center-content">
             <p class="italic-maroon-sub">MAKE A WISH AND BLOW YOUR<br>CANDLE BEBSEU!!</p>
             <div class="cake-container">
               <div class="head-bubbles">
@@ -106,10 +100,11 @@
         </div>
       </div>
 
-      <!-- SLIDE 7: Digital Camera -->
-      <div class="slide" id="slide-7">
-        <div class="card-paper">
-          <div class="card-content center-content">
+      <!-- PAPER 4: Digital Camera + Closing -->
+      <div class="paper" id="p4">
+        <!-- Front Page (Kamera Digital) -->
+        <div class="front">
+          <div class="page-content center-content">
             <h2 class="script-maroon">To Many</h2>
             <div class="camera-body">
               <div class="camera-screen">
@@ -120,12 +115,9 @@
             <p class="bold-sub">TOGETHER</p>
           </div>
         </div>
-      </div>
-
-      <!-- SLIDE 8: The End -->
-      <div class="slide" id="slide-8">
-        <div class="card-paper">
-          <div class="card-content center-content">
+        <!-- Back Page (The End) -->
+        <div class="back back-cover">
+          <div class="page-content center-content">
             <h3 class="script-maroon title-large">THE END</h3>
             <p style="color: var(--text-sub); font-size: 0.9rem;">Made with 💙 for Adika</p>
           </div>
@@ -137,7 +129,7 @@
 
   <div class="navigation-bar">
     <button id="prev-btn" class="nav-btn">◄ Prev</button>
-    <span id="page-num">1 / 8</span>
+    <span id="page-num">1 / 5</span>
     <button id="next-btn" class="nav-btn">Next ►</button>
   </div>
 
