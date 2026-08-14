@@ -1,50 +1,63 @@
-const slides = Array.from(document.querySelectorAll('.slide'));
+const papers = Array.from(document.querySelectorAll('.paper'));
 const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
 const pageNum = document.getElementById('page-num');
 
-let currentIndex = 0;
-const totalSlides = slides.length;
+let currentLocation = 1;
+const numOfPapers = papers.length;
+const maxLocation = numOfPapers + 1;
 
-function showSlide(index) {
-  slides.forEach((slide, i) => {
-    if (i === index) {
-      slide.classList.add('active');
+// Mengatur tumpukan halaman (z-index) agar flipnya rapi
+function updateZIndex() {
+  papers.forEach((paper, index) => {
+    if (paper.classList.contains('flipped')) {
+      paper.style.zIndex = index + 1;
     } else {
-      slide.classList.remove('active');
+      paper.style.zIndex = numOfPapers - index;
     }
   });
-  pageNum.innerText = `${index + 1} / ${totalSlides}`;
 }
 
-function nextSlide() {
-  if (currentIndex < totalSlides - 1) {
-    currentIndex++;
-    showSlide(currentIndex);
+function goNextPage() {
+  if (currentLocation < maxLocation) {
+    const currentPaper = papers[currentLocation - 1];
+    currentPaper.classList.add('flipped');
+    currentLocation++;
+    updateZIndex();
+    updateIndicator();
   }
 }
 
-function prevSlide() {
-  if (currentIndex > 0) {
-    currentIndex--;
-    showSlide(currentIndex);
+function goPrevPage() {
+  if (currentLocation > 1) {
+    const prevPaper = papers[currentLocation - 2];
+    prevPaper.classList.remove('flipped');
+    currentLocation--;
+    updateZIndex();
+    updateIndicator();
   }
 }
 
-slides.forEach((slide) => {
-  slide.addEventListener('click', (e) => {
-    const rect = slide.getBoundingClientRect();
+function updateIndicator() {
+  pageNum.innerText = `${currentLocation} / ${maxLocation}`;
+}
+
+// Event listener klik pada area kanan/kiri kertas
+papers.forEach((paper) => {
+  paper.addEventListener('click', (e) => {
+    const rect = paper.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
 
     if (clickX > rect.width / 2) {
-      nextSlide();
+      goNextPage();
     } else {
-      prevSlide();
+      goPrevPage();
     }
   });
 });
 
-prevBtn.addEventListener('click', prevSlide);
-nextBtn.addEventListener('click', nextSlide);
+prevBtn.addEventListener('click', goPrevPage);
+nextBtn.addEventListener('click', goNextPage);
 
-showSlide(currentIndex);
+// Initial setup
+updateZIndex();
