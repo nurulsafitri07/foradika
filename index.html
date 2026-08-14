@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>For Adika 🤍</title>
-  
+  <title>A Little Scrapbook - For Adika 🤍</title>
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,165 +14,166 @@
 </head>
 <body>
 
-  <div class="mobile-container">
-    <div class="flipbook-wrapper">
-      <div class="flipbook" id="flipbook">
+  <main class="mobile-wrapper">
+    
+    <!-- SCRAPBOOK CONTAINER -->
+    <div class="book-viewport" id="bookViewport">
 
-        <!-- LEMBAR 1: COVER "FOR ADIKA" -->
-        <div class="paper" id="p1" style="z-index: 7;">
-          <div class="front">
-            <div class="tape-decor tape-l"></div>
-            <div class="tape-decor tape-r"></div>
-            <div class="page-inner center-content">
-              <p class="tag-label">A LITTLE SCRAPBOOK</p>
-              <h1 class="font-caveat title-huge">For Adika</h1>
-              <p class="desc-text">
-                A collection of little moments, tiny notes, and memories that deserve their own pages.
-              </p>
-              <div class="pill-btn">Tap to open ➔</div>
-            </div>
-          </div>
-          <div class="back blank-sheet"></div>
+      <!-- PAGE 1: COVER -->
+      <article class="page active" id="page-1">
+        <div class="washi washi-top-left"></div>
+        <div class="washi washi-top-right"></div>
+        <div class="card-inner center-layout">
+          <p class="tagline">A LITTLE SCRAPBOOK</p>
+          <h1 class="font-hand title-cover">For Adika</h1>
+          <p class="body-desc">
+            A collection of little moments, tiny notes, and memories that deserve their own pages.
+          </p>
+          <div class="action-pill">Tap next to flip ➔</div>
         </div>
+      </article>
 
-        <!-- LEMBAR 2: HERE'S FOR ADIKA -->
-        <div class="paper" id="p2" style="z-index: 6;">
-          <div class="front">
-            <div class="page-inner between-content">
-              <div class="align-right">
-                <h2 class="font-caveat title-maroon">Here's For<br><span class="name-span">Adika</span></h2>
-              </div>
-              <div class="clean-polaroid">
-                <div class="photo-box">
-                  <span>[ Foto Adika Tiup Lilin ]</span>
-                </div>
-                <p class="font-caveat photo-cap">Happy 21st Birthday! 🎂</p>
-              </div>
-              <p class="quote-text">"Semoga harimu selalu dipenuhi hal-hal baik dan menyenangkan."</p>
-            </div>
+      <!-- PAGE 2: HERE'S FOR ADIKA -->
+      <article class="page" id="page-2">
+        <div class="card-inner space-between-layout">
+          <div class="align-right">
+            <h2 class="font-hand title-maroon">Here's For<br><span class="name-large">Adika</span></h2>
           </div>
-          <div class="back blank-sheet"></div>
-        </div>
 
-        <!-- LEMBAR 3: ADIKA IS TURNING 21 -->
-        <div class="paper" id="p3" style="z-index: 5;">
-          <div class="front">
-            <div class="page-inner between-content text-center">
-              <h3 class="turning-heading">
-                <span class="red-highlight">ADIKA</span> IS TURNING<br>TWENTY ONE
-              </h3>
-              <div class="circle-graphic-box">
-                <div class="halftone-circle"></div>
-                <div class="avatar-photo-slot">
-                  <span>[ Foto Adika ]</span>
-                </div>
-                <span class="icon-thunder">⚡</span>
-                <span class="icon-star">✦</span>
-              </div>
-              <p class="strike-footer">
-                HE'S <span class="strikethrough-red">NOT</span> CUTE ANYMORE
-              </p>
+          <div class="polaroid-card">
+            <div class="photo-placeholder">
+              <span>[ Foto Adika / Momen Spesial ]</span>
             </div>
+            <p class="font-hand polaroid-label">Special Day 🎂</p>
           </div>
-          <div class="back blank-sheet"></div>
-        </div>
 
-        <!-- LEMBAR 4: BLOW CANDLE -->
-        <div class="paper" id="p4" style="z-index: 4;">
-          <div class="front">
-            <div class="page-inner center-content text-center">
-              <h3 class="candle-heading">
-                MAKE A WISH AND BLOW YOUR<br>CANDLE BEBSEU!!
-              </h3>
-              <div class="cake-scene-container">
-                <div class="head-character head-left">
-                  <div class="hat hat-pink"></div>
-                  <div class="char-photo-slot"><span>[Foto Kamu]</span></div>
-                  <span class="blow-text">FYUH 💨</span>
-                </div>
-                <div class="candle-stick" id="candleFlameArea">
-                  <div class="flame" id="mainFlame"></div>
-                  <div class="wick"></div>
-                  <div class="candle-body"></div>
-                </div>
-                <div class="head-character head-right">
-                  <div class="hat hat-blue-dots"></div>
-                  <div class="char-photo-slot"><span>[Foto Adika]</span></div>
-                </div>
-                <div class="white-cake">
-                  <div class="frosting-top"></div>
-                </div>
-                <div class="cake-plate"></div>
-              </div>
-              <p class="tap-flame-hint">(Tap lilinnya buat tiup 🕯️)</p>
+          <p class="quote-text">"Semoga harimu selalu dipenuhi hal-hal baik dan menyenangkan."</p>
+        </div>
+      </article>
+
+      <!-- PAGE 3: TURNING 21 -->
+      <article class="page" id="page-3">
+        <div class="card-inner space-between-layout text-center">
+          <h3 class="heading-blue-sans">
+            <span class="maroon-italic">ADIKA</span> IS TURNING<br>TWENTY ONE
+          </h3>
+
+          <div class="halftone-avatar-box">
+            <div class="halftone-disc"></div>
+            <div class="avatar-photo">
+              <span>[ Foto Adika ]</span>
             </div>
+            <span class="sticker-accent sticker-bolt">⚡</span>
+            <span class="sticker-accent sticker-sparkle">✦</span>
           </div>
-          <div class="back blank-sheet"></div>
-        </div>
 
-        <!-- LEMBAR 5: YOUR PRESENT -->
-        <div class="paper" id="p5" style="z-index: 3;">
-          <div class="front">
-            <div class="binder-holes">
-              <span></span><span></span><span></span><span></span><span></span>
+          <p class="strikethrough-status">
+            HE'S <span class="strike-line">NOT</span> CUTE ANYMORE
+          </p>
+        </div>
+      </article>
+
+      <!-- PAGE 4: MAKE A WISH & BLOW CANDLE -->
+      <article class="page" id="page-4">
+        <div class="card-inner center-layout text-center">
+          <h3 class="candle-title-maroon">
+            MAKE A WISH AND BLOW YOUR<br>CANDLE BEBSEU!!
+          </h3>
+
+          <div class="cake-illustration-box">
+            <!-- Kepala Cewek (Kiri) -->
+            <div class="head-item head-left">
+              <div class="party-hat pink-hat"></div>
+              <div class="head-circle-slot"><span>[Foto Kamu]</span></div>
+              <span class="fyuh-badge">FYUH 💨</span>
             </div>
-            <div class="page-inner center-content text-center">
-              <h2 class="font-caveat title-maroon">Your present!</h2>
-              <div class="envelope-note">
-                <p class="font-caveat note-content">"I hope you love it as much as I loved picking it out for you."</p>
-                <div class="mail-emoji">✉️</div>
-              </div>
+
+            <!-- Lilin & Api Interaktif -->
+            <div class="candle-object" id="candleArea" title="Klik untuk tiup lilin">
+              <div class="flame-spark" id="flameSpark"></div>
+              <div class="candle-wick"></div>
+              <div class="candle-wax"></div>
             </div>
+
+            <!-- Kepala Adika (Kanan) -->
+            <div class="head-item head-right">
+              <div class="party-hat blue-hat"></div>
+              <div class="head-circle-slot"><span>[Foto Adika]</span></div>
+            </div>
+
+            <!-- Kue Putih & Piring -->
+            <div class="white-cake-body">
+              <div class="frosting-edge"></div>
+            </div>
+            <div class="cake-platter"></div>
           </div>
-          <div class="back blank-sheet"></div>
-        </div>
 
-        <!-- LEMBAR 6: SPOTIFY VINYL -->
-        <div class="paper" id="p6" style="z-index: 2;">
-          <div class="front page-theme-blue">
-            <div class="page-inner between-content text-center">
-              <p class="tag-label text-dark">SONG THAT REMINDS ME OF YOU</p>
-              <div class="vinyl-disc">
-                <div class="vinyl-core">
-                  <span class="disc-small-text">HAPPY BIRTHDAY</span>
-                  <span class="disc-bold-text">ADIKA</span>
-                </div>
-              </div>
-              <div class="spotify-tag-pill">
-                <span>Spotify Track • Memories</span>
+          <p class="hint-small">(Tap lilinnya buat tiup 🕯️)</p>
+        </div>
+      </article>
+
+      <!-- PAGE 5: YOUR PRESENT -->
+      <article class="page" id="page-5">
+        <div class="binder-rings">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="card-inner center-layout text-center">
+          <h2 class="font-hand title-maroon">Your present!</h2>
+          <div class="envelope-container">
+            <p class="font-hand letter-quote">
+              "I hope you love it as much as I loved picking it out for you."
+            </p>
+            <div class="envelope-emoji">✉️</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- PAGE 6: SPOTIFY RECORD -->
+      <article class="page page-blue-theme" id="page-6">
+        <div class="card-inner space-between-layout text-center">
+          <p class="tagline dark-tag">SONG THAT REMINDS ME OF YOU</p>
+
+          <div class="vinyl-record-wrap">
+            <div class="vinyl-disc-body">
+              <div class="vinyl-label-center">
+                <span class="disc-sub">HAPPY BIRTHDAY</span>
+                <span class="disc-main">ADIKA</span>
               </div>
             </div>
           </div>
-          <div class="back blank-sheet"></div>
-        </div>
 
-        <!-- LEMBAR 7: DIGITAL CAMERA -->
-        <div class="paper" id="p7" style="z-index: 1;">
-          <div class="front">
-            <div class="page-inner between-content text-center">
-              <h2 class="font-caveat title-maroon-small">To Many More Birthday</h2>
-              <div class="vintage-camera">
-                <div class="camera-screen-display">
-                  <span>[ Foto Berdua / Momen Favorit ]</span>
-                </div>
-                <span class="rec-indicator">● REC</span>
-              </div>
-              <p class="together-text">TOGETHER 🥂</p>
-            </div>
+          <div class="spotify-capsule">
+            <span>Spotify Track • Playing Memories</span>
           </div>
-          <div class="back blank-sheet"></div>
         </div>
+      </article>
 
-      </div>
+      <!-- PAGE 7: DIGITAL CAMERA & END -->
+      <article class="page" id="page-7">
+        <div class="card-inner space-between-layout text-center">
+          <h2 class="font-hand title-maroon-med">To Many More Birthday</h2>
+
+          <div class="vintage-camera-frame">
+            <div class="camera-lens-screen">
+              <span>[ Foto Momen Berdua ]</span>
+            </div>
+            <span class="recording-badge">● REC</span>
+          </div>
+
+          <p class="together-footer">TOGETHER 🥂</p>
+        </div>
+      </article>
+
     </div>
 
-    <!-- NAVIGASI -->
-    <div class="navigation-box">
-      <button id="prevBtn" class="ctrl-btn">◄ Prev</button>
-      <span id="pageCounter">1 / 7</span>
-      <button id="nextBtn" class="ctrl-btn">Next ►</button>
-    </div>
-  </div>
+    <!-- BOTTOM CONTROLS -->
+    <nav class="navigation-dock">
+      <button id="prevBtn" class="nav-control-btn" aria-label="Previous Page">◄ Prev</button>
+      <span id="pageIndicator">1 / 7</span>
+      <button id="nextBtn" class="nav-control-btn" aria-label="Next Page">Next ►</button>
+    </nav>
+
+  </main>
 
   <script src="script.js"></script>
 </body>
