@@ -1,294 +1,66 @@
-/* Palette Warna: Blue Vintage Aesthetic */
-:root {
-  --dusty-blue: #DCEAF7;
-  --powder-blue: #BFD6EA;
-  --slate-blue: #8FB7D8;
-  --cream-paper: #F7F4EE;
-  --ink-text: #4B5D6B;
-  --navy-accent: #2C3E50;
-  --beige-tape: rgba(232, 226, 213, 0.8);
+const flipbook = document.getElementById('flipbook');
+const papers = Array.from(document.querySelectorAll('.paper'));
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+const pageIndicator = document.getElementById('page-indicator');
+
+let currentLocation = 1;
+const numOfPapers = papers.length;
+const maxLocation = numOfPapers + 1;
+
+// Event Listeners Klik Halaman (Tap Kanan / Kiri)
+papers.forEach((paper, index) => {
+  paper.addEventListener('click', (e) => {
+    const rect = paper.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const halfWidth = rect.width / 2;
+
+    // Jika klik sisi kanan -> Go Next, Sisi kiri -> Go Prev
+    if (clickX > halfWidth) {
+      goNextPage();
+    } else {
+      goPrevPage();
+    }
+  });
+});
+
+// Controls
+prevBtn.addEventListener('click', goPrevPage);
+nextBtn.addEventListener('click', goNextPage);
+
+function updateZIndex() {
+  papers.forEach((paper, index) => {
+    if (paper.classList.contains('flipped')) {
+      paper.style.zIndex = index + 1;
+    } else {
+      paper.style.zIndex = numOfPapers - index;
+    }
+  });
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+function goNextPage() {
+  if (currentLocation < maxLocation) {
+    const currentPaper = papers[currentLocation - 1];
+    currentPaper.classList.add('flipped');
+    currentLocation++;
+    updateZIndex();
+    updateIndicator();
+  }
 }
 
-body {
-  background-color: var(--dusty-blue);
-  color: var(--ink-text);
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow-x: hidden;
-  padding: 20px;
+function goPrevPage() {
+  if (currentLocation > 1) {
+    const prevPaper = papers[currentLocation - 2];
+    prevPaper.classList.remove('flipped');
+    currentLocation--;
+    updateZIndex();
+    updateIndicator();
+  }
 }
 
-/* Container Flipbook */
-.scraptbook-container {
-  width: 430px;
-  height: 620px;
-  perspective: 1500px;
-  position: relative;
-  margin-bottom: 20px;
+function updateIndicator() {
+  pageIndicator.innerText = `Halaman ${currentLocation} / ${maxLocation}`;
 }
 
-.flipbook {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-}
-
-/* Set Halaman / Paper */
-.paper {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform-origin: left center;
-  transition: transform 1.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-  transform-style: preserve-3d;
-  cursor: pointer;
-  border-radius: 8px 16px 16px 8px;
-  box-shadow: 0 10px 25px rgba(75, 93, 107, 0.15);
-}
-
-.front, .back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  backface-visibility: hidden;
-  background-color: var(--cream-paper);
-  padding: 30px;
-  border-radius: 8px 16px 16px 8px;
-  border: 1px solid var(--powder-blue);
-  overflow: hidden;
-}
-
-.back {
-  transform: rotateY(180deg);
-  background-color: #F3EFE6;
-}
-
-.paper.flipped {
-  transform: rotateY(-180deg);
-}
-
-/* Content Elements */
-.page-content {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
-}
-
-h1, h2, h3 {
-  color: var(--navy-accent);
-  font-weight: 700;
-  letter-spacing: -0.5px;
-}
-
-h2 {
-  font-size: 1.4rem;
-  border-bottom: 2px dashed var(--slate-blue);
-  padding-bottom: 8px;
-  margin-bottom: 12px;
-}
-
-.handwritten {
-  font-family: 'Caveat', cursive;
-  font-size: 1.5rem;
-  color: var(--slate-blue);
-  line-height: 1.3;
-}
-
-/* Tape Effect */
-.tape {
-  position: absolute;
-  background-color: var(--beige-tape);
-  height: 24px;
-  width: 90px;
-  z-index: 10;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  transform: rotate(-3deg);
-}
-
-.tape-top-left { top: 10px; left: -15px; }
-.tape-top-right { top: 10px; right: -15px; transform: rotate(4deg); }
-.tape-center { top: 15px; left: 35%; }
-
-/* Polaroid Styling */
-.polaroid {
-  background: white;
-  padding: 12px 12px 20px 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border-radius: 4px;
-  text-align: center;
-  transform: rotate(-1.5deg);
-  margin: 10px 0;
-}
-
-.polaroid.micro {
-  padding: 8px 8px 14px 8px;
-}
-
-.photo-placeholder {
-  width: 100%;
-  height: 180px;
-  background-color: var(--dusty-blue);
-  border: 1px dashed var(--slate-blue);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--ink-text);
-  font-size: 0.85rem;
-  border-radius: 2px;
-}
-
-.polaroid.micro .photo-placeholder { height: 110px; }
-.polaroid.large .photo-placeholder { height: 230px; }
-
-.caption {
-  font-family: 'Caveat', cursive;
-  font-size: 1.2rem;
-  margin-top: 8px;
-  color: var(--navy-accent);
-}
-
-/* Cover Page Specifics */
-.cover-content {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.sticker-badge {
-  background: var(--slate-blue);
-  color: white;
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  padding: 4px 10px;
-  border-radius: 12px;
-  margin-bottom: 12px;
-}
-
-.cover-title {
-  font-size: 2.2rem;
-  color: var(--navy-accent);
-  letter-spacing: 2px;
-}
-
-.cover-subtitle {
-  font-size: 0.85rem;
-  color: #7A8E9C;
-  margin-bottom: 15px;
-}
-
-.tap-hint {
-  font-size: 0.75rem;
-  margin-top: 15px;
-  color: var(--slate-blue);
-  font-weight: 600;
-}
-
-/* Lists & Boxes */
-.checklist {
-  list-style: none;
-  font-size: 0.9rem;
-}
-
-.checklist li {
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.checklist span {
-  color: var(--slate-blue);
-  font-weight: bold;
-}
-
-.letter-box {
-  background: #FFFFFF;
-  padding: 20px;
-  border-radius: 8px;
-  border-left: 4px solid var(--slate-blue);
-  font-size: 0.9rem;
-  line-height: 1.6;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-}
-
-.signature {
-  font-family: 'Caveat', cursive;
-  font-size: 1.3rem;
-  margin-top: 15px;
-  text-align: right;
-}
-
-.timeline {
-  list-style: none;
-  border-left: 2px solid var(--powder-blue);
-  padding-left: 15px;
-}
-
-.timeline li {
-  margin-bottom: 18px;
-  position: relative;
-}
-
-.timeline .date {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--slate-blue);
-  text-transform: uppercase;
-}
-
-.timeline p {
-  font-size: 0.85rem;
-}
-
-/* Navigation Controls */
-.controls {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  background: white;
-  padding: 8px 18px;
-  border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-.controls button {
-  background: none;
-  border: none;
-  color: var(--navy-accent);
-  font-weight: 600;
-  cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 4px;
-  transition: background 0.2s;
-}
-
-.controls button:hover {
-  background: var(--dusty-blue);
-}
-
-#page-indicator {
-  font-size: 0.85rem;
-  color: var(--ink-text);
-  font-weight: 500;
-}
+// Initial setup
+updateZIndex();
