@@ -4,10 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>For Adika 🤍</title>
-  <link rel="stylesheet" href="style.css">
+  
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -17,7 +20,7 @@
 
         <!-- LEMBAR 1: COVER "FOR ADIKA" -->
         <div class="paper" id="p1" style="z-index: 7;">
-          <div class="front cover-bg">
+          <div class="front">
             <div class="tape-decor tape-l"></div>
             <div class="tape-decor tape-r"></div>
             <div class="page-inner center-content">
@@ -74,54 +77,34 @@
           <div class="back blank-sheet"></div>
         </div>
 
-        <!-- LEMBAR 4: BLOW CANDLE BEBSEU (PERSIS GAMBAR KUE) -->
+        <!-- LEMBAR 4: BLOW CANDLE -->
         <div class="paper" id="p4" style="z-index: 4;">
-          <div class="front page-blow-candle">
+          <div class="front">
             <div class="page-inner center-content text-center">
-              
-              <!-- Teks Header Italic Maroon -->
               <h3 class="candle-heading">
                 MAKE A WISH AND BLOW YOUR<br>CANDLE BEBSEU!!
               </h3>
-
-              <!-- Komposisi Visual: 2 Kepala + Lilin + Kue Putih -->
               <div class="cake-scene-container">
-                
-                <!-- Kepala Kiri (Kamu / Cewek) -->
                 <div class="head-character head-left">
                   <div class="hat hat-pink"></div>
-                  <div class="char-photo-slot">
-                    <span>[Foto Kamu]</span>
-                  </div>
+                  <div class="char-photo-slot"><span>[Foto Kamu]</span></div>
                   <span class="blow-text">FYUH 💨</span>
                 </div>
-
-                <!-- Lilin di Tengah -->
                 <div class="candle-stick" id="candleFlameArea">
                   <div class="flame" id="mainFlame"></div>
                   <div class="wick"></div>
                   <div class="candle-body"></div>
                 </div>
-
-                <!-- Kepala Kanan (Adika) -->
                 <div class="head-character head-right">
                   <div class="hat hat-blue-dots"></div>
-                  <div class="char-photo-slot">
-                    <span>[Foto Adika]</span>
-                  </div>
+                  <div class="char-photo-slot"><span>[Foto Adika]</span></div>
                 </div>
-
-                <!-- Kue Putih & Piring Tatakan -->
                 <div class="white-cake">
                   <div class="frosting-top"></div>
-                  <div class="cake-texture"></div>
                 </div>
                 <div class="cake-plate"></div>
-
               </div>
-
               <p class="tap-flame-hint">(Tap lilinnya buat tiup 🕯️)</p>
-
             </div>
           </div>
           <div class="back blank-sheet"></div>
@@ -183,13 +166,12 @@
       </div>
     </div>
 
-    <!-- KONTROL NAVIGASI -->
+    <!-- NAVIGASI -->
     <div class="navigation-box">
       <button id="prevBtn" class="ctrl-btn">◄ Prev</button>
       <span id="pageCounter">1 / 7</span>
       <button id="nextBtn" class="ctrl-btn">Next ►</button>
     </div>
-
   </div>
 
   <script src="script.js"></script>
