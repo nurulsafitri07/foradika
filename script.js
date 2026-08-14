@@ -42,7 +42,6 @@ function updateIndicator() {
   pageIndicator.innerText = `${currentShow} / ${numOfPapers}`;
 }
 
-// Navigasi tap kanan/kiri area buku
 papers.forEach((paper) => {
   paper.addEventListener('click', (e) => {
     const rect = paper.getBoundingClientRect();
@@ -66,5 +65,4 @@ nextBtn.addEventListener('click', (e) => {
   goNextPage();
 });
 
-// Setup Z-Index awal
 updateZIndex();
