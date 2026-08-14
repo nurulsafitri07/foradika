@@ -10,7 +10,7 @@ const mainFlame = document.getElementById('mainFlame');
 let currentLocation = 1;
 const totalPapers = papers.length;
 
-// Fitur Tiup Lilin
+// Interaktif Tiup Lilin
 if (candleArea && mainFlame) {
   candleArea.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -18,7 +18,6 @@ if (candleArea && mainFlame) {
   });
 }
 
-// Mengatur z-index awal dan saat diam
 function updateZIndex() {
   papers.forEach((paper, index) => {
     if (paper.classList.contains('flipped')) {
@@ -32,14 +31,12 @@ function updateZIndex() {
 function goNextPage() {
   if (currentLocation <= totalPapers) {
     const currentPaper = papers[currentLocation - 1];
-    
-    // Angkat kertas yang bergerak paling atas selama animasi
     currentPaper.style.zIndex = totalPapers + 10;
     currentPaper.classList.add('flipped');
     
     setTimeout(() => {
       updateZIndex();
-    }, 450); // Setengah durasi animasi flip
+    }, 400);
 
     currentLocation++;
     updateCounter();
@@ -49,15 +46,12 @@ function goNextPage() {
 function goPrevPage() {
   if (currentLocation > 1) {
     const prevPaper = papers[currentLocation - 2];
-    
-    // KUNCI UTAMA: Angkat kertas yang ditarik balik ke lapisan tertinggi
-    // supaya TIDAK ADA bayangan halaman di bawahnya yang tembus/nongol
     prevPaper.style.zIndex = totalPapers + 10;
     prevPaper.classList.remove('flipped');
     
     setTimeout(() => {
       updateZIndex();
-    }, 450); // Setengah durasi animasi flip
+    }, 400);
 
     currentLocation--;
     updateCounter();
@@ -90,5 +84,5 @@ flipbook.addEventListener('click', (e) => {
   }
 });
 
-// Set urutan awal
+// Inisialisasi awal
 updateZIndex();
