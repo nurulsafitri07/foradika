@@ -1,85 +1,63 @@
-const pages = Array.from(document.querySelectorAll('.page'));
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-const pageIndicator = document.getElementById('pageIndicator');
-const bookViewport = document.getElementById('bookViewport');
+const papers = Array.from(document.querySelectorAll('.paper'));
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+const pageIndicator = document.getElementById('page-indicator');
 
-const candleArea = document.getElementById('candleArea');
-const flameSpark = document.getElementById('flameSpark');
+let currentLocation = 1;
+const numOfPapers = papers.length;
+const maxLocation = numOfPapers + 1;
 
-let currentIndex = 0;
-const totalPages = pages.length;
-let isFlipping = false;
-
-// Interaktif Tiup Lilin
-if (candleArea && flameSpark) {
-  candleArea.addEventListener('click', (e) => {
-    e.stopPropagation();
-    flameSpark.classList.toggle('blown-out');
+function updateZIndex() {
+  papers.forEach((paper, index) => {
+    if (paper.classList.contains('flipped')) {
+      paper.style.zIndex = index + 1;
+    } else {
+      paper.style.zIndex = numOfPapers - index;
+    }
   });
 }
 
-function updateIndicator() {
-  pageIndicator.innerText = `${currentIndex + 1} / ${totalPages}`;
-}
-
-function flipToNext() {
-  if (isFlipping || currentIndex >= totalPages - 1) return;
-  isFlipping = true;
-
-  const currentPage = pages[currentIndex];
-  const nextPage = pages[currentIndex + 1];
-
-  // Jalankan animasi flip keluar
-  currentPage.classList.add('flipping-next');
-
-  setTimeout(() => {
-    currentPage.classList.remove('active', 'flipping-next');
-    nextPage.classList.add('active');
-    currentIndex++;
+function goNextPage() {
+  if (currentLocation < maxLocation) {
+    const currentPaper = papers[currentLocation - 1];
+    currentPaper.classList.add('flipped');
+    currentLocation++;
+    updateZIndex();
     updateIndicator();
-    isFlipping = false;
-  }, 500);
-}
-
-function flipToPrev() {
-  if (isFlipping || currentIndex <= 0) return;
-  isFlipping = true;
-
-  const currentPage = pages[currentIndex];
-  const prevPage = pages[currentIndex - 1];
-
-  currentPage.classList.remove('active');
-  prevPage.classList.add('active', 'flipping-prev');
-
-  setTimeout(() => {
-    prevPage.classList.remove('flipping-prev');
-    currentIndex--;
-    updateIndicator();
-    isFlipping = false;
-  }, 500);
-}
-
-nextBtn.addEventListener('click', (e) => {
-  e.stopPropagation();
-  flipToNext();
-});
-
-prevBtn.addEventListener('click', (e) => {
-  e.stopPropagation();
-  flipToPrev();
-});
-
-// Tap sisi kanan = Next, tap sisi kiri = Prev
-bookViewport.addEventListener('click', (e) => {
-  const rect = bookViewport.getBoundingClientRect();
-  const clickX = e.clientX - rect.left;
-
-  if (clickX > rect.width / 2) {
-    flipToNext();
-  } else {
-    flipToPrev();
   }
+}
+
+function goPrevPage() {
+  if (currentLocation > 1) {
+    const prevPaper = papers[currentLocation - 2];
+    prevPaper.classList.remove('flipped');
+    currentLocation--;
+    updateZIndex();
+    updateIndicator();
+  }
+}
+
+function updateIndicator() {
+  pageIndicator.innerText = `Halaman ${currentLocation} / ${numOfPapers}`;
+}
+
+// Navigasi lewat tap sisi kanan / kiri buku
+papers.forEach((paper) => {
+  paper.addEventListener('click', (e) => {
+    const rect = paper.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+
+    if (clickX > rect.width / 2) {
+      goNextPage();
+    } else {
+      goPrevPage();
+    }
+  });
 });
 
-updateIndicator();
+// Tombol navigasi bawah
+prevBtn.addEventListener('click', goPrevPage);
+nextBtn.addEventListener('click', goNextPage);
+
+// Inisialisasi awal
+updateZIndex();
