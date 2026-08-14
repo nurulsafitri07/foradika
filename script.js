@@ -1,36 +1,57 @@
-
-const pages = Array.from(document.querySelectorAll('.page'));
-const prev = document.getElementById('prev');
-const next = document.getElementById('next');
-const current = document.getElementById('current');
-const total = document.getElementById('total');
+const pages = [
+  ...document.querySelectorAll(".page")
+];
 
 let index = 0;
-total.textContent = pages.length;
+let animating = false;
 
-function render(){
-  pages.forEach((page,i)=>{
+function render() {
+  pages.forEach((page, i) => {
     page.style.zIndex = pages.length - i;
-    if(i < index){
-      page.classList.add('flipped');
-    }else{
-      page.classList.remove('flipped');
+
+    if (i < index) {
+      page.classList.add("flipped");
+    } else {
+      page.classList.remove("flipped");
     }
   });
-  current.textContent = index + 1;
 }
 
-next.addEventListener('click', ()=>{
-  if(index < pages.length - 1){
-    index++;
-    render();
-  }
-});
+function nextPage() {
+  if (animating) return;
+  if (index >= pages.length) return;
 
-prev.addEventListener('click', ()=>{
-  if(index > 0){
-    index--;
-    render();
+  animating = true;
+  index++;
+
+  render();
+
+  setTimeout(() => {
+    animating = false;
+  }, 1400);
+}
+
+function previousPage() {
+  if (animating) return;
+  if (index <= 0) return;
+
+  animating = true;
+  index--;
+
+  render();
+
+  setTimeout(() => {
+    animating = false;
+  }, 1400);
+}
+
+document.addEventListener("click", (event) => {
+  const x = event.clientX / window.innerWidth;
+
+  if (x > 0.55) {
+    nextPage();
+  } else if (x < 0.45) {
+    previousPage();
   }
 });
 
