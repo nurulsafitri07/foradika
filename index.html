@@ -1,101 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Adika — Blue Vintage Flipbook</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>For Adika — A Little Book</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="scene">
-  <div class="book" id="book">
-    <div class="page cover">
-      <div class="tape"></div>
-      <div class="cover-inner">
-        <span class="small">A LITTLE BOOK OF</span>
-        <h1>For Adika</h1>
-        <p>memories, moments & little things</p>
-        <div class="stamp">✦</div>
+<main class="wrap">
+  <div class="book" id="book" aria-label="Flipbook untuk Adika">
+    <section class="page cover">
+      <div class="tape t1"></div><div class="tape t2"></div>
+      <div class="cover-frame">
+        <div class="tiny">A LITTLE BOOK MADE FOR</div>
+        <h1>Adika</h1>
+        <div class="line"></div>
+        <p>little moments · favorite memories · us</p>
+        <div class="star">✦</div>
       </div>
-    </div>
+      <div class="cover-note">tap the right side to begin →</div>
+    </section>
 
-    <div class="page">
-      <span class="eyebrow">01 · THE BEGINNING</span>
-      <h2>It started<br><i>somewhere here.</i></h2>
-      <div class="polaroid tilt-left"><div class="photo">YOUR<br>PHOTO</div><small>one of the first memories</small></div>
-      <p class="note">Sometimes the smallest beginning becomes a memory worth keeping.</p>
-    </div>
-
-    <div class="page">
-      <span class="eyebrow">02 · FAVORITE MEMORIES</span>
-      <h2>Little moments,<br><i>big smiles.</i></h2>
-      <div class="grid">
-        <div class="mini"><div class="photo">PHOTO 01</div><span>that day</span></div>
-        <div class="mini"><div class="photo">PHOTO 02</div><span>that place</span></div>
-        <div class="mini"><div class="photo">PHOTO 03</div><span>that moment</span></div>
-        <div class="mini"><div class="photo">PHOTO 04</div><span>just because</span></div>
+    <section class="page">
+      <div class="top"><span>01</span><span>THE BEGINNING</span></div>
+      <h2>Every story has<br><em>a first page.</em></h2>
+      <p class="lead">And somehow, ours became a collection of little moments I never want to forget.</p>
+      <div class="polaroid rotate-left">
+        <div class="photo">YOUR<br>PHOTO</div>
+        <div class="caption">one of the first memories</div>
       </div>
-    </div>
+      <div class="quote">“The best memories are often the ones we never planned.”</div>
+      <div class="tape small-tape"></div>
+    </section>
 
-    <div class="page">
-      <span class="eyebrow">03 · A TINY TIMELINE</span>
-      <h2>Pieces of<br><i>our story.</i></h2>
+    <section class="page">
+      <div class="top"><span>02</span><span>FAVORITE MOMENTS</span></div>
+      <h2>Small things,<br><em>big memories.</em></h2>
+      <div class="photo-grid">
+        <div class="snap"><div class="photo">PHOTO 01</div><span>that day</span></div>
+        <div class="snap"><div class="photo">PHOTO 02</div><span>that place</span></div>
+        <div class="snap"><div class="photo">PHOTO 03</div><span>that laugh</span></div>
+        <div class="snap"><div class="photo">PHOTO 04</div><span>just us</span></div>
+      </div>
+      <p class="bottom-note">Four little frames, but a hundred little stories.</p>
+    </section>
+
+    <section class="page">
+      <div class="top"><span>03</span><span>OUR LITTLE TIMELINE</span></div>
+      <h2>A few chapters<br><em>worth keeping.</em></h2>
       <div class="timeline">
-        <div><b>01</b><span><strong>The first hello</strong><br>where everything began</span></div>
-        <div><b>02</b><span><strong>The good days</strong><br>the ones we still remember</span></div>
-        <div><b>03</b><span><strong>The random days</strong><br>somehow my favorites</span></div>
-        <div><b>04</b><span><strong>Right now</strong><br>still making memories</span></div>
+        <div class="event"><b>01</b><div><strong>The first hello</strong><small>where a simple moment became a beginning</small></div></div>
+        <div class="event"><b>02</b><div><strong>The comfortable days</strong><small>when talking felt easy and time moved too fast</small></div></div>
+        <div class="event"><b>03</b><div><strong>The random moments</strong><small>the silly ones that somehow became favorites</small></div></div>
+        <div class="event"><b>04</b><div><strong>Right here, right now</strong><small>still adding another page to the story</small></div></div>
       </div>
-    </div>
+      <div class="date-tag">NO NEED TO RUSH<br><strong>LET THE STORY GROW</strong></div>
+    </section>
 
-    <div class="page letter">
-      <span class="eyebrow">04 · A LITTLE LETTER</span>
-      <h2>For you,<br><i>Adika.</i></h2>
-      <p>Thank you for all the ordinary moments that somehow became special.</p>
-      <p>For the laughs, the random conversations, the small efforts, and the memories that I know I'll look back on with a smile.</p>
-      <p>Here's to more days worth remembering.</p>
-      <div class="signature">— from me, with love ♡</div>
-    </div>
+    <section class="page letter">
+      <div class="top"><span>04</span><span>A LITTLE LETTER</span></div>
+      <div class="paper">
+        <div class="paper-title">Dear Adika,</div>
+        <p>Thank you for all the ordinary moments that somehow became special.</p>
+        <p>For the random conversations, the laughs, the small efforts, and the days that quietly turned into memories.</p>
+        <p>I hope you know that the little things matter too. Sometimes, they are exactly the things that stay with us the longest.</p>
+        <p>So here's to more places, more stories, more photos, and more moments we can look back on someday.</p>
+        <div class="signature">— from me, with love ♡</div>
+      </div>
+      <div class="paperclip">⌁</div>
+    </section>
 
-    <div class="page">
-      <span class="eyebrow">05 · THINGS I LIKE</span>
-      <h2>Just a few<br><i>little things.</i></h2>
-      <ul class="things">
-        <li>your random stories</li>
-        <li>the way you make ordinary days feel different</li>
-        <li>our stupid little jokes</li>
-        <li>the moments when neither of us has to try</li>
-        <li>having another memory to add to this book</li>
+    <section class="page">
+      <div class="top"><span>05</span><span>THINGS I LIKE</span></div>
+      <h2>Not a long list,<br><em>just a few.</em></h2>
+      <ul class="list">
+        <li><i>✦</i><span>your random stories that somehow make my day</span></li>
+        <li><i>✦</i><span>the little jokes only we understand</span></li>
+        <li><i>✦</i><span>the comfortable silence that doesn't feel awkward</span></li>
+        <li><i>✦</i><span>the way ordinary days can suddenly feel memorable</span></li>
+        <li><i>✦</i><span>having another reason to add a page to this book</span></li>
       </ul>
-    </div>
+      <div class="tiny-sticker">GOOD<br>MEMORIES<br>ONLY</div>
+    </section>
 
-    <div class="page">
-      <span class="eyebrow">06 · ONE MORE PHOTO</span>
+    <section class="page">
+      <div class="top"><span>06</span><span>KEEP THIS ONE</span></div>
       <div class="big-polaroid">
         <div class="photo">YOUR<br>FAVORITE<br>PHOTO</div>
-        <div class="caption">keep this one forever.</div>
+        <div class="caption">a moment worth keeping.</div>
       </div>
-      <p class="center-note">Some photos are just pictures.<br>Some feel like a whole story.</p>
-    </div>
+      <p class="photo-note">Some photos are just pictures.<br><em>Some feel like a whole story.</em></p>
+      <div class="scribble">remember this ♡</div>
+    </section>
 
-    <div class="page">
-      <span class="eyebrow">07 · THE LAST PAGE</span>
-      <h2>Not the end,<br><i>just another page.</i></h2>
-      <p class="final-note">There are still places to go, things to laugh about, photos to take, and memories to make.</p>
-      <div class="seal">ADK<br><small>✦</small></div>
-      <p class="small-end">thank you for being part of my favorite pages.</p>
-    </div>
+    <section class="page">
+      <div class="top"><span>07</span><span>ONE LAST THING</span></div>
+      <div class="last">
+        <div class="circle">ADK<br><small>✦</small></div>
+        <h2>Not the end,<br><em>just another page.</em></h2>
+        <p>There are still places to go, things to laugh about, photos to take, and memories waiting to happen.</p>
+        <div class="rule"></div>
+        <p class="closing">Thank you for being part of<br>some of my favorite pages.</p>
+      </div>
+    </section>
 
-    <div class="page back">
-      <div class="back-inner">
-        <span>KEEP THIS LITTLE BOOK</span>
-        <h2>♡</h2>
+    <section class="page back">
+      <div class="back-box">
+        <div class="tiny">KEEP THIS LITTLE BOOK</div>
+        <div class="heart">♡</div>
         <p>made with a little bit of blue<br>and a lot of memories.</p>
+        <div class="tiny">2026 · FOR ADIKA</div>
       </div>
-    </div>
+    </section>
   </div>
-</div>
-<div class="hint">tap the right or left side to turn the page</div>
+  <div class="controls">
+    <button id="prev">←</button>
+    <span id="counter">01 / 09</span>
+    <button id="next">→</button>
+  </div>
+  <p class="hint">tap the left / right side of the book · or swipe</p>
+</main>
 <script src="script.js"></script>
 </body>
 </html>
