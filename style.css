@@ -1,11 +1,13 @@
 :root {
-  --dusty-blue: #DCEAF7;
-  --powder-blue: #BFD6EA;
-  --slate-blue: #8FB7D8;
-  --cream-paper: #F7F4EE;
-  --ink-text: #4B5D6B;
-  --navy-accent: #2C3E50;
-  --beige-tape: rgba(232, 226, 213, 0.85);
+  --bg-dots-color: #E2DFD8;
+  --bg-page-tint: #ECE7DE;
+  --cream-card: #F7F3EC;
+  --text-main: #3D4A52;
+  --text-sub: #6C7D88;
+  --blue-accent: #2C3E50;
+  --blue-soft: #C2D7EA;
+  --blue-pill: #BFD7EA;
+  --tape-color: #E6D8B6;
 }
 
 * {
@@ -15,9 +17,12 @@
 }
 
 body {
-  background-color: var(--dusty-blue);
-  color: var(--ink-text);
+  background-color: var(--bg-page-tint);
+  /* Dotted Background Pattern persis seperti gambar */
+  background-image: radial-gradient(var(--bg-dots-color) 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
   font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text-main);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -26,13 +31,13 @@ body {
   padding: 20px;
 }
 
-/* Kunci animasi 3D Flipbook */
-.scraptbook-container {
-  width: 380px;
-  height: 560px;
+/* Container utama kartu / scrapbook */
+.scrapbook-wrapper {
+  width: 390px;
+  height: 580px;
   perspective: 2000px;
   position: relative;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .flipbook {
@@ -49,13 +54,13 @@ body {
   top: 0;
   left: 0;
   transform-origin: left center;
-  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
   transform-style: preserve-3d;
   cursor: pointer;
-  border-radius: 8px 16px 16px 8px;
+  border-radius: 24px;
 }
 
-/* Sisi depan & belakang kertas */
+/* Tampilan Depan & Belakang Lembaran Kertas */
 .front, .back {
   position: absolute;
   width: 100%;
@@ -64,25 +69,105 @@ body {
   left: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  background-color: var(--cream-paper);
-  padding: 28px;
-  border-radius: 8px 16px 16px 8px;
-  border: 1px solid var(--powder-blue);
-  box-shadow: 0 8px 20px rgba(75, 93, 107, 0.12);
+  background-color: var(--cream-card);
+  border-radius: 24px;
+  padding: 35px 28px;
+  /* Multi-layered soft drop shadow khas mockup */
+  box-shadow: 
+    0 15px 35px rgba(80, 70, 60, 0.15),
+    0 5px 15px rgba(0, 0, 0, 0.05),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.6);
   overflow: hidden;
 }
 
 .back {
   transform: rotateY(180deg);
-  background-color: #F2EEE5;
+  background-color: #F3EFE7;
 }
 
-/* Kelas saat kertas dibalik */
 .paper.flipped {
   transform: rotateY(-180deg);
 }
 
-/* Dekorasi & Isi */
+/* Decorative Washi Tapes */
+.washi-tape {
+  position: absolute;
+  background-color: var(--tape-color);
+  opacity: 0.85;
+  height: 22px;
+  width: 85px;
+  z-index: 10;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.tape-left {
+  top: 22px;
+  left: 30px;
+  transform: rotate(-8deg);
+}
+
+.tape-right {
+  top: 22px;
+  right: 30px;
+  transform: rotate(8deg);
+}
+
+/* Cover Content Styling (Sama Persis Gambar) */
+.cover-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.cover-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding-top: 15px;
+}
+
+.subtitle-tag {
+  font-size: 0.75rem;
+  letter-spacing: 2.5px;
+  color: var(--text-sub);
+  font-weight: 500;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+}
+
+.main-title {
+  font-family: 'Caveat', cursive;
+  font-size: 4rem;
+  color: var(--blue-accent);
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 30px;
+}
+
+.description-text {
+  font-size: 0.95rem;
+  color: var(--text-main);
+  line-height: 1.6;
+  max-width: 280px;
+  margin-bottom: 40px;
+  font-weight: 400;
+}
+
+.pill-badge {
+  background-color: var(--blue-pill);
+  color: #2C3E50;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 12px 24px;
+  border-radius: 30px;
+  box-shadow: 0 2px 8px rgba(191, 215, 234, 0.4);
+}
+
+/* Layout Isi Halaman Lainnya */
 .page-content {
   height: 100%;
   display: flex;
@@ -90,123 +175,121 @@ body {
   justify-content: space-between;
 }
 
-h1, h2, h3 { color: var(--navy-accent); }
-h2 {
-  font-size: 1.3rem;
-  border-bottom: 2px dashed var(--slate-blue);
-  padding-bottom: 6px;
-  margin-bottom: 10px;
-}
-
-.handwritten {
-  font-family: 'Caveat', cursive;
-  font-size: 1.4rem;
-  color: var(--slate-blue);
-}
-
-.tape {
-  position: absolute;
-  background-color: var(--beige-tape);
-  height: 22px;
-  width: 80px;
-  z-index: 5;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-}
-.tape-top-left { top: 10px; left: -10px; transform: rotate(-4deg); }
-.tape-top-right { top: 10px; right: -10px; transform: rotate(5deg); }
-.tape-center { top: 12px; left: 35%; transform: rotate(-1deg); }
-
-.polaroid {
-  background: white;
-  padding: 10px 10px 16px 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
-  border-radius: 4px;
+.center-align {
   text-align: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.section-title {
+  font-size: 1.3rem;
+  color: var(--blue-accent);
+  border-bottom: 1px dashed var(--blue-soft);
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+}
+
+.handwritten-text {
+  font-family: 'Caveat', cursive;
+  font-size: 1.5rem;
+  color: var(--text-main);
+}
+
+/* Polaroid Design */
+.polaroid-frame {
+  background: white;
+  padding: 10px 10px 18px 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  border-radius: 6px;
+  text-align: center;
+}
+
+.polaroid-grid {
+  display: flex;
+  gap: 10px;
 }
 
 .photo-placeholder {
   width: 100%;
-  height: 160px;
-  background-color: var(--dusty-blue);
-  border: 1px dashed var(--slate-blue);
+  height: 180px;
+  background-color: #E8F0F7;
+  border: 1px dashed var(--blue-soft);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--ink-text);
-  font-size: 0.8rem;
-}
-
-.caption {
-  font-family: 'Caveat', cursive;
-  font-size: 1.1rem;
-  margin-top: 6px;
-  color: var(--navy-accent);
-}
-
-.cover-content {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.sticker-badge {
-  background: var(--slate-blue);
-  color: white;
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 1.2px;
-  padding: 4px 8px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-
-.cover-title { font-size: 2rem; letter-spacing: 1.5px; }
-.cover-subtitle { font-size: 0.8rem; color: #7A8E9C; margin-bottom: 12px; }
-.tap-hint { font-size: 0.75rem; color: var(--slate-blue); font-weight: 600; margin-top: 10px; }
-
-.checklist { list-style: none; font-size: 0.85rem; }
-.checklist li { margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-.checklist span { color: var(--slate-blue); font-weight: bold; }
-
-.letter-box {
-  background: #FFFFFF;
-  padding: 16px;
-  border-radius: 8px;
-  border-left: 3px solid var(--slate-blue);
+  color: var(--text-sub);
   font-size: 0.85rem;
-  line-height: 1.5;
+  border-radius: 4px;
 }
 
-.signature { font-family: 'Caveat', cursive; font-size: 1.2rem; margin-top: 10px; text-align: right; }
+.polaroid-frame.micro .photo-placeholder { height: 110px; }
+.polaroid-frame.large .photo-placeholder { height: 210px; }
 
-.timeline { list-style: none; border-left: 2px solid var(--powder-blue); padding-left: 12px; }
-.timeline li { margin-bottom: 14px; }
-.timeline .date { font-size: 0.7rem; font-weight: 700; color: var(--slate-blue); }
-.timeline p { font-size: 0.8rem; }
+.polaroid-caption {
+  font-family: 'Caveat', cursive;
+  font-size: 1.2rem;
+  margin-top: 8px;
+  color: var(--blue-accent);
+}
 
-/* Control Buttons */
-.controls {
+/* Additional Cards & List */
+.note-card {
+  background: white;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  color: var(--text-main);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+}
+
+.timeline-list {
+  list-style: none;
+  border-left: 2px solid var(--blue-soft);
+  padding-left: 14px;
+}
+
+.timeline-list li { margin-bottom: 16px; }
+.timeline-date { font-size: 0.75rem; font-weight: 600; color: var(--blue-accent); }
+.timeline-list p { font-size: 0.85rem; }
+
+.checklist-items { list-style: none; font-size: 0.9rem; }
+.checklist-items li { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+.check-icon { color: var(--blue-accent); font-weight: bold; }
+
+.letter-container {
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  border-left: 4px solid var(--blue-pill);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.letter-sig {
+  font-family: 'Caveat', cursive;
+  font-size: 1.3rem;
+  text-align: right;
+  margin-top: 10px;
+}
+
+/* Control Navigation */
+.navigation-bar {
   display: flex;
   align-items: center;
   gap: 15px;
   background: white;
-  padding: 8px 16px;
+  padding: 8px 18px;
   border-radius: 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-.controls button {
+.nav-btn {
   background: none;
   border: none;
-  color: var(--navy-accent);
+  color: var(--blue-accent);
   font-weight: 600;
   cursor: pointer;
   padding: 4px 8px;
-  border-radius: 4px;
 }
 
-.controls button:hover { background: var(--dusty-blue); }
-#page-indicator { font-size: 0.8rem; font-weight: 500; }
+#page-num { font-size: 0.85rem; font-weight: 500; }
