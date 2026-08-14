@@ -1,61 +1,50 @@
-const papers = Array.from(document.querySelectorAll('.paper'));
+const slides = Array.from(document.querySelectorAll('.slide'));
 const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
 const pageNum = document.getElementById('page-num');
 
-let currentLocation = 1;
-const numOfPapers = papers.length;
-const maxLocation = numOfPapers + 1;
+let currentIndex = 0;
+const totalSlides = slides.length;
 
-function updateZIndex() {
-  papers.forEach((paper, index) => {
-    if (paper.classList.contains('flipped')) {
-      paper.style.zIndex = index + 1;
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    if (i === index) {
+      slide.classList.add('active');
     } else {
-      paper.style.zIndex = numOfPapers - index;
+      slide.classList.remove('active');
     }
   });
+  pageNum.innerText = `${index + 1} / ${totalSlides}`;
 }
 
-function goNextPage() {
-  if (currentLocation < maxLocation) {
-    const currentPaper = papers[currentLocation - 1];
-    currentPaper.classList.add('flipped');
-    currentLocation++;
-    updateZIndex();
-    updateIndicator();
+function nextSlide() {
+  if (currentIndex < totalSlides - 1) {
+    currentIndex++;
+    showSlide(currentIndex);
   }
 }
 
-function goPrevPage() {
-  if (currentLocation > 1) {
-    const prevPaper = papers[currentLocation - 2];
-    prevPaper.classList.remove('flipped');
-    currentLocation--;
-    updateZIndex();
-    updateIndicator();
+function prevSlide() {
+  if (currentIndex > 0) {
+    currentIndex--;
+    showSlide(currentIndex);
   }
 }
 
-function updateIndicator() {
-  pageNum.innerText = `${currentLocation} / ${maxLocation}`;
-}
-
-// Tap kanan/kiri area kertas untuk balik halaman
-papers.forEach((paper) => {
-  paper.addEventListener('click', (e) => {
-    const rect = paper.getBoundingClientRect();
+slides.forEach((slide) => {
+  slide.addEventListener('click', (e) => {
+    const rect = slide.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
 
     if (clickX > rect.width / 2) {
-      goNextPage();
+      nextSlide();
     } else {
-      goPrevPage();
+      prevSlide();
     }
   });
 });
 
-prevBtn.addEventListener('click', goPrevPage);
-nextBtn.addEventListener('click', goNextPage);
+prevBtn.addEventListener('click', prevSlide);
+nextBtn.addEventListener('click', nextSlide);
 
-updateZIndex();
+showSlide(currentIndex);
