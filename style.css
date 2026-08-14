@@ -1,15 +1,294 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');
-:root{--blue:#dceaf7;--powder:#bfd6ea;--slate:#8fb7d8;--cream:#f7f4ee;--ink:#4b5d6b;--navy:#334b5c;--paper:#fffdf8}
-*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at top,#f5f8f8,#d6e3ec 75%);color:var(--ink);font-family:"DM Sans",sans-serif;display:grid;place-items:center}
-.wrap{width:min(94vw,500px);display:flex;flex-direction:column;align-items:center}.book{width:430px;height:620px;max-width:90vw;max-height:calc(90vw * 1.442);position:relative;perspective:1800px;transform-style:preserve-3d;filter:drop-shadow(0 24px 28px rgba(45,65,80,.2))}
-.page{position:absolute;inset:0;padding:44px 42px;background:var(--paper);border:1px solid #e7e3db;transform-origin:left center;backface-visibility:hidden;transition:transform 1.25s cubic-bezier(.2,.72,.2,1),box-shadow 1.25s;overflow:hidden;cursor:pointer;will-change:transform}
-.page:nth-child(odd):not(.cover):not(.back){background:#fffefa}.page.flipped{transform:rotateY(-180deg);box-shadow:none}
-.cover{display:grid;place-items:center;text-align:center;background:var(--cream)!important}.cover-frame{width:82%;height:82%;border:1px solid #b6c8d5;display:flex;align-items:center;flex-direction:column;justify-content:center;position:relative}.tiny{font-size:9px;letter-spacing:2.5px;color:#7891a3}.cover h1{font:600 60px/1 "Playfair Display";color:var(--navy);margin:18px 0 12px}.cover p{font-size:10px;letter-spacing:1.6px;text-transform:uppercase}.line{width:52px;border-top:1px solid var(--slate)}.star{position:absolute;bottom:25px;color:var(--slate);font-size:19px}.cover-note{position:absolute;bottom:20px;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:#8193a0}.tape{position:absolute;width:84px;height:24px;background:rgba(214,203,181,.62);z-index:2}.t1{top:25px;right:28px;transform:rotate(7deg)}.t2{bottom:40px;left:28px;transform:rotate(-6deg)}
-.top{display:flex;justify-content:space-between;font-size:9px;letter-spacing:2px;color:#7891a3;font-weight:600}.top span:first-child{color:var(--slate)}h2{font:500 37px/1.08 "Playfair Display";color:var(--navy);margin:20px 0}h2 em{color:#7195b1}p{font-size:12.5px;line-height:1.75}.lead{font-family:"Playfair Display";font-style:italic;font-size:14px}.polaroid{background:white;padding:11px 11px 25px;width:235px;margin:23px auto 13px;box-shadow:0 8px 20px rgba(50,70,85,.13)}.rotate-left{transform:rotate(-3deg)}.photo{height:145px;background:linear-gradient(135deg,var(--powder),var(--blue));display:grid;place-items:center;text-align:center;color:#68859b;font-size:10px;letter-spacing:2px}.caption{text-align:center;font:italic 13px "Playfair Display";margin-top:9px;color:#6d7d88}.quote{text-align:center;font:italic 13px "Playfair Display";margin:20px 5px}.small-tape{width:62px;height:19px;bottom:55px;right:30px;transform:rotate(10deg)}
-.photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px;margin-top:24px}.snap{background:#fff;padding:7px 7px 11px;box-shadow:0 5px 14px rgba(50,70,85,.1);text-align:center}.snap .photo{height:112px}.snap span{display:block;font:italic 12px "Playfair Display";margin-top:7px}.bottom-note{text-align:center;font:italic 12px "Playfair Display";margin-top:20px;color:#758894}
-.timeline{border-left:2px solid var(--powder);padding-left:18px;margin-top:25px}.event{display:flex;gap:13px;margin-bottom:21px}.event b{min-width:28px;height:28px;border-radius:50%;background:var(--blue);display:grid;place-items:center;font-size:9px;color:#6d8ca4}.event strong{display:block;font:600 12px "DM Sans";color:var(--navy)}.event small{display:block;font-size:10px;line-height:1.5;margin-top:3px}.date-tag{position:absolute;bottom:36px;right:40px;text-align:right;font-size:8px;letter-spacing:1.5px;color:#8ca2b0}.date-tag strong{font-size:9px;color:#657d8e}
-.letter{background:#fdfbf6!important}.paper{position:relative;background:#fffef9;border:1px solid #e8e1d5;padding:25px 24px 20px;margin-top:16px;box-shadow:0 5px 14px rgba(70,70,60,.07)}.paper:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(to bottom,transparent 0 28px,rgba(143,183,216,.13) 29px);pointer-events:none}.paper-title{font:italic 22px "Playfair Display";color:var(--navy);margin-bottom:12px}.paper p{font-family:"Playfair Display";font-size:12px;position:relative}.signature{text-align:right;font:italic 14px "Playfair Display";color:#718da3;margin-top:14px}.paperclip{position:absolute;top:88px;right:24px;font-size:35px;color:#94a5af;transform:rotate(25deg)}
-.list{list-style:none;padding:0;margin:28px 0}.list li{display:flex;gap:12px;padding:14px 0;border-bottom:1px dashed #c5d2da;font:italic 14px "Playfair Display";line-height:1.45}.list i{font-style:normal;color:#82a5bd}.tiny-sticker{position:absolute;right:35px;bottom:38px;border:1px solid #a5bac9;padding:12px 9px;text-align:center;font-size:7px;letter-spacing:1.5px;transform:rotate(5deg);color:#6f8797}
-.big-polaroid{background:#fff;padding:13px 13px 24px;width:285px;margin:25px auto 15px;box-shadow:0 10px 22px rgba(50,70,85,.14);transform:rotate(2deg)}.big-polaroid .photo{height:300px}.big-polaroid .caption{font-size:16px}.photo-note{text-align:center;font-family:"Playfair Display";font-size:13px}.photo-note em{color:#7295ae}.scribble{font:italic 13px "Playfair Display";color:#7d99ad;transform:rotate(-4deg);margin:22px 0 0 8px}
-.last{text-align:center;padding-top:34px}.circle{width:80px;height:80px;border:1px solid var(--slate);border-radius:50%;display:grid;place-items:center;margin:0 auto;color:#7295ae;font-size:12px;letter-spacing:2px}.circle small{font-size:14px}.last h2{margin:25px 0 20px}.last>p{font:italic 15px/1.8 "Playfair Display";margin:0 20px}.rule{width:45px;border-top:1px solid var(--slate);margin:27px auto}.closing{font-size:12px!important}.back{background:var(--navy)!important;color:var(--cream);display:grid;place-items:center}.back-box{border:1px solid #90adbf;padding:50px 35px;text-align:center}.back .tiny{color:#cadbe6}.heart{font-size:65px;color:white;margin:18px}.back p{color:#d8e5ed;font-family:"Playfair Display";font-style:italic}.controls{display:flex;align-items:center;gap:25px;margin-top:17px}.controls button{width:38px;height:30px;border:1px solid #9db4c3;background:rgba(255,255,255,.55);color:var(--navy);cursor:pointer;font-size:17px}.controls button:active{transform:scale(.95)}#counter{font-size:9px;letter-spacing:2px;color:#718795}.hint{font-size:8px;letter-spacing:1.2px;text-transform:uppercase;color:#718795;margin:12px 0 0}
-@media(max-width:520px){.book{width:90vw;height:129.1vw}.page{padding:9% 9%}h2{font-size:8vw}.cover h1{font-size:13vw}.photo{height:24vw}.snap .photo{height:22vw}.big-polaroid{width:72%}.big-polaroid .photo{height:48vw}.paper{padding:20px}.paper p{font-size:11px}}
+/* Palette Warna: Blue Vintage Aesthetic */
+:root {
+  --dusty-blue: #DCEAF7;
+  --powder-blue: #BFD6EA;
+  --slate-blue: #8FB7D8;
+  --cream-paper: #F7F4EE;
+  --ink-text: #4B5D6B;
+  --navy-accent: #2C3E50;
+  --beige-tape: rgba(232, 226, 213, 0.8);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--dusty-blue);
+  color: var(--ink-text);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  padding: 20px;
+}
+
+/* Container Flipbook */
+.scraptbook-container {
+  width: 430px;
+  height: 620px;
+  perspective: 1500px;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.flipbook {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+/* Set Halaman / Paper */
+.paper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: left center;
+  transition: transform 1.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transform-style: preserve-3d;
+  cursor: pointer;
+  border-radius: 8px 16px 16px 8px;
+  box-shadow: 0 10px 25px rgba(75, 93, 107, 0.15);
+}
+
+.front, .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  background-color: var(--cream-paper);
+  padding: 30px;
+  border-radius: 8px 16px 16px 8px;
+  border: 1px solid var(--powder-blue);
+  overflow: hidden;
+}
+
+.back {
+  transform: rotateY(180deg);
+  background-color: #F3EFE6;
+}
+
+.paper.flipped {
+  transform: rotateY(-180deg);
+}
+
+/* Content Elements */
+.page-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+h1, h2, h3 {
+  color: var(--navy-accent);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+h2 {
+  font-size: 1.4rem;
+  border-bottom: 2px dashed var(--slate-blue);
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+}
+
+.handwritten {
+  font-family: 'Caveat', cursive;
+  font-size: 1.5rem;
+  color: var(--slate-blue);
+  line-height: 1.3;
+}
+
+/* Tape Effect */
+.tape {
+  position: absolute;
+  background-color: var(--beige-tape);
+  height: 24px;
+  width: 90px;
+  z-index: 10;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  transform: rotate(-3deg);
+}
+
+.tape-top-left { top: 10px; left: -15px; }
+.tape-top-right { top: 10px; right: -15px; transform: rotate(4deg); }
+.tape-center { top: 15px; left: 35%; }
+
+/* Polaroid Styling */
+.polaroid {
+  background: white;
+  padding: 12px 12px 20px 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  text-align: center;
+  transform: rotate(-1.5deg);
+  margin: 10px 0;
+}
+
+.polaroid.micro {
+  padding: 8px 8px 14px 8px;
+}
+
+.photo-placeholder {
+  width: 100%;
+  height: 180px;
+  background-color: var(--dusty-blue);
+  border: 1px dashed var(--slate-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-text);
+  font-size: 0.85rem;
+  border-radius: 2px;
+}
+
+.polaroid.micro .photo-placeholder { height: 110px; }
+.polaroid.large .photo-placeholder { height: 230px; }
+
+.caption {
+  font-family: 'Caveat', cursive;
+  font-size: 1.2rem;
+  margin-top: 8px;
+  color: var(--navy-accent);
+}
+
+/* Cover Page Specifics */
+.cover-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.sticker-badge {
+  background: var(--slate-blue);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.cover-title {
+  font-size: 2.2rem;
+  color: var(--navy-accent);
+  letter-spacing: 2px;
+}
+
+.cover-subtitle {
+  font-size: 0.85rem;
+  color: #7A8E9C;
+  margin-bottom: 15px;
+}
+
+.tap-hint {
+  font-size: 0.75rem;
+  margin-top: 15px;
+  color: var(--slate-blue);
+  font-weight: 600;
+}
+
+/* Lists & Boxes */
+.checklist {
+  list-style: none;
+  font-size: 0.9rem;
+}
+
+.checklist li {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checklist span {
+  color: var(--slate-blue);
+  font-weight: bold;
+}
+
+.letter-box {
+  background: #FFFFFF;
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 4px solid var(--slate-blue);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.signature {
+  font-family: 'Caveat', cursive;
+  font-size: 1.3rem;
+  margin-top: 15px;
+  text-align: right;
+}
+
+.timeline {
+  list-style: none;
+  border-left: 2px solid var(--powder-blue);
+  padding-left: 15px;
+}
+
+.timeline li {
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.timeline .date {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--slate-blue);
+  text-transform: uppercase;
+}
+
+.timeline p {
+  font-size: 0.85rem;
+}
+
+/* Navigation Controls */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: white;
+  padding: 8px 18px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.controls button {
+  background: none;
+  border: none;
+  color: var(--navy-accent);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.controls button:hover {
+  background: var(--dusty-blue);
+}
+
+#page-indicator {
+  font-size: 0.85rem;
+  color: var(--ink-text);
+  font-weight: 500;
+}
