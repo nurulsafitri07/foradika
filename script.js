@@ -41,7 +41,6 @@ function updateIndicator() {
   pageNum.innerText = `${currentLocation} / ${maxLocation}`;
 }
 
-// Event handler klik langsung di tombol & area kertas
 prevBtn.onclick = goPrevPage;
 nextBtn.onclick = goNextPage;
 
@@ -58,5 +57,4 @@ papers.forEach((paper) => {
   };
 });
 
-// Jalankan pengaturan Z-Index awal
 updateZIndex();
