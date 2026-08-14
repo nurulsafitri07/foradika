@@ -38,10 +38,11 @@ function goPrevPage() {
 }
 
 function updateIndicator() {
-  pageIndicator.innerText = `Halaman ${currentLocation} / ${numOfPapers}`;
+  const currentShow = Math.min(currentLocation, numOfPapers);
+  pageIndicator.innerText = `${currentShow} / ${numOfPapers}`;
 }
 
-// Navigasi lewat tap sisi kanan / kiri buku
+// Navigasi tap kanan/kiri area buku
 papers.forEach((paper) => {
   paper.addEventListener('click', (e) => {
     const rect = paper.getBoundingClientRect();
@@ -55,9 +56,15 @@ papers.forEach((paper) => {
   });
 });
 
-// Tombol navigasi bawah
-prevBtn.addEventListener('click', goPrevPage);
-nextBtn.addEventListener('click', goNextPage);
+prevBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  goPrevPage();
+});
 
-// Inisialisasi awal
+nextBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  goNextPage();
+});
+
+// Setup Z-Index awal
 updateZIndex();
