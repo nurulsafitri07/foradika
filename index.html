@@ -1,1 +1,70 @@
-<!DOCTYPE html><html><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><title>Our Scrapbook</title><link rel='stylesheet' href='style.css'></head><body><div id='intro'><button id='openBtn'>Open our scrapbook</button></div><div id='app' style='display:none'><h1>Our Scrapbook</h1><div class='countdown'><div><span id='days'>0</span><small>Days</small></div><div><span id='hours'>0</span><small>Hours</small></div><div><span id='minutes'>0</span><small>Minutes</small></div><div><span id='seconds'>0</span><small>Seconds</small></div></div></div><script src='script.js'></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Little Book for Adika</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-doodles"></div>
+
+  <section class="cover" id="cover">
+    <div class="envelope">
+      <div class="paper">
+        <p class="tiny">A little surprise for you</p>
+        <h1>A Little Book<br>for Adika</h1>
+        <p>I made this scrapbook because some memories deserve their own little place.</p>
+        <button id="openBtn">Open the scrapbook</button>
+      </div>
+    </div>
+  </section>
+
+  <main id="book" class="hidden">
+    <section class="page intro">
+      <div class="tape t1"></div>
+      <div class="tape t2"></div>
+      <h2>Hello, you!</h2>
+      <p>This scrapbook is made with tiny notes, little memories, and all the moments that made me smile.</p>
+    </section>
+
+    <section class="page polaroids">
+      <h3>Favorite memories</h3>
+      <div class="grid">
+        <div class="photo"><div class="img"></div><span>our first photo</span></div>
+        <div class="photo tilt"><div class="img"></div><span>laughing too much</span></div>
+        <div class="photo"><div class="img"></div><span>late night talks</span></div>
+      </div>
+    </section>
+
+    <section class="page timeline">
+      <h3>Our timeline</h3>
+      <div class="note">
+        <h4>The beginning</h4>
+        <p>Everything starts with a simple conversation.</p>
+      </div>
+      <div class="note">
+        <h4>The little things</h4>
+        <p>Random messages, photos, jokes, and moments that quietly became important.</p>
+      </div>
+      <div class="note">
+        <h4>Today</h4>
+        <p>Still collecting memories, one page at a time.</p>
+      </div>
+    </section>
+
+    <section class="page letter">
+      <div class="paper-note">
+        <p class="handwriting">Thank you for being part of this story.</p>
+        <p>Maybe this is just a small website, but every page was made with a lot of love and effort.</p>
+        <p class="sign">— from me ♡</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
