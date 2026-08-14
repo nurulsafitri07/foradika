@@ -1,12 +1,13 @@
 :root {
-  --dusty-blue-bg: #DCEAF7;
-  --cream-card: #FAF8F5;
-  --maroon-script: #8B1E2D;
-  --blue-header: #8CAABF;
-  --blue-soft: #BFD7EA;
+  --bg-dots-color: #CAD8E6;
+  --bg-screen: #EAF1F7;
+  --card-cream: #FCFBF8;
   --text-dark: #36444E;
   --text-sub: #7A8E9C;
-  --washi-tape-color: rgba(230, 218, 186, 0.9);
+  --maroon-color: #8B1E2D;
+  --blue-header: #8CAABF;
+  --blue-pill: #BFD7EA;
+  --tape-color: rgba(230, 218, 186, 0.95);
 }
 
 * {
@@ -23,12 +24,21 @@ html, body {
 }
 
 body {
-  background-color: var(--dusty-blue-bg);
-  background-image: radial-gradient(#CAD8E6 1.8px, transparent 1.8px);
+  background-color: var(--bg-screen);
+  background-image: radial-gradient(var(--bg-dots-color) 1.5px, transparent 1.5px);
   background-size: 16px 16px;
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--text-dark);
-  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.book-container {
+  width: 100%;
+  max-width: 360px;
+  height: 100vh;
+  max-height: 640px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,251 +46,224 @@ body {
   padding: 12px;
 }
 
-.scraptbook-container {
-  width: 330px;
-  height: 500px;
-  perspective: 1600px;
-  -webkit-perspective: 1600px;
+/* WADAH UTAMA KARTU */
+.book-card {
+  width: 320px;
+  height: 490px;
+  background-color: var(--card-cream);
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(54, 68, 78, 0.12);
+  border: 1px solid #EAE5D9;
   position: relative;
+  overflow: hidden;
   margin-bottom: 12px;
 }
 
-.flipbook {
+/* KUNCI ANTI-BERANTAKAN (Hanya 1 halaman yang aktif dan tampil) */
+.page-item {
+  display: none;
   width: 100%;
   height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d;
-}
-
-.paper {
-  width: 100%;
-  height: 100%;
+  background-color: var(--card-cream);
+  padding: 24px 20px;
   position: absolute;
   top: 0;
   left: 0;
-  transform-origin: left center;
-  -webkit-transform-origin: left center;
-  transition: transform 1.1s cubic-bezier(0.645, 0.045, 0.355, 1);
-  transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d;
-  cursor: pointer;
-  border-radius: 12px 18px 18px 12px;
-  box-shadow: 0 8px 24px rgba(75, 93, 107, 0.15);
-  will-change: transform;
 }
 
-.front, .back {
+.page-item.active {
+  display: block;
+  animation: fadeInClean 0.35s ease-out;
+}
+
+@keyframes fadeInClean {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.page-blue {
+  background-color: #C4D9EC !important;
+}
+
+/* LAYOUT HELPERS */
+.page-inner { width: 100%; height: 100%; display: flex; flex-direction: column; }
+.center-box { justify-content: center; align-items: center; }
+.between-box { justify-content: space-between; align-items: center; }
+.align-right { width: 100%; text-align: right; }
+.text-center { text-align: center; }
+
+/* TYPOGRAPHY */
+.font-hand { font-family: 'Caveat', cursive; }
+.tagline { font-size: 0.72rem; letter-spacing: 2px; color: var(--text-sub); font-weight: 600; }
+.tagline.dark-tag { color: #485B69; }
+
+.title-cover { font-size: 3.5rem; color: var(--text-dark); margin: 12px 0; line-height: 1; }
+.desc-text { font-size: 0.85rem; line-height: 1.5; color: var(--text-dark); text-align: center; max-width: 240px; }
+
+.title-maroon { font-size: 2.8rem; color: var(--maroon-color); line-height: 1; }
+.title-maroon-small { font-size: 2.1rem; color: var(--maroon-color); line-height: 1.1; }
+.name-span { font-size: 3.4rem; display: block; }
+
+/* WASHI TAPE */
+.tape {
   position: absolute;
+  background-color: var(--tape-color);
+  height: 18px;
+  width: 70px;
+  z-index: 10;
+  border-radius: 2px;
+}
+.tape-left { top: 14px; left: 16px; transform: rotate(-6deg); }
+.tape-right { top: 14px; right: 16px; transform: rotate(6deg); }
+
+.pill-btn {
+  margin-top: 22px;
+  background-color: var(--blue-pill);
+  color: var(--text-dark);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 20px;
+}
+
+/* POLAROID FRAME & FOTO (DIKUNCI RAPI) */
+.polaroid-frame {
   width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  background-color: var(--cream-card);
-  padding: 22px 18px;
-  border-radius: 12px 18px 18px 12px;
-  border: 1px solid #EAE5D9;
+  max-width: 220px;
+  background: #FFFFFF;
+  padding: 10px 10px 14px;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border: 1px solid #ECE7DE;
+  text-align: center;
+}
+
+.small-polaroid { max-width: 190px; }
+.vinyl-polaroid { max-width: 200px; }
+
+.img-box {
+  width: 100%;
+  height: 165px;
+  background-color: #EAF0F6;
+  border-radius: 4px;
   overflow: hidden;
 }
 
-.back.blank-page {
-  transform: rotateY(180deg);
-  -webkit-transform: rotateY(180deg);
-  background-color: #F4EFE6;
-  border-left: 3px solid #E2D9C4;
-}
+.square-box { height: 145px; }
+.vinyl-box { height: 155px; }
+.camera-box { height: 160px; }
+.envelope-photo { height: 120px; border-radius: 6px; }
 
-.paper.flipped {
-  transform: rotateY(-180deg);
-  -webkit-transform: rotateY(-180deg);
-}
-
-.scrapbook-img {
+.card-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.page-content { height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
-.center-content { justify-content: center; align-items: center; }
-.between-content { justify-content: space-between; align-items: center; }
-.text-center { text-align: center; }
-.text-right { text-align: right; width: 100%; }
+.photo-caption { font-size: 1.15rem; color: var(--text-dark); margin-top: 6px; }
+.quote-italic { font-size: 0.78rem; font-style: italic; color: var(--text-sub); text-align: center; }
 
-/* TYPOGRAPHY */
-.script-maroon-title {
-  font-family: 'Caveat', cursive;
-  color: var(--maroon-script);
-  font-size: 2.8rem;
-  line-height: 0.95;
-  font-weight: 700;
-}
-.script-maroon-title.font-large { font-size: 3.2rem; }
+/* TURNING 21 */
+.turning-title { font-size: 1.15rem; font-weight: 800; color: var(--blue-header); letter-spacing: 1.5px; line-height: 1.3; }
+.maroon-text { color: var(--maroon-color); font-style: italic; }
 
-h2 {
-  font-size: 1.2rem;
-  border-bottom: 2px dashed var(--blue-header);
-  padding-bottom: 6px;
-  margin-bottom: 8px;
-  color: var(--text-dark);
-}
-
-.handwritten {
-  font-family: 'Caveat', cursive;
-  font-size: 1.3rem;
-  color: var(--blue-header);
-  line-height: 1.3;
-}
-
-/* 1. COVER */
-.cover-content { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-.subtitle-tag { font-size: 0.72rem; letter-spacing: 2px; color: var(--text-sub); margin-bottom: 12px; font-weight: 700; }
-.main-cover-title { font-family: 'Caveat', cursive; font-size: 3.8rem; color: var(--text-dark); line-height: 1; margin-bottom: 14px; }
-.cover-desc { font-size: 0.85rem; line-height: 1.5; color: var(--text-dark); max-width: 240px; margin-bottom: 24px; }
-.pill-badge { background-color: var(--blue-soft); color: var(--text-dark); font-size: 0.78rem; font-weight: 600; padding: 8px 18px; border-radius: 20px; }
-
-.tape { position: absolute; background-color: var(--washi-tape-color); height: 18px; width: 70px; z-index: 10; border-radius: 2px; }
-.tape-top-left { top: 12px; left: 16px; transform: rotate(-6deg); }
-.tape-top-right { top: 12px; right: 16px; transform: rotate(6deg); }
-
-/* 2. HERE'S FOR ADIKA (FOTO 3) */
-.page-cloche { position: relative; padding: 18px; display: flex; flex-direction: column; justify-content: space-between; }
-.cloche-heading-box { position: absolute; top: 120px; right: 16px; z-index: 10; text-align: left; }
-.name-large { font-size: 3.6rem; display: inline-block; margin-top: 3px; }
-.tray-scene { position: relative; width: 100%; height: 100%; }
-.cloche-lid { position: absolute; top: 20px; left: 10px; transform: rotate(-25deg); }
-.lid-knob { width: 12px; height: 12px; background: #A6AFB8; border-radius: 50%; margin: 0 auto -2px; }
-.lid-dome { width: 110px; height: 68px; background: linear-gradient(135deg, #D4DCE3, #A4B1BC, #768593); border-radius: 110px 110px 10px 10px; box-shadow: 0 6px 12px rgba(0,0,0,0.15); position: relative; overflow: hidden; }
-.lid-reflection { position: absolute; top: 8px; left: 15px; width: 20px; height: 40px; background: rgba(255,255,255,0.4); border-radius: 50%; transform: rotate(20deg); }
-.silver-platter { position: absolute; bottom: 100px; left: 10px; width: 180px; height: 32px; background: linear-gradient(180deg, #E9EFF4, #A9B7C3, #72818F); border-radius: 50%; box-shadow: 0 10px 16px rgba(0,0,0,0.2); z-index: 4; }
-.platter-shine { width: 80%; height: 60%; margin: 3px auto; border-radius: 50%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent); }
-.cupcake-wrapper { position: absolute; bottom: 112px; left: 62px; z-index: 5; display: flex; flex-direction: column; align-items: center; }
-.candle-num { position: absolute; font-weight: 800; font-size: 1.1rem; color: #7E95A8; top: -10px; }
-.candle-l { left: -8px; transform: rotate(-10deg); }
-.candle-r { right: -8px; transform: rotate(10deg); }
-.birthday-boy-head { position: relative; z-index: 6; margin-bottom: -8px; }
-.mini-party-hat { width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-bottom: 18px solid #8FB7D8; position: absolute; top: -14px; left: 14px; transform: rotate(5deg); z-index: 7; }
-.face-placeholder { width: 48px; height: 48px; border-radius: 50%; background: #E0E5EA; border: 2px solid white; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.cupcake-frosting { width: 65px; height: 34px; background: #FFFFFF; border-radius: 50% 50% 40% 40%; box-shadow: 0 3px 5px rgba(0,0,0,0.05); }
-.cupcake-cup { width: 48px; height: 30px; background: #D9A05B; clip-path: polygon(10% 100%, 90% 100%, 100% 0, 0 0); margin-top: -5px; }
-.waiter-hand { position: absolute; bottom: 0; left: 30px; width: 60px; height: 105px; background: linear-gradient(135deg, #F3D3C1, #D4A790); border-radius: 16px 16px 0 0; z-index: 3; transform: rotate(-10deg); }
-
-/* 3. TURNING 21 */
-.page-turning21 { display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center; padding: 22px 14px !important; }
-.turning21-title { font-size: 1.25rem; font-weight: 800; color: var(--blue-header); letter-spacing: 1.5px; line-height: 1.3; }
-.name-maroon-italic { color: var(--maroon-script); font-style: italic; }
-.turning21-visual { position: relative; width: 180px; height: 180px; display: flex; align-items: center; justify-content: center; }
-.halftone-bg { position: absolute; width: 160px; height: 160px; border-radius: 50%; background-image: radial-gradient(var(--blue-header) 2px, transparent 2px); background-size: 6px 6px; z-index: 1; }
-.adika-head-frame { position: relative; z-index: 5; display: flex; flex-direction: column; align-items: center; }
-.head-photo-slot { width: 85px; height: 85px; border-radius: 50%; background: #E5EDF4; border: 3px solid white; box-shadow: 0 5px 12px rgba(0,0,0,0.12); overflow: hidden; }
-.party-hat-yellow { width: 0; height: 0; border-left: 18px solid transparent; border-right: 18px solid transparent; border-bottom: 40px solid #F6D658; position: absolute; top: -33px; left: 24px; transform: rotate(-10deg); z-index: 6; }
-.hat-text { position: absolute; top: 13px; left: -14px; width: 28px; font-size: 0.38rem; font-weight: 800; color: var(--maroon-script); line-height: 1; text-align: center; }
-.sticker-thunder { position: absolute; color: var(--maroon-script); font-size: 1.3rem; z-index: 4; }
-.thunder-1 { top: 10px; right: 20px; transform: rotate(15deg); }
-.thunder-2 { top: 32px; right: 8px; font-size: 1rem; }
-.sticker-star { position: absolute; color: #6C8DA8; font-size: 1rem; z-index: 4; }
-.star-1 { bottom: 30px; left: 10px; }
-.star-2 { bottom: 18px; right: 25px; }
-.blower-sticker { position: absolute; bottom: -5px; right: -8px; font-size: 1.2rem; transform: rotate(20deg); z-index: 6; }
-.mini-cupcake-sticker { position: absolute; bottom: -8px; left: -8px; font-size: 1.1rem; z-index: 6; }
-.cute-status { font-size: 1.15rem; font-weight: 800; color: var(--blue-header); letter-spacing: 1.5px; line-height: 1.25; }
-.strike-red { position: relative; color: var(--blue-header); }
-.strike-red::after { content: ''; position: absolute; left: -3px; right: -3px; top: 50%; height: 3px; background-color: var(--maroon-script); transform: rotate(-5deg); }
-
-/* 4. MAKE A WISH BLOW CANDLE (FOTO 4) */
-.page-blow-candle { background-color: #FCFBF9; }
-.candle-top-title { font-size: 0.95rem; font-weight: 800; color: var(--maroon-script); font-style: italic; letter-spacing: 0.8px; line-height: 1.4; }
-.cake-scene-container { position: relative; width: 250px; height: 240px; display: flex; justify-content: center; align-items: flex-end; margin: 15px 0 5px; }
-.head-char { position: absolute; top: 12px; z-index: 5; display: flex; flex-direction: column; align-items: center; }
-.head-char-left { left: 12px; }
-.head-char-right { right: 12px; }
-.char-circle-slot { width: 62px; height: 62px; border-radius: 50%; background: white; border: 2px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.12); overflow: hidden; }
-.hat { width: 0; height: 0; position: absolute; top: -24px; z-index: 6; }
-.hat-pink-stripes { border-left: 12px solid transparent; border-right: 12px solid transparent; border-bottom: 28px solid #E89FB5; transform: rotate(-12deg); }
-.hat-blue-polka { border-left: 13px solid transparent; border-right: 13px solid transparent; border-bottom: 30px solid #7FA9CE; transform: rotate(10deg); }
-.fyuh-bubble { font-size: 0.55rem; font-weight: 800; color: var(--text-sub); position: absolute; right: -32px; top: 25px; }
-.candle-stick-item { position: absolute; bottom: 80px; z-index: 4; display: flex; flex-direction: column; align-items: center; cursor: pointer; }
-.flame-spark { width: 8px; height: 18px; background: radial-gradient(circle, #FFE79A 20%, #FFA834 70%, transparent 100%); border-radius: 50% 50% 35% 35%; box-shadow: 0 0 12px #FFA834; animation: flickerFlame 0.15s infinite alternate; }
-.flame-spark.blown-out { display: none; }
-@keyframes flickerFlame { 0% { transform: scale(1); opacity: 0.9; } 100% { transform: scale(1.15) rotate(2deg); opacity: 1; } }
-.candle-wick { width: 2px; height: 4px; background: #333; }
-.candle-wax-body { width: 10px; height: 45px; background: linear-gradient(to right, #F9F9F9, #ECECEC, #DCDCDC); border-radius: 2px; }
-.white-aesthetic-cake { width: 175px; height: 75px; background: linear-gradient(to bottom, #FFFFFF, #F5F5F5, #EBEBEB); border-radius: 12px 12px 6px 6px; box-shadow: 0 6px 15px rgba(0,0,0,0.08); position: relative; z-index: 2; margin-bottom: 8px; }
-.frosting-layer { position: absolute; top: -8px; left: 0; width: 100%; height: 16px; background: radial-gradient(circle, #FFFFFF 60%, transparent 70%); background-size: 16px 16px; }
-.cake-silver-plate { position: absolute; bottom: 0; width: 215px; height: 16px; background: linear-gradient(to bottom, #ECECEC, #D0D0D0); border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,0.12); z-index: 1; }
-.hint-small-tap { font-size: 0.72rem; color: var(--text-sub); font-style: italic; }
-
-/* 5. YOUR PRESENT (FOTO 1) */
-.binder-page { position: relative; }
-.binder-rings-spine { position: absolute; left: 6px; top: 10%; height: 80%; display: flex; flex-direction: column; justify-content: space-between; z-index: 10; }
-.binder-rings-spine span { width: 18px; height: 10px; border: 2.5px solid #888; border-radius: 5px; background: linear-gradient(to right, #ccc, #fff, #888); }
-.present-envelope-layout { display: flex; flex-direction: column; align-items: center; margin-top: 15px; width: 100%; }
-.tiny-handwritten-note { font-family: 'Caveat', cursive; font-size: 1.1rem; color: var(--maroon-script); line-height: 1.2; text-align: left; max-width: 140px; margin-bottom: -40px; margin-left: -90px; z-index: 5; }
-.envelope-art-container { position: relative; width: 140px; height: 160px; margin-top: 25px; }
-.envelope-pocket { width: 140px; height: 120px; background: #E8E0D2; clip-path: polygon(0 0, 50% 35%, 100% 0, 100% 100%, 0 100%); border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); position: relative; overflow: hidden; }
-.envelope-inner-photo { width: 100%; height: 100%; padding: 15px; }
-
-/* 6. SPOTIFY VINYL (FOTO 2) */
-.page-theme-blue { background-color: #B9D0E6 !important; }
-.italic-sub-heading { font-size: 0.78rem; font-style: italic; font-weight: 700; color: #4A6375; letter-spacing: 1px; margin-top: 15px; }
-.vinyl-record-wrap { display: flex; flex-direction: column; align-items: center; margin-bottom: 25px; }
-.vinyl-disc-art { width: 195px; height: 195px; border-radius: 50%; background: radial-gradient(circle, #151515 30%, #303030 31%, #151515 32%, #222 65%, #000 66%); display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(0,0,0,0.3); margin-bottom: 12px; }
-.vinyl-center-label { width: 75px; height: 75px; background: white; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; }
-.vinyl-avatar-hat { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; position: relative; border: 1.5px solid white; }
-.mini-party-hat-blue { width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; border-bottom: 16px solid #8FB7D8; position: absolute; top: 0px; left: 14px; z-index: 2; }
-.vinyl-face-img { width: 100%; height: 100%; object-fit: cover; }
-.curved-vinyl-text { font-size: 0.38rem; font-weight: 800; letter-spacing: 1px; color: #444; margin-top: 2px; }
-.spotify-soundwave { display: flex; align-items: center; gap: 8px; color: #2C3E50; font-size: 0.85rem; font-weight: 800; }
-.sp-bars { letter-spacing: 1.5px; }
-
-/* 7. POLAROID ELEMENTS (HALAMAN 7 & 8) */
-.polaroid {
-  background: white;
-  padding: 8px 8px 14px 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  border-radius: 4px;
-  text-align: center;
-  transform: rotate(-1.5deg);
-  margin: 6px 0;
-}
-.polaroid.small { width: 70% !important; max-width: 170px !important; padding: 6px 6px 10px 6px !important; margin: 6px auto !important; }
-.polaroid.small .photo-placeholder { height: 110px !important; }
-.polaroid.micro { padding: 6px 6px 10px 6px; }
-.polaroid.micro .photo-placeholder { height: 85px; }
-.photo-placeholder {
-  width: 100%;
-  height: 140px;
-  background-color: var(--dusty-blue-bg);
-  border-radius: 2px;
-  overflow: hidden;
+.circle-avatar-wrap {
+  position: relative;
+  width: 160px;
+  height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 10px 0;
 }
-.caption { font-family: 'Caveat', cursive; font-size: 1.05rem; margin-top: 4px; color: var(--text-dark); }
-.polaroid-grid { display: flex; gap: 8px; justify-content: center; }
 
-/* 9 & 10. TIMELINE & CHECKLIST */
-.timeline { list-style: none; border-left: 2px solid var(--blue-soft); padding-left: 12px; }
-.timeline li { margin-bottom: 12px; }
-.timeline .date { font-size: 0.65rem; font-weight: 700; color: var(--blue-header); text-transform: uppercase; }
-.timeline p { font-size: 0.75rem; }
+.circle-dots-bg {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-image: radial-gradient(var(--blue-header) 1.8px, transparent 1.8px);
+  background-size: 7px 7px;
+}
 
-.checklist { list-style: none; font-size: 0.8rem; }
-.checklist li { margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
-.checklist span { color: var(--blue-header); font-weight: bold; }
-.note-box { background: #FFFFFF; padding: 10px; border-radius: 6px; font-size: 0.78rem; border-left: 3px solid var(--blue-header); }
+.avatar-circle {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  z-index: 2;
+}
 
-/* 11. DIGITAL CAMERA */
-.camera-body-frame { width: 100%; height: 190px; background: #C0C0C0; border-radius: 12px; border: 3px solid #A5A5A5; padding: 10px; position: relative; box-shadow: 0 6px 15px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; margin: 10px 0; }
-.camera-screen-slot { width: 90%; height: 90%; background: #222; border-radius: 6px; overflow: hidden; }
-.rec-dot-red { position: absolute; top: 18px; left: 18px; color: #FF3B30; font-size: 0.65rem; font-weight: 800; }
-.together-bold-footer { font-weight: 800; letter-spacing: 2px; font-size: 1rem; color: var(--text-dark); }
+.deco-bolt { position: absolute; top: 8px; right: 12px; color: var(--maroon-color); font-size: 1.2rem; z-index: 3; }
+.deco-star { position: absolute; bottom: 12px; left: 12px; color: var(--blue-header); font-size: 1.1rem; z-index: 3; }
 
-/* CONTROLS */
-.controls { display: flex; align-items: center; gap: 14px; background: white; padding: 6px 16px; border-radius: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-.controls button { background: none; border: none; color: var(--text-dark); font-weight: 700; cursor: pointer; padding: 4px 6px; font-size: 0.82rem; }
-#page-indicator { font-size: 0.78rem; font-weight: 600; color: var(--text-sub); }
+.strike-status { font-size: 1.1rem; font-weight: 800; color: var(--blue-header); letter-spacing: 1.5px; }
+.strike-red { text-decoration: line-through; color: var(--maroon-color); }
+
+/* MAKE A WISH */
+.candle-title { font-size: 0.95rem; font-weight: 800; color: var(--maroon-color); font-style: italic; letter-spacing: 0.8px; line-height: 1.4; }
+
+/* BINDER & ENVELOPE */
+.binder-spine {
+  position: absolute;
+  left: 6px;
+  top: 15%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.binder-spine span { width: 12px; height: 8px; background: #B8C4CE; border-radius: 4px; }
+
+.envelope-card {
+  width: 90%;
+  background: white;
+  border: 1px dashed var(--blue-header);
+  border-radius: 12px;
+  padding: 14px;
+  margin-top: 12px;
+}
+.note-text { font-size: 1.2rem; line-height: 1.3; color: var(--text-dark); margin-top: 8px; }
+
+/* SPOTIFY */
+.sound-pill { font-size: 0.85rem; font-weight: 800; color: #36444E; letter-spacing: 1.5px; }
+
+/* DIGITAL CAMERA */
+.camera-card {
+  width: 100%;
+  max-width: 240px;
+  background: #242A2F;
+  border-radius: 12px;
+  padding: 10px;
+  position: relative;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+.rec-dot { position: absolute; top: 14px; left: 14px; color: #FF4D4D; font-size: 0.6rem; font-weight: 800; }
+.together-text { font-weight: 800; letter-spacing: 2px; font-size: 1rem; color: var(--text-dark); }
+
+/* NAV BAR */
+.nav-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: white;
+  padding: 6px 16px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  color: var(--text-dark);
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
+  padding: 4px 6px;
+}
+
+#pageIndicator { font-size: 0.78rem; font-weight: 600; color: var(--text-sub); }
