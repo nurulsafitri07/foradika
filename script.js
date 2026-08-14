@@ -1,58 +1,68 @@
-const pages = Array.from(document.querySelectorAll('.page-item'));
+const papers = Array.from(document.querySelectorAll('.paper'));
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 const pageCounter = document.getElementById('pageCounter');
-const cardFrame = document.getElementById('cardFrame');
+const flipbook = document.getElementById('flipbook');
 
-let currentPage = 0;
-const totalPages = pages.length;
+let currentLocation = 1;
+const totalPapers = papers.length;
 
-function renderPage(index) {
-  pages.forEach((page, i) => {
-    if (i === index) {
-      page.classList.add('active');
+function updateZIndex() {
+  papers.forEach((paper, index) => {
+    if (paper.classList.contains('flipped')) {
+      paper.style.zIndex = index + 1;
     } else {
-      page.classList.remove('active');
+      paper.style.zIndex = totalPapers - index;
     }
   });
-  pageCounter.innerText = `${index + 1} / ${totalPages}`;
 }
 
-function nextPage() {
-  if (currentPage < totalPages - 1) {
-    currentPage++;
-    renderPage(currentPage);
+function goNextPage() {
+  if (currentLocation <= totalPapers) {
+    const currentPaper = papers[currentLocation - 1];
+    currentPaper.classList.add('flipped');
+    currentLocation++;
+    updateZIndex();
+    updateCounter();
   }
 }
 
-function prevPage() {
-  if (currentPage > 0) {
-    currentPage--;
-    renderPage(currentPage);
+function goPrevPage() {
+  if (currentLocation > 1) {
+    const prevPaper = papers[currentLocation - 2];
+    prevPaper.classList.remove('flipped');
+    currentLocation--;
+    updateZIndex();
+    updateCounter();
   }
+}
+
+function updateCounter() {
+  const displayNum = Math.min(currentLocation, totalPapers);
+  pageCounter.innerText = `${displayNum} / ${totalPapers}`;
 }
 
 nextBtn.addEventListener('click', (e) => {
   e.stopPropagation();
-  nextPage();
+  goNextPage();
 });
 
 prevBtn.addEventListener('click', (e) => {
   e.stopPropagation();
-  prevPage();
+  goPrevPage();
 });
 
-// Tap sisi kanan kartu untuk Next, sisi kiri untuk Prev
-cardFrame.addEventListener('click', (e) => {
-  const rect = cardFrame.getBoundingClientRect();
+// Tap sisi kanan = Flip Maju, sisi kiri = Flip Balik
+flipbook.addEventListener('click', (e) => {
+  const rect = flipbook.getBoundingClientRect();
   const clickX = e.clientX - rect.left;
 
   if (clickX > rect.width / 2) {
-    nextPage();
+    goNextPage();
   } else {
-    prevPage();
+    goPrevPage();
   }
 });
 
-// Inisialisasi awal
-renderPage(currentPage);
+// Initialize
+updateZIndex();
