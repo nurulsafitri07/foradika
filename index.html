@@ -12,158 +12,194 @@
 <body>
 
   <div class="mobile-viewport">
-    <div class="book-container">
-      
-      <!-- HALAMAN 1: Cover Utama -->
-      <div class="sheet active" id="sheet-1">
-        <div class="card-paper cover-page">
-          <div class="washi-tape tape-left"></div>
-          <div class="washi-tape tape-right"></div>
-          <div class="cover-container">
-            <p class="subtitle-tag">A LITTLE SCRAPBOOK</p>
-            <h1 class="main-title">For Adika</h1>
-            <p class="description-text">
-              A collection of little moments, tiny notes, and memories that deserve their own pages.
-            </p>
-            <div class="pill-badge">Tap next to flip ➔</div>
+    <div class="scrapbook-wrapper">
+      <div class="flipbook" id="flipbook">
+        
+        <!-- LEMBAR 1: Cover (Depan) + Polos (Belakang) -->
+        <div class="paper" id="p1">
+          <!-- Sisi Depan: Cover Utama -->
+          <div class="front cover-page">
+            <div class="washi-tape tape-left"></div>
+            <div class="washi-tape tape-right"></div>
+            <div class="cover-container">
+              <p class="subtitle-tag">A LITTLE SCRAPBOOK</p>
+              <h1 class="main-title">For Adika</h1>
+              <p class="description-text">
+                A collection of little moments, tiny notes, and memories that deserve their own pages.
+              </p>
+              <div class="pill-badge">Tap next to flip ➔</div>
+            </div>
+          </div>
+          <!-- Sisi Belakang: Kosong / Tekstur Kertas Saja -->
+          <div class="back blank-page">
+            <div class="paper-texture"></div>
           </div>
         </div>
-      </div>
 
-      <!-- HALAMAN 2: Here's For Adika (Cloche & Cupcake) -->
-      <div class="sheet" id="sheet-2">
-        <div class="card-paper page-cloche">
-          <div class="cloche-heading-box">
-            <h2 class="script-maroon cloche-title">Here's For<br><span class="name-highlight">Adika</span></h2>
-          </div>
-          <div class="tray-scene">
-            <div class="cloche-lid">
-              <div class="lid-knob"></div>
-              <div class="lid-dome"><div class="lid-reflection"></div></div>
+        <!-- LEMBAR 2: Here's For Adika (Depan) + Polos (Belakang) -->
+        <div class="paper" id="p2">
+          <!-- Sisi Depan: Cloche & Cupcake -->
+          <div class="front page-cloche">
+            <div class="cloche-heading-box">
+              <h2 class="script-maroon cloche-title">Here's For<br><span class="name-highlight">Adika</span></h2>
             </div>
-            <div class="cupcake-wrapper">
-              <span class="candle candle-left">2</span>
-              <div class="birthday-boy-head">
-                <div class="mini-party-hat"></div>
-                <div class="face-placeholder"><span>[Foto]</span></div>
+            <div class="tray-scene">
+              <div class="cloche-lid">
+                <div class="lid-knob"></div>
+                <div class="lid-dome"><div class="lid-reflection"></div></div>
               </div>
-              <span class="candle candle-right">1</span>
-              <div class="cupcake-frosting"></div>
-              <div class="cupcake-cup"></div>
-            </div>
-            <div class="silver-platter"><div class="platter-shine"></div></div>
-            <div class="waiter-hand"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- HALAMAN 3: Adika Turning 21 -->
-      <div class="sheet" id="sheet-3">
-        <div class="card-paper page-turning21">
-          <div class="turning21-header">
-            <h3 class="turning21-title">
-              <span class="name-red italic-bold">ADIKA</span> IS TURNING<br>
-              TWENTY ONE
-            </h3>
-          </div>
-          <div class="turning21-visual">
-            <div class="halftone-bg"></div>
-            <div class="sticker-thunder thunder-1">⚡</div>
-            <div class="sticker-thunder thunder-2">⚡</div>
-            <div class="sticker-star star-1">★</div>
-            <div class="sticker-star star-2">✦</div>
-            <div class="adika-head-frame">
-              <div class="party-hat-yellow">
-                <span class="hat-text">HAPPY<br>BIRTHDAY</span>
+              <div class="cupcake-wrapper">
+                <span class="candle candle-left">2</span>
+                <div class="birthday-boy-head">
+                  <div class="mini-party-hat"></div>
+                  <div class="face-placeholder"><span>[Foto]</span></div>
+                </div>
+                <span class="candle candle-right">1</span>
+                <div class="cupcake-frosting"></div>
+                <div class="cupcake-cup"></div>
               </div>
-              <div class="head-photo-slot">
-                <span class="photo-hint">[ Foto Adika ]</span>
-              </div>
-              <div class="blower-sticker">🎺</div>
-              <div class="mini-cupcake-sticker">🧁</div>
+              <div class="silver-platter"><div class="platter-shine"></div></div>
+              <div class="waiter-hand"></div>
             </div>
           </div>
-          <div class="turning21-footer">
-            <p class="cute-status">
-              HE'S <span class="strike-red">NOT</span> CUTE<br>
-              ANYMORE
-            </p>
+          <!-- Sisi Belakang: Kosong -->
+          <div class="back blank-page">
+            <div class="paper-texture"></div>
           </div>
         </div>
-      </div>
 
-      <!-- HALAMAN 4: Your Present & Binder Ring -->
-      <div class="sheet" id="sheet-4">
-        <div class="card-paper binder-page">
-          <div class="binder-rings">
-            <span></span><span></span><span></span><span></span><span></span><span></span>
-          </div>
-          <div class="page-content center-content">
-            <h2 class="script-maroon title-large">Your present!</h2>
-            <div class="envelope-layout">
-              <p class="tiny-handwritten">I hope you love it as much as I loved picking it out for you</p>
-              <div class="envelope-art">✉️</div>
+        <!-- LEMBAR 3: Turning 21 (Depan) + Polos (Belakang) -->
+        <div class="paper" id="p3">
+          <!-- Sisi Depan: Turning 21 -->
+          <div class="front page-turning21">
+            <div class="turning21-header">
+              <h3 class="turning21-title">
+                <span class="name-red italic-bold">ADIKA</span> IS TURNING<br>
+                TWENTY ONE
+              </h3>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- HALAMAN 5: Vinyl Record Spotify -->
-      <div class="sheet" id="sheet-5">
-        <div class="card-paper blue-bg-page">
-          <div class="page-content center-content">
-            <p class="italic-sub">SONG THAT REMIND ME OF YOU</p>
-            <div class="vinyl-record">
-              <div class="vinyl-center">
-                <span>HAPPY BIRTHDAY</span>
-                <p>ADIKA TURNING 21</p>
+            <div class="turning21-visual">
+              <div class="halftone-bg"></div>
+              <div class="sticker-thunder thunder-1">⚡</div>
+              <div class="sticker-thunder thunder-2">⚡</div>
+              <div class="sticker-star star-1">★</div>
+              <div class="sticker-star star-2">✦</div>
+              <div class="adika-head-frame">
+                <div class="party-hat-yellow">
+                  <span class="hat-text">HAPPY<br>BIRTHDAY</span>
+                </div>
+                <div class="head-photo-slot">
+                  <span class="photo-hint">[ Foto Adika ]</span>
+                </div>
+                <div class="blower-sticker">🎺</div>
+                <div class="mini-cupcake-sticker">🧁</div>
               </div>
             </div>
-            <div class="spotify-wave">|||•|•||||•||•|</div>
+            <div class="turning21-footer">
+              <p class="cute-status">
+                HE'S <span class="strike-red">NOT</span> CUTE<br>
+                ANYMORE
+              </p>
+            </div>
+          </div>
+          <!-- Sisi Belakang: Kosong -->
+          <div class="back blank-page">
+            <div class="paper-texture"></div>
           </div>
         </div>
-      </div>
 
-      <!-- HALAMAN 6: Make A Wish Candle -->
-      <div class="sheet" id="sheet-6">
-        <div class="card-paper">
-          <div class="page-content center-content">
-            <p class="italic-maroon-sub">MAKE A WISH AND BLOW YOUR<br>CANDLE BEBSEU!!</p>
-            <div class="cake-container">
-              <div class="head-bubbles">
-                <span>[Foto 1] 💨</span>
-                <span>[Foto 2]</span>
+        <!-- LEMBAR 4: Your Present & Binder (Depan) + Polos (Belakang) -->
+        <div class="paper" id="p4">
+          <!-- Sisi Depan: Your Present -->
+          <div class="front binder-page">
+            <div class="binder-rings">
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <div class="page-content center-content">
+              <h2 class="script-maroon title-large">Your present!</h2>
+              <div class="envelope-layout">
+                <p class="tiny-handwritten">I hope you love it as much as I loved picking it out for you</p>
+                <div class="envelope-art">✉️</div>
               </div>
-              <div class="cake-art">🎂</div>
             </div>
           </div>
+          <!-- Sisi Belakang: Kosong -->
+          <div class="back blank-page">
+            <div class="paper-texture"></div>
+          </div>
         </div>
-      </div>
 
-      <!-- HALAMAN 7: Digital Camera -->
-      <div class="sheet" id="sheet-7">
-        <div class="card-paper">
-          <div class="page-content center-content">
-            <h2 class="script-maroon">To Many</h2>
-            <div class="camera-body">
-              <div class="camera-screen"><span>[ Foto Kamera Digital ]</span></div>
+        <!-- LEMBAR 5: Vinyl Record Spotify (Depan) + Polos (Belakang) -->
+        <div class="paper" id="p5">
+          <!-- Sisi Depan: Spotify Vinyl -->
+          <div class="front blue-bg-page">
+            <div class="page-content center-content">
+              <p class="italic-sub">SONG THAT REMIND ME OF YOU</p>
+              <div class="vinyl-record">
+                <div class="vinyl-center">
+                  <span>HAPPY BIRTHDAY</span>
+                  <p>ADIKA TURNING 21</p>
+                </div>
+              </div>
+              <div class="spotify-wave">|||•|•||||•||•|</div>
             </div>
-            <h2 class="script-maroon">More Birthday</h2>
-            <p class="bold-sub">TOGETHER</p>
+          </div>
+          <!-- Sisi Belakang: Kosong -->
+          <div class="back blank-page">
+            <div class="paper-texture"></div>
           </div>
         </div>
-      </div>
 
-      <!-- HALAMAN 8: The End -->
-      <div class="sheet" id="sheet-8">
-        <div class="card-paper back-cover">
-          <div class="page-content center-content">
-            <h3 class="script-maroon title-large">THE END</h3>
-            <p style="color: var(--text-sub); font-size: 0.9rem;">Made with 💙 for Adika</p>
+        <!-- LEMBAR 6: Make A Wish Cake (Depan) + Polos (Belakang) -->
+        <div class="paper" id="p6">
+          <div class="front">
+            <div class="page-content center-content">
+              <p class="italic-maroon-sub">MAKE A WISH AND BLOW YOUR<br>CANDLE BEBSEU!!</p>
+              <div class="cake-container">
+                <div class="head-bubbles">
+                  <span>[Foto 1] 💨</span>
+                  <span>[Foto 2]</span>
+                </div>
+                <div class="cake-art">🎂</div>
+              </div>
+            </div>
+          </div>
+          <!-- Sisi Belakang: Kosong -->
+          <div class="back blank-page">
+            <div class="paper-texture"></div>
           </div>
         </div>
-      </div>
 
+        <!-- LEMBAR 7: Digital Camera (Depan) + Polos (Belakang) -->
+        <div class="paper" id="p7">
+          <div class="front">
+            <div class="page-content center-content">
+              <h2 class="script-maroon">To Many</h2>
+              <div class="camera-body">
+                <div class="camera-screen"><span>[ Foto Kamera Digital ]</span></div>
+              </div>
+              <h2 class="script-maroon">More Birthday</h2>
+              <p class="bold-sub">TOGETHER</p>
+            </div>
+          </div>
+          <!-- Sisi Belakang: Kosong -->
+          <div class="back blank-page">
+            <div class="paper-texture"></div>
+          </div>
+        </div>
+
+        <!-- LEMBAR 8: The End (Terakhir) -->
+        <div class="paper" id="p8">
+          <div class="front back-cover">
+            <div class="page-content center-content">
+              <h3 class="script-maroon title-large">THE END</h3>
+              <p style="color: var(--text-sub); font-size: 0.9rem;">Made with 💙 for Adika</p>
+            </div>
+          </div>
+          <div class="back blank-page"></div>
+        </div>
+
+      </div>
     </div>
 
     <!-- Navigasi -->
