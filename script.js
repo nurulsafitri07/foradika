@@ -9,8 +9,9 @@ const mainFlame = document.getElementById('mainFlame');
 
 let currentLocation = 1;
 const totalPapers = papers.length;
+let isAnimating = false; // Mencegah spam klik yang bikin tumpuk
 
-// Interaktif Tiup Lilin
+// Fitur Tiup Lilin
 if (candleArea && mainFlame) {
   candleArea.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -18,44 +19,67 @@ if (candleArea && mainFlame) {
   });
 }
 
-function updateZIndex() {
+function updateState() {
   papers.forEach((paper, index) => {
+    const pageNum = index + 1;
+
+    // Atur Z-Index & Visibility agar halaman lain tidak tembus
     if (paper.classList.contains('flipped')) {
-      paper.style.zIndex = index + 1;
+      paper.style.zIndex = pageNum;
     } else {
       paper.style.zIndex = totalPapers - index;
+    }
+
+    // Hanya tampilkan halaman saat ini & halaman sebelumnya/sesudahnya yang relevan
+    if (pageNum === currentLocation || pageNum === currentLocation - 1) {
+      paper.classList.add('is-visible');
+    } else {
+      paper.classList.remove('is-visible');
     }
   });
 }
 
 function goNextPage() {
-  if (currentLocation <= totalPapers) {
-    const currentPaper = papers[currentLocation - 1];
-    currentPaper.style.zIndex = totalPapers + 10;
-    currentPaper.classList.add('flipped');
-    
-    setTimeout(() => {
-      updateZIndex();
-    }, 400);
+  if (isAnimating || currentLocation > totalPapers) return;
+  isAnimating = true;
 
-    currentLocation++;
-    updateCounter();
+  const currentPaper = papers[currentLocation - 1];
+  
+  // Pastikan kertas target terlihat sebelum animasi jalan
+  if (currentLocation < totalPapers) {
+    papers[currentLocation].classList.add('is-visible');
   }
+
+  currentPaper.style.zIndex = totalPapers + 10;
+  currentPaper.classList.add('flipped');
+
+  currentLocation++;
+  updateCounter();
+
+  setTimeout(() => {
+    updateState();
+    isAnimating = false;
+  }, 750); // Sinkron dengan durasi CSS transition (0.75s)
 }
 
 function goPrevPage() {
-  if (currentLocation > 1) {
-    const prevPaper = papers[currentLocation - 2];
-    prevPaper.style.zIndex = totalPapers + 10;
-    prevPaper.classList.remove('flipped');
-    
-    setTimeout(() => {
-      updateZIndex();
-    }, 400);
+  if (isAnimating || currentLocation <= 1) return;
+  isAnimating = true;
 
-    currentLocation--;
-    updateCounter();
-  }
+  const prevPaper = papers[currentLocation - 2];
+  
+  // Kunci utama: jadikan kertas yang dibalik ke kanan sebagai prioritas tertinggi
+  prevPaper.classList.add('is-visible');
+  prevPaper.style.zIndex = totalPapers + 10;
+  prevPaper.classList.remove('flipped');
+
+  currentLocation--;
+  updateCounter();
+
+  setTimeout(() => {
+    updateState();
+    isAnimating = false;
+  }, 750);
 }
 
 function updateCounter() {
@@ -84,5 +108,5 @@ flipbook.addEventListener('click', (e) => {
   }
 });
 
-// Inisialisasi awal
-updateZIndex();
+// Jalankan set awal
+updateState();
