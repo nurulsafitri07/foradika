@@ -16,7 +16,6 @@
 }
 
 body {
-  /* Background Dotted Soft */
   background-color: var(--bg-page-tint);
   background-image: radial-gradient(var(--bg-dots-color) 1.8px, transparent 1.8px);
   background-size: 18px 18px;
@@ -30,11 +29,11 @@ body {
   padding: 20px;
 }
 
-/* Container Flipbook 3D */
+/* Kunci 3D halus:Perspective ditingkatkan */
 .scrapbook-wrapper {
   width: 370px;
   height: 560px;
-  perspective: 2000px;
+  perspective: 2500px;
   position: relative;
   margin-bottom: 20px;
 }
@@ -46,7 +45,7 @@ body {
   transform-style: preserve-3d;
 }
 
-/* Kertas yang bisa membalik 3D */
+/* Lembaran Kertas Realistis */
 .paper {
   width: 100%;
   height: 100%;
@@ -54,10 +53,25 @@ body {
   top: 0;
   left: 0;
   transform-origin: left center;
-  transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  /* Bezier Curve halus seperti gerakan tangan membalik kertas */
+  transition: transform 1.3s cubic-bezier(0.3, 1, 0.3, 1);
   transform-style: preserve-3d;
   cursor: pointer;
   border-radius: 20px;
+}
+
+/* Efek lipatan di punggung buku (spine shadow) */
+.paper::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 25px;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0,0,0,0.08), transparent);
+  z-index: 20;
+  pointer-events: none;
+  border-radius: 20px 0 0 20px;
 }
 
 .front, .back {
@@ -72,8 +86,8 @@ body {
   border-radius: 20px;
   padding: 30px 24px;
   box-shadow: 
-    0 15px 35px rgba(80, 95, 110, 0.15),
-    0 5px 15px rgba(0, 0, 0, 0.04);
+    0 12px 30px rgba(80, 95, 110, 0.12),
+    0 4px 10px rgba(0, 0, 0, 0.03);
   overflow: hidden;
 }
 
@@ -243,7 +257,7 @@ body {
 .page-content { height: 100%; display: flex; flex-direction: column; }
 .center-content { align-items: center; justify-content: center; text-align: center; }
 
-/* Nav Bar */
+/* Nav Controls */
 .navigation-bar {
   display: flex;
   align-items: center;
