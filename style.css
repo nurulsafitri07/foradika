@@ -1,197 +1,306 @@
 :root {
-  --bg-dots-color: #D3E0EA;
-  --bg-page-tint: #E8F1F8;
-  --cream-card: #FAF8F5;
-  --text-main: #3D4A52;
+  --bg-dots-color: #CAD8E6;
+  --bg-screen: #EAF1F7;
+  --card-cream: #FCFBF8;
+  --text-dark: #36444E;
   --text-sub: #7A8E9C;
-  --maroon-script: #8B1E2D;
-  --blue-header: #96AFC4;
+  --maroon-color: #8B1E2D;
+  --blue-header: #8CAABF;
   --blue-pill: #BFD7EA;
-  --tape-color: #E6D8B6;
+  --tape-color: rgba(230, 218, 186, 0.9);
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html, body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  touch-action: manipulation;
 }
 
 body {
-  background-color: var(--bg-page-tint);
-  background-image: radial-gradient(var(--bg-dots-color) 1.8px, transparent 1.8px);
-  background-size: 18px 18px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  color: var(--text-main);
+  background-color: var(--bg-screen);
+  background-image: radial-gradient(var(--bg-dots-color) 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-dark);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.mobile-viewport {
+.mobile-container {
   width: 100%;
-  max-width: 400px;
+  max-width: 360px;
   height: 100vh;
+  max-height: 640px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 15px;
-  position: relative;
+  padding: 12px;
 }
 
-/* Container Flipbook */
-.scrapbook-wrapper {
-  width: 320px;
-  height: 500px;
-  perspective: 1500px;
-  position: relative;
-  margin-bottom: 15px;
-}
-
-.flipbook {
+/* KOTAK KERTAS UTAMA */
+.card-frame {
   width: 100%;
-  height: 100%;
+  height: 480px;
+  background-color: var(--card-cream);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(54, 68, 78, 0.12);
+  border: 1px solid #EAE5D9;
   position: relative;
-  transform-style: preserve-3d;
-}
-
-/* Lembaran Paper yang bisa membalik 3D */
-.paper {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform-origin: left center;
-  transition: transform 0.85s cubic-bezier(0.4, 0.2, 0.2, 1);
-  transform-style: preserve-3d;
-  cursor: pointer;
-  border-radius: 16px;
-}
-
-.front, .back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  background-color: var(--cream-card);
-  border-radius: 16px;
-  padding: 22px 18px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
   overflow: hidden;
 }
 
-/* Sisi Belakang dibuat Kosong Polos */
-.back.blank-page {
-  transform: rotateY(180deg);
-  background-color: #F4EFE6;
-  border-left: 2px solid #E5DEC9;
+/* LOGIKA MENYEMBUNYIKAN HALAMAN (ANTI-TEMBUS SAFARI) */
+.page-item {
+  display: none; /* Kunci Safari: Halaman non-aktif hilang 100% */
+  width: 100%;
+  height: 100%;
+  background-color: var(--card-cream);
+  padding: 24px 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-.paper.flipped {
-  transform: rotateY(-180deg);
+.page-item.active {
+  display: block; /* Hanya halaman aktif yang muncul */
+  animation: fadeIn 0.3s ease-in-out;
 }
 
-/* --- COVER PAGE --- */
-.cover-page { display: flex; align-items: center; justify-content: center; text-align: center; }
-.cover-container { display: flex; flex-direction: column; align-items: center; }
-.subtitle-tag { font-size: 0.7rem; letter-spacing: 2px; color: var(--text-sub); margin-bottom: 12px; }
-.main-title { font-family: 'Caveat', cursive; font-size: 3.2rem; color: #2C3E50; margin-bottom: 15px; }
-.description-text { font-size: 0.8rem; color: var(--text-main); line-height: 1.45; margin-bottom: 25px; }
-.pill-badge { background-color: var(--blue-pill); color: #2C3E50; font-size: 0.75rem; padding: 8px 16px; border-radius: 20px; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
 
-.washi-tape {
+.page-theme-blue {
+  background-color: #C4D9EC !important;
+}
+
+/* LAYOUT HELPERS */
+.page-body { width: 100%; height: 100%; display: flex; flex-direction: column; }
+.center-flex { justify-content: center; align-items: center; }
+.between-flex { justify-content: space-between; align-items: center; }
+.align-right { width: 100%; text-align: right; }
+.text-center { text-align: center; }
+
+/* TYPOGRAPHY */
+.font-caveat { font-family: 'Caveat', cursive; }
+.tag-label { font-size: 0.72rem; letter-spacing: 2px; color: var(--text-sub); font-weight: 600; }
+.tag-label.text-dark { color: #485B69; }
+
+.title-huge { font-size: 3.6rem; color: var(--text-dark); margin: 15px 0; line-height: 1; }
+.desc-text { font-size: 0.85rem; line-height: 1.5; color: var(--text-dark); text-align: center; max-width: 250px; }
+
+.title-maroon { font-size: 2.8rem; color: var(--maroon-color); line-height: 1; }
+.title-maroon-small { font-size: 2.2rem; color: var(--maroon-color); line-height: 1.1; }
+.name-span { font-size: 3.4rem; display: block; }
+
+/* TAPE DEKORASI */
+.tape-decor {
   position: absolute;
   background-color: var(--tape-color);
-  opacity: 0.85;
   height: 18px;
   width: 70px;
   z-index: 10;
   border-radius: 2px;
 }
-.tape-left { top: 15px; left: 20px; transform: rotate(-8deg); }
-.tape-right { top: 15px; right: 20px; transform: rotate(8deg); }
+.tape-l { top: 14px; left: 16px; transform: rotate(-6deg); }
+.tape-r { top: 14px; right: 16px; transform: rotate(6deg); }
 
-/* --- HALAMAN 2: CLOCHE --- */
-.page-cloche { background: #FCFBF9; position: relative; padding: 18px; display: flex; flex-direction: column; justify-content: space-between; }
-.cloche-heading-box { position: absolute; top: 130px; right: 18px; z-index: 10; text-align: left; }
-.cloche-title { font-size: 2.8rem; line-height: 0.95; }
-.name-highlight { font-size: 3.3rem; display: inline-block; margin-top: 3px; }
-.tray-scene { position: relative; width: 100%; height: 100%; }
-.cloche-lid { position: absolute; top: 20px; left: 10px; transform: rotate(-25deg); }
-.lid-knob { width: 12px; height: 12px; background: #A6AFB8; border-radius: 50%; margin: 0 auto -2px; }
-.lid-dome { width: 110px; height: 68px; background: linear-gradient(135deg, #D4DCE3 0%, #A4B1BC 50%, #768593 100%); border-radius: 110px 110px 10px 10px; box-shadow: 0 6px 12px rgba(0,0,0,0.15); position: relative; overflow: hidden; }
-.lid-reflection { position: absolute; top: 8px; left: 15px; width: 20px; height: 40px; background: rgba(255,255,255,0.4); border-radius: 50%; transform: rotate(20deg); }
-.silver-platter { position: absolute; bottom: 100px; left: 10px; width: 180px; height: 32px; background: linear-gradient(180deg, #E9EFF4 0%, #A9B7C3 60%, #72818F 100%); border-radius: 50%; box-shadow: 0 10px 16px rgba(0,0,0,0.2); z-index: 4; }
-.platter-shine { width: 80%; height: 60%; margin: 3px auto; border-radius: 50%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent); }
-.cupcake-wrapper { position: absolute; bottom: 112px; left: 62px; z-index: 5; display: flex; flex-direction: column; align-items: center; }
-.candle { position: absolute; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.1rem; color: #7E95A8; top: -10px; }
-.candle-left { left: -8px; transform: rotate(-10deg); }
-.candle-right { right: -8px; transform: rotate(10deg); }
-.birthday-boy-head { position: relative; z-index: 6; margin-bottom: -8px; }
-.mini-party-hat { width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-bottom: 18px solid #8FB7D8; position: absolute; top: -14px; left: 14px; transform: rotate(5deg); z-index: 7; }
-.face-placeholder { width: 48px; height: 48px; border-radius: 50%; background: #E0E5EA; border: 2px solid white; display: flex; align-items: center; justify-content: center; font-size: 0.58rem; color: #555; }
-.cupcake-frosting { width: 65px; height: 34px; background: #FFFFFF; border-radius: 50% 50% 40% 40%; box-shadow: 0 3px 5px rgba(0,0,0,0.05); }
-.cupcake-cup { width: 48px; height: 30px; background: #D9A05B; clip-path: polygon(10% 100%, 90% 100%, 100% 0, 0 0); margin-top: -5px; }
-.waiter-hand { position: absolute; bottom: 0; left: 30px; width: 60px; height: 105px; background: linear-gradient(135deg, #F3D3C1 0%, #D4A790 100%); border-radius: 16px 16px 0 0; z-index: 3; transform: rotate(-10deg); }
+.pill-btn {
+  margin-top: 25px;
+  background-color: var(--blue-pill);
+  color: var(--text-dark);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 20px;
+}
 
-/* --- HALAMAN 3: TURNING 21 --- */
-.page-turning21 { display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center; padding: 25px 15px !important; background: #FCFBF9; }
-.turning21-title { font-size: 1.25rem; font-weight: 800; color: var(--blue-header); letter-spacing: 1.5px; line-height: 1.3; }
-.name-red { color: var(--maroon-script); }
-.italic-bold { font-style: italic; font-weight: 800; }
-.turning21-visual { position: relative; width: 180px; height: 180px; display: flex; align-items: center; justify-content: center; margin: 5px 0; }
-.halftone-bg { position: absolute; width: 160px; height: 160px; border-radius: 50%; background-image: radial-gradient(#96AFC4 2px, transparent 2px); background-size: 6px 6px; z-index: 1; }
-.adika-head-frame { position: relative; z-index: 5; display: flex; flex-direction: column; align-items: center; }
-.head-photo-slot { width: 85px; height: 85px; border-radius: 50%; background: #E5EDF4; border: 3px solid #FFFFFF; box-shadow: 0 5px 12px rgba(0,0,0,0.12); display: flex; align-items: center; justify-content: center; overflow: hidden; text-align: center; padding: 5px; }
-.photo-hint { font-size: 0.6rem; color: #6C7D88; font-weight: 600; line-height: 1.2; }
-.party-hat-yellow { width: 0; height: 0; border-left: 18px solid transparent; border-right: 18px solid transparent; border-bottom: 40px solid #F6D658; position: absolute; top: -33px; left: 24px; transform: rotate(-10deg); z-index: 6; }
-.hat-text { position: absolute; top: 13px; left: -14px; width: 28px; font-size: 0.38rem; font-weight: 800; color: var(--maroon-script); line-height: 1; text-align: center; }
-.sticker-thunder { position: absolute; color: var(--maroon-script); font-size: 1.3rem; z-index: 4; }
-.thunder-1 { top: 10px; right: 20px; transform: rotate(15deg); }
-.thunder-2 { top: 32px; right: 8px; transform: rotate(-10deg); font-size: 1rem; }
-.sticker-star { position: absolute; color: #6C8DA8; font-size: 1rem; z-index: 4; }
-.star-1 { bottom: 30px; left: 10px; }
-.star-2 { bottom: 18px; right: 25px; }
-.blower-sticker { position: absolute; bottom: -5px; right: -8px; font-size: 1.2rem; transform: rotate(20deg); z-index: 6; }
-.mini-cupcake-sticker { position: absolute; bottom: -8px; left: -8px; font-size: 1.1rem; z-index: 6; }
-.cute-status { font-size: 1.15rem; font-weight: 800; color: var(--blue-header); letter-spacing: 1.5px; line-height: 1.25; }
-.strike-red { position: relative; color: var(--blue-header); }
-.strike-red::after { content: ''; position: absolute; left: -3px; right: -3px; top: 50%; height: 3px; background-color: var(--maroon-script); transform: rotate(-5deg); }
+/* POLAROID FRAME */
+.clean-polaroid {
+  width: 100%;
+  background: white;
+  padding: 10px 10px 14px;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  border: 1px solid #ECE7DE;
+  text-align: center;
+}
 
-/* --- ELEMEN LAINNYA --- */
-.script-maroon { font-family: 'Caveat', cursive; color: var(--maroon-script); font-weight: 700; }
-.title-large { font-size: 2.6rem; }
-.binder-rings { position: absolute; left: 6px; top: 10%; height: 80%; display: flex; flex-direction: column; justify-content: space-between; }
-.binder-rings span { width: 15px; height: 9px; border: 2px solid #888; border-radius: 5px; background: linear-gradient(to right, #ccc, #fff, #888); }
-.blue-bg-page { background-color: #C2D7EA !important; }
-.vinyl-record { width: 180px; height: 180px; background: radial-gradient(circle, #111 30%, #333 31%, #111 32%, #222 65%, #000 66%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 12px 0; }
-.vinyl-center { width: 68px; height: 68px; background: white; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 0.45rem; font-weight: bold; }
-.camera-body { width: 180px; height: 115px; background: #C0C0C0; border-radius: 10px; border: 2px solid #999; padding: 6px; display: flex; align-items: center; justify-content: center; margin: 10px 0; }
-.camera-screen { width: 100px; height: 70px; background: #333; color: white; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; }
-.page-content { height: 100%; display: flex; flex-direction: column; }
-.center-content { align-items: center; justify-content: center; text-align: center; }
-
-/* Navigation Bar */
-.navigation-bar {
+.photo-box {
+  width: 100%;
+  height: 180px;
+  background-color: #EAF0F6;
+  border-radius: 4px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: var(--text-sub);
+}
+
+.photo-cap { font-size: 1.25rem; color: var(--text-dark); margin-top: 8px; }
+.quote-text { font-size: 0.8rem; font-style: italic; color: var(--text-sub); text-align: center; }
+
+/* HALAMAN 3: TURNING 21 */
+.turning-heading { font-size: 1.15rem; font-weight: 800; color: var(--blue-header); letter-spacing: 1.5px; line-height: 1.3; }
+.red-highlight { color: var(--maroon-color); font-style: italic; }
+
+.circle-graphic-box {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.halftone-circle {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-image: radial-gradient(var(--blue-header) 1.8px, transparent 1.8px);
+  background-size: 7px 7px;
+}
+
+.avatar-photo-slot {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  color: var(--text-sub);
+  z-index: 2;
+  text-align: center;
+  padding: 6px;
+}
+
+.icon-thunder { position: absolute; top: 8px; right: 12px; color: var(--maroon-color); font-size: 1.2rem; z-index: 3; }
+.icon-star { position: absolute; bottom: 12px; left: 12px; color: var(--blue-header); font-size: 1.1rem; z-index: 3; }
+
+.strike-footer { font-size: 1.1rem; font-weight: 800; color: var(--blue-header); letter-spacing: 1.5px; }
+.strikethrough-red { text-decoration: line-through; color: var(--maroon-color); }
+
+/* BINDER & ENVELOPE */
+.binder-holes {
+  position: absolute;
+  left: 6px;
+  top: 15%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.binder-holes span {
+  width: 12px;
+  height: 8px;
+  background: #B8C4CE;
+  border-radius: 4px;
+}
+
+.envelope-note {
+  background: white;
+  border: 1px dashed var(--blue-header);
+  border-radius: 12px;
+  padding: 20px 15px;
+  margin-top: 15px;
+}
+.note-content { font-size: 1.3rem; line-height: 1.35; color: var(--text-dark); }
+.mail-emoji { font-size: 1.8rem; margin-top: 8px; }
+
+/* VINYL SPOTIFY */
+.vinyl-disc {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #1A1A1A 32%, #2C2C2C 33%, #1A1A1A 34%, #111 65%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  margin: 15px 0;
+}
+
+.vinyl-core {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.disc-small-text { font-size: 0.42rem; font-weight: 800; color: var(--text-sub); }
+.disc-bold-text { font-size: 0.65rem; font-weight: 800; color: var(--maroon-color); }
+.spotify-tag-pill { font-size: 0.72rem; color: #3B4D5A; font-weight: 600; }
+
+/* DIGITAL CAMERA */
+.vintage-camera {
+  width: 100%;
+  background: #242A2F;
+  border-radius: 10px;
+  padding: 10px;
+  position: relative;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.camera-screen-display {
+  width: 100%;
+  height: 170px;
+  background: #111417;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #7E8E9B;
+  font-size: 0.75rem;
+}
+
+.rec-indicator { position: absolute; top: 14px; left: 14px; color: #FF4D4D; font-size: 0.6rem; font-weight: 800; }
+.together-text { font-weight: 800; letter-spacing: 2px; font-size: 0.95rem; color: var(--text-dark); }
+
+/* CLOSING PAGE */
+.closing-quote { font-size: 1.4rem; color: var(--text-dark); margin: 15px 0 20px; line-height: 1.4; }
+.made-with-badge { font-size: 0.75rem; color: var(--text-sub); font-weight: 600; }
+
+/* CONTROLS BAWAH */
+.navigation-box {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
   background: white;
   padding: 6px 16px;
   border-radius: 20px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-  z-index: 100;
 }
-.nav-btn { background: none; border: none; color: #2C3E50; font-weight: 600; cursor: pointer; font-size: 0.85rem; }
-#page-num { font-size: 0.8rem; font-weight: 500; }
+
+.ctrl-btn {
+  background: none;
+  border: none;
+  color: var(--text-dark);
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
+  padding: 4px 6px;
+}
+
+#pageCounter { font-size: 0.78rem; font-weight: 600; color: var(--text-sub); }
