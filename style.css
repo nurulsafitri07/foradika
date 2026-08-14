@@ -13,28 +13,35 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 body {
   background-color: var(--dusty-blue);
   color: var(--ink-text);
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow-x: hidden;
-  padding: 20px;
+  padding: 15px;
 }
 
-/* Container Flipbook */
+/* Ukuran Scrapbook Pas & Proporsional */
 .scraptbook-container {
-  width: 430px;
-  height: 620px;
+  width: 330px;
+  height: 490px;
   perspective: 1500px;
+  -webkit-perspective: 1500px;
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .flipbook {
@@ -42,6 +49,7 @@ body {
   height: 100%;
   position: relative;
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
 }
 
 /* Lembaran Paper */
@@ -52,11 +60,14 @@ body {
   top: 0;
   left: 0;
   transform-origin: left center;
-  transition: transform 1.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -webkit-transform-origin: left center;
+  transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
   cursor: pointer;
   border-radius: 8px 16px 16px 8px;
-  box-shadow: 0 10px 25px rgba(75, 93, 107, 0.15);
+  box-shadow: 0 8px 20px rgba(75, 93, 107, 0.15);
+  will-change: transform;
 }
 
 .front, .back {
@@ -68,7 +79,7 @@ body {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   background-color: var(--cream-paper);
-  padding: 30px;
+  padding: 22px 18px;
   border-radius: 8px 16px 16px 8px;
   border: 1px solid var(--powder-blue);
   overflow: hidden;
@@ -76,14 +87,16 @@ body {
 
 .back {
   transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
   background-color: #F3EFE6;
 }
 
 .paper.flipped {
   transform: rotateY(-180deg);
+  -webkit-transform: rotateY(-180deg);
 }
 
-/* Elemen Konten */
+/* Konten */
 .page-content {
   height: 100%;
   display: flex;
@@ -99,15 +112,15 @@ h1, h2, h3 {
 }
 
 h2 {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   border-bottom: 2px dashed var(--slate-blue);
-  padding-bottom: 8px;
-  margin-bottom: 12px;
+  padding-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .handwritten {
   font-family: 'Caveat', cursive;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: var(--slate-blue);
   line-height: 1.3;
 }
@@ -116,51 +129,51 @@ h2 {
 .tape {
   position: absolute;
   background-color: var(--beige-tape);
-  height: 24px;
-  width: 90px;
+  height: 18px;
+  width: 70px;
   z-index: 10;
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
-.tape-top-left { top: 10px; left: -15px; transform: rotate(-3deg); }
-.tape-top-right { top: 10px; right: -15px; transform: rotate(4deg); }
-.tape-center { top: 15px; left: 35%; transform: rotate(-1deg); }
+.tape-top-left { top: 8px; left: -10px; transform: rotate(-3deg); }
+.tape-top-right { top: 8px; right: -10px; transform: rotate(4deg); }
+.tape-center { top: 12px; left: 35%; transform: rotate(-1deg); }
 
 /* Polaroid */
 .polaroid {
   background: white;
-  padding: 12px 12px 20px 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 8px 8px 14px 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
   border-radius: 4px;
   text-align: center;
   transform: rotate(-1.5deg);
-  margin: 10px 0;
+  margin: 6px 0;
 }
 
 .polaroid.micro {
-  padding: 8px 8px 14px 8px;
+  padding: 6px 6px 10px 6px;
 }
 
 .photo-placeholder {
   width: 100%;
-  height: 180px;
+  height: 140px;
   background-color: var(--dusty-blue);
   border: 1px dashed var(--slate-blue);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--ink-text);
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   border-radius: 2px;
 }
 
-.polaroid.micro .photo-placeholder { height: 110px; }
-.polaroid.large .photo-placeholder { height: 230px; }
+.polaroid.micro .photo-placeholder { height: 85px; }
+.polaroid.large .photo-placeholder { height: 180px; }
 
 .caption {
   font-family: 'Caveat', cursive;
-  font-size: 1.2rem;
-  margin-top: 8px;
+  font-size: 1.05rem;
+  margin-top: 6px;
   color: var(--navy-accent);
 }
 
@@ -177,29 +190,29 @@ h2 {
 .sticker-badge {
   background: var(--slate-blue);
   color: white;
-  font-size: 0.65rem;
+  font-size: 0.55rem;
   font-weight: 700;
-  letter-spacing: 1.5px;
-  padding: 4px 10px;
-  border-radius: 12px;
-  margin-bottom: 12px;
+  letter-spacing: 1.2px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  margin-bottom: 8px;
 }
 
 .cover-title {
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   color: var(--navy-accent);
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
 }
 
 .cover-subtitle {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   color: #7A8E9C;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .tap-hint {
-  font-size: 0.75rem;
-  margin-top: 15px;
+  font-size: 0.7rem;
+  margin-top: 10px;
   color: var(--slate-blue);
   font-weight: 600;
 }
@@ -207,14 +220,14 @@ h2 {
 /* Checklist & Letter Box */
 .checklist {
   list-style: none;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 .checklist li {
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .checklist span {
@@ -222,50 +235,59 @@ h2 {
   font-weight: bold;
 }
 
+.note-box {
+  background: #FFFFFF;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  border-left: 3px solid var(--slate-blue);
+}
+
 .letter-box {
   background: #FFFFFF;
-  padding: 20px;
+  padding: 14px;
   border-radius: 8px;
-  border-left: 4px solid var(--slate-blue);
-  font-size: 0.9rem;
-  line-height: 1.6;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  border-left: 3px solid var(--slate-blue);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
 }
 
 .signature {
   font-family: 'Caveat', cursive;
-  font-size: 1.3rem;
-  margin-top: 15px;
+  font-size: 1.15rem;
+  margin-top: 10px;
   text-align: right;
 }
 
 .timeline {
   list-style: none;
   border-left: 2px solid var(--powder-blue);
-  padding-left: 15px;
+  padding-left: 12px;
 }
 
 .timeline li {
-  margin-bottom: 18px;
+  margin-bottom: 12px;
   position: relative;
 }
 
 .timeline .date {
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   font-weight: 700;
   color: var(--slate-blue);
   text-transform: uppercase;
 }
 
 .timeline p {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
 }
 
 .closing-text {
   font-weight: 600;
+  font-size: 0.85rem;
   color: var(--navy-accent);
   text-align: center;
-  margin-top: 10px;
+  margin-top: 6px;
 }
 
 .back-cover {
@@ -274,15 +296,15 @@ h2 {
   text-align: center;
 }
 
-/* Navigation Controls */
+/* Controls Bawah */
 .controls {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
   background: white;
-  padding: 8px 18px;
+  padding: 6px 14px;
   border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 .controls button {
@@ -291,9 +313,9 @@ h2 {
   color: var(--navy-accent);
   font-weight: 600;
   cursor: pointer;
-  padding: 4px 8px;
+  padding: 3px 6px;
   border-radius: 4px;
-  transition: background 0.2s;
+  font-size: 0.8rem;
 }
 
 .controls button:hover {
@@ -301,7 +323,7 @@ h2 {
 }
 
 #page-indicator {
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   color: var(--ink-text);
   font-weight: 500;
 }
