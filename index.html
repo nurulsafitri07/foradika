@@ -1,125 +1,146 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>For Adika — A Little Book</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Adika 🤍 - Aesthetic Blue Scrapbook</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<main class="wrap">
-  <div class="book" id="book" aria-label="Flipbook untuk Adika">
-    <section class="page cover">
-      <div class="tape t1"></div><div class="tape t2"></div>
-      <div class="cover-frame">
-        <div class="tiny">A LITTLE BOOK MADE FOR</div>
-        <h1>Adika</h1>
-        <div class="line"></div>
-        <p>little moments · favorite memories · us</p>
-        <div class="star">✦</div>
-      </div>
-      <div class="cover-note">tap the right side to begin →</div>
-    </section>
 
-    <section class="page">
-      <div class="top"><span>01</span><span>THE BEGINNING</span></div>
-      <h2>Every story has<br><em>a first page.</em></h2>
-      <p class="lead">And somehow, ours became a collection of little moments I never want to forget.</p>
-      <div class="polaroid rotate-left">
-        <div class="photo">YOUR<br>PHOTO</div>
-        <div class="caption">one of the first memories</div>
+  <div class="scraptbook-container">
+    <div class="flipbook" id="flipbook">
+      
+      <!-- Cover Page -->
+      <div class="paper page-cover" id="p1" style="z-index: 8;">
+        <div class="front">
+          <div class="tape tape-top-left"></div>
+          <div class="tape tape-top-right"></div>
+          <div class="cover-content">
+            <span class="sticker-badge">SPECIAL EDITION</span>
+            <h1 class="cover-title">FOR ADIKA</h1>
+            <p class="cover-subtitle">A collection of quiet moments & sweet memories</p>
+            <div class="polaroid cover-photo">
+              <div class="photo-placeholder">
+                <span>[ Foto Cover Adika ]</span>
+              </div>
+              <p class="caption">Our Chapter 🤍</p>
+            </div>
+            <p class="tap-hint">Tap kanan untuk buka ➔</p>
+          </div>
+        </div>
+        <div class="back">
+          <div class="page-content">
+            <h2>The Beginning</h2>
+            <div class="divider"></div>
+            <p class="handwritten">"Every story has a start, but ours is my absolute favorite."</p>
+            <div class="polaroid small">
+              <div class="photo-placeholder"><span>[ Foto Awal Kenal ]</span></div>
+              <p class="caption">Day One</p>
+            </div>
+            <div class="sticker star-sticker">✦</div>
+          </div>
+        </div>
       </div>
-      <div class="quote">“The best memories are often the ones we never planned.”</div>
-      <div class="tape small-tape"></div>
-    </section>
 
-    <section class="page">
-      <div class="top"><span>02</span><span>FAVORITE MOMENTS</span></div>
-      <h2>Small things,<br><em>big memories.</em></h2>
-      <div class="photo-grid">
-        <div class="snap"><div class="photo">PHOTO 01</div><span>that day</span></div>
-        <div class="snap"><div class="photo">PHOTO 02</div><span>that place</span></div>
-        <div class="snap"><div class="photo">PHOTO 03</div><span>that laugh</span></div>
-        <div class="snap"><div class="photo">PHOTO 04</div><span>just us</span></div>
+      <!-- Page 2 -->
+      <div class="paper" id="p2" style="z-index: 7;">
+        <div class="front">
+          <div class="page-content">
+            <h2>Favorite Memories</h2>
+            <div class="polaroid-grid">
+              <div class="polaroid micro">
+                <div class="photo-placeholder"><span>[ Foto 1 ]</span></div>
+                <p class="caption">Random walk</p>
+              </div>
+              <div class="polaroid micro">
+                <div class="photo-placeholder"><span>[ Foto 2 ]</span></div>
+                <p class="caption">Coffee run</p>
+              </div>
+            </div>
+            <p class="note-box">Gak pernah bosan kalau lagi sama kamu. Segala hal absurd jadi lucu.</p>
+          </div>
+        </div>
+        <div class="back">
+          <div class="page-content">
+            <h2>A Tiny Timeline</h2>
+            <ul class="timeline">
+              <li>
+                <span class="date">First Met</span>
+                <p>Awal ketemu yang serba canggung tapi nagih.</p>
+              </li>
+              <li>
+                <span class="date">First Favorite Moment</span>
+                <p>Ngobrol sampai lupa waktu jam 2 pagi.</p>
+              </li>
+              <li>
+                <span class="date">Right Now</span>
+                <p>Still my absolute favorite person.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <p class="bottom-note">Four little frames, but a hundred little stories.</p>
-    </section>
 
-    <section class="page">
-      <div class="top"><span>03</span><span>OUR LITTLE TIMELINE</span></div>
-      <h2>A few chapters<br><em>worth keeping.</em></h2>
-      <div class="timeline">
-        <div class="event"><b>01</b><div><strong>The first hello</strong><small>where a simple moment became a beginning</small></div></div>
-        <div class="event"><b>02</b><div><strong>The comfortable days</strong><small>when talking felt easy and time moved too fast</small></div></div>
-        <div class="event"><b>03</b><div><strong>The random moments</strong><small>the silly ones that somehow became favorites</small></div></div>
-        <div class="event"><b>04</b><div><strong>Right here, right now</strong><small>still adding another page to the story</small></div></div>
+      <!-- Page 3 -->
+      <div class="paper" id="p3" style="z-index: 6;">
+        <div class="front">
+          <div class="page-content">
+            <h2>Things I Like About You</h2>
+            <div class="tape tape-center"></div>
+            <ul class="checklist">
+              <li><span>✓</span> Senyum tenang kamu pas dengerin aku cerita</li>
+              <li><span>✓</span> Selalu sabar & gak gampang emosi</li>
+              <li><span>✓</span> Cara kamu ngasih perhatian kecil tapi pas</li>
+              <li><span>✓</span> Selera humor yang receh tapi lucu</li>
+            </ul>
+            <div class="sticker blue-heart">💙</div>
+          </div>
+        </div>
+        <div class="back">
+          <div class="page-content">
+            <h2>A Little Letter</h2>
+            <div class="letter-box">
+              <p>Hai Adika,</p>
+              <p>Terima kasih ya udah selalu jadi tempat yang aman dan tenang. Semoganya hal-hal baik selalu nemenin hari-hari kamu ke depannya.</p>
+              <p class="signature">With care, 🤍</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="date-tag">NO NEED TO RUSH<br><strong>LET THE STORY GROW</strong></div>
-    </section>
 
-    <section class="page letter">
-      <div class="top"><span>04</span><span>A LITTLE LETTER</span></div>
-      <div class="paper">
-        <div class="paper-title">Dear Adika,</div>
-        <p>Thank you for all the ordinary moments that somehow became special.</p>
-        <p>For the random conversations, the laughs, the small efforts, and the days that quietly turned into memories.</p>
-        <p>I hope you know that the little things matter too. Sometimes, they are exactly the things that stay with us the longest.</p>
-        <p>So here's to more places, more stories, more photos, and more moments we can look back on someday.</p>
-        <div class="signature">— from me, with love ♡</div>
+      <!-- Page 4 -->
+      <div class="paper" id="p4" style="z-index: 5;">
+        <div class="front">
+          <div class="page-content">
+            <h2>The Last Page</h2>
+            <div class="polaroid large">
+              <div class="photo-placeholder"><span>[ Foto Favorit Bersama ]</span></div>
+              <p class="caption">To many more chapters ahead 🥂</p>
+            </div>
+            <p class="closing-text">Happy Birthday / Happy Special Day, Adika!</p>
+          </div>
+        </div>
+        <div class="back">
+          <div class="page-content back-cover">
+            <h3>THE END</h3>
+            <p>Made with 💙 for Adika</p>
+          </div>
+        </div>
       </div>
-      <div class="paperclip">⌁</div>
-    </section>
 
-    <section class="page">
-      <div class="top"><span>05</span><span>THINGS I LIKE</span></div>
-      <h2>Not a long list,<br><em>just a few.</em></h2>
-      <ul class="list">
-        <li><i>✦</i><span>your random stories that somehow make my day</span></li>
-        <li><i>✦</i><span>the little jokes only we understand</span></li>
-        <li><i>✦</i><span>the comfortable silence that doesn't feel awkward</span></li>
-        <li><i>✦</i><span>the way ordinary days can suddenly feel memorable</span></li>
-        <li><i>✦</i><span>having another reason to add a page to this book</span></li>
-      </ul>
-      <div class="tiny-sticker">GOOD<br>MEMORIES<br>ONLY</div>
-    </section>
-
-    <section class="page">
-      <div class="top"><span>06</span><span>KEEP THIS ONE</span></div>
-      <div class="big-polaroid">
-        <div class="photo">YOUR<br>FAVORITE<br>PHOTO</div>
-        <div class="caption">a moment worth keeping.</div>
-      </div>
-      <p class="photo-note">Some photos are just pictures.<br><em>Some feel like a whole story.</em></p>
-      <div class="scribble">remember this ♡</div>
-    </section>
-
-    <section class="page">
-      <div class="top"><span>07</span><span>ONE LAST THING</span></div>
-      <div class="last">
-        <div class="circle">ADK<br><small>✦</small></div>
-        <h2>Not the end,<br><em>just another page.</em></h2>
-        <p>There are still places to go, things to laugh about, photos to take, and memories waiting to happen.</p>
-        <div class="rule"></div>
-        <p class="closing">Thank you for being part of<br>some of my favorite pages.</p>
-      </div>
-    </section>
-
-    <section class="page back">
-      <div class="back-box">
-        <div class="tiny">KEEP THIS LITTLE BOOK</div>
-        <div class="heart">♡</div>
-        <p>made with a little bit of blue<br>and a lot of memories.</p>
-        <div class="tiny">2026 · FOR ADIKA</div>
-      </div>
-    </section>
+    </div>
   </div>
+
   <div class="controls">
-    <button id="prev">←</button>
-    <span id="counter">01 / 09</span>
-    <button id="next">→</button>
+    <button id="prev-btn">◄ Prev</button>
+    <span id="page-indicator">Halaman 1 / 4</span>
+    <button id="next-btn">Next ►</button>
   </div>
-  <p class="hint">tap the left / right side of the book · or swipe</p>
-</main>
-<script src="script.js"></script>
+
+  <script src="script.js"></script>
 </body>
 </html>
