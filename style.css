@@ -64,7 +64,6 @@ body {
   -webkit-transform-style: preserve-3d;
 }
 
-/* LEMBARAN KERTAS FLIP */
 .paper {
   width: 100%;
   height: 100%;
@@ -81,7 +80,6 @@ body {
   will-change: transform;
 }
 
-/* SISI DEPAN & BELAKANG KERTAS */
 .front, .back {
   position: absolute;
   width: 100%;
@@ -94,8 +92,6 @@ body {
   box-shadow: 0 10px 25px rgba(54, 68, 78, 0.1);
   border: 1px solid #EAE5D9;
   overflow: hidden;
-  
-  /* Kunci Safari Fix: cegah tembus pandang */
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform: rotateY(0deg);
@@ -109,7 +105,6 @@ body {
   border-left: 3px solid #E5DEC9;
 }
 
-/* SAAT KERTAS MEMBALIK KE KIRI */
 .paper.flipped {
   transform: rotateY(-180deg);
   -webkit-transform: rotateY(-180deg);
@@ -119,14 +114,193 @@ body {
   background-color: #C4D9EC !important;
 }
 
-/* KONTEN */
+/* =========================================
+   STYLE KHUSUS: MAKE A WISH BLOW CANDLE
+   ========================================= */
+.page-blow-candle {
+  background-color: #FCFBF9;
+}
+
+.candle-heading {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--maroon-color);
+  font-style: italic;
+  letter-spacing: 0.8px;
+  line-height: 1.4;
+  margin-top: 10px;
+}
+
+.cake-scene-container {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 15px 0 5px;
+}
+
+/* Karakter Kepala Kiri & Kanan */
+.head-character {
+  position: absolute;
+  top: 15px;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.head-left {
+  left: 12px;
+}
+
+.head-right {
+  right: 12px;
+}
+
+.char-photo-slot {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.52rem;
+  color: var(--text-sub);
+  text-align: center;
+  overflow: hidden;
+  padding: 4px;
+}
+
+/* Topi Pesta */
+.hat {
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: -24px;
+  z-index: 6;
+}
+
+.hat-pink {
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 28px solid #E89FB5;
+  transform: rotate(-12deg);
+}
+
+.hat-blue-dots {
+  border-left: 13px solid transparent;
+  border-right: 13px solid transparent;
+  border-bottom: 30px solid #7FA9CE;
+  transform: rotate(10deg);
+}
+
+.blow-text {
+  font-size: 0.55rem;
+  font-weight: 800;
+  color: var(--text-sub);
+  position: absolute;
+  right: -32px;
+  top: 25px;
+  letter-spacing: 1px;
+}
+
+/* Lilin Putih di Tengah */
+.candle-stick {
+  position: absolute;
+  bottom: 85px;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.flame {
+  width: 8px;
+  height: 18px;
+  background: radial-gradient(circle, #FFE79A 20%, #FFA834 70%, transparent 100%);
+  border-radius: 50% 50% 35% 35%;
+  box-shadow: 0 0 12px #FFA834;
+  animation: flicker 0.15s infinite alternate;
+}
+
+.flame.blown-out {
+  display: none;
+}
+
+@keyframes flicker {
+  0% { transform: scale(1); opacity: 0.9; }
+  100% { transform: scale(1.15) rotate(2deg); opacity: 1; }
+}
+
+.wick {
+  width: 2px;
+  height: 4px;
+  background: #333;
+}
+
+.candle-body {
+  width: 10px;
+  height: 45px;
+  background: linear-gradient(to right, #F9F9F9, #ECECEC, #DCDCDC);
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+}
+
+/* Kue Putih (White Cake) */
+.white-cake {
+  width: 175px;
+  height: 75px;
+  background: linear-gradient(to bottom, #FFFFFF 0%, #F5F5F5 40%, #EBEBEB 100%);
+  border-radius: 12px 12px 6px 6px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  position: relative;
+  z-index: 2;
+  margin-bottom: 8px;
+}
+
+.frosting-top {
+  position: absolute;
+  top: -8px;
+  left: 0;
+  width: 100%;
+  height: 16px;
+  background: radial-gradient(circle, #FFFFFF 60%, transparent 70%);
+  background-size: 16px 16px;
+}
+
+.cake-plate {
+  position: absolute;
+  bottom: 0;
+  width: 215px;
+  height: 16px;
+  background: linear-gradient(to bottom, #ECECEC, #D0D0D0);
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  z-index: 1;
+}
+
+.tap-flame-hint {
+  font-size: 0.72rem;
+  color: var(--text-sub);
+  font-style: italic;
+  margin-top: 5px;
+}
+
+/* =========================================
+   STYLE UMUM & HALAMAN LAINNYA
+   ========================================= */
 .page-inner { width: 100%; height: 100%; display: flex; flex-direction: column; }
 .center-content { justify-content: center; align-items: center; }
 .between-content { justify-content: space-between; align-items: center; }
 .align-right { width: 100%; text-align: right; }
 .text-center { text-align: center; }
 
-/* TYPOGRAPHY */
 .font-caveat { font-family: 'Caveat', cursive; }
 .tag-label { font-size: 0.72rem; letter-spacing: 2px; color: var(--text-sub); font-weight: 600; }
 .tag-label.text-dark { color: #485B69; }
@@ -138,7 +312,6 @@ body {
 .title-maroon-small { font-size: 2.1rem; color: var(--maroon-color); line-height: 1.1; }
 .name-span { font-size: 3.3rem; display: block; }
 
-/* TAPE DEKORASI */
 .tape-decor {
   position: absolute;
   background-color: var(--tape-color);
@@ -160,7 +333,6 @@ body {
   border-radius: 20px;
 }
 
-/* POLAROID */
 .clean-polaroid {
   width: 100%;
   background: white;
@@ -186,7 +358,6 @@ body {
 .photo-cap { font-size: 1.2rem; color: var(--text-dark); margin-top: 8px; }
 .quote-text { font-size: 0.78rem; font-style: italic; color: var(--text-sub); text-align: center; }
 
-/* TURNING 21 */
 .turning-heading { font-size: 1.15rem; font-weight: 800; color: var(--blue-header); letter-spacing: 1.5px; line-height: 1.3; }
 .red-highlight { color: var(--maroon-color); font-style: italic; }
 
@@ -232,7 +403,6 @@ body {
 .strike-footer { font-size: 1.1rem; font-weight: 800; color: var(--blue-header); letter-spacing: 1.5px; }
 .strikethrough-red { text-decoration: line-through; color: var(--maroon-color); }
 
-/* BINDER & ENVELOPE */
 .binder-holes {
   position: absolute;
   left: 6px;
@@ -259,7 +429,6 @@ body {
 .note-content { font-size: 1.25rem; line-height: 1.35; color: var(--text-dark); }
 .mail-emoji { font-size: 1.8rem; margin-top: 8px; }
 
-/* VINYL SPOTIFY */
 .vinyl-disc {
   width: 165px;
   height: 165px;
@@ -287,7 +456,6 @@ body {
 .disc-bold-text { font-size: 0.6rem; font-weight: 800; color: var(--maroon-color); }
 .spotify-tag-pill { font-size: 0.72rem; color: #3B4D5A; font-weight: 600; }
 
-/* DIGITAL CAMERA */
 .vintage-camera {
   width: 100%;
   background: #242A2F;
@@ -312,11 +480,6 @@ body {
 .rec-indicator { position: absolute; top: 14px; left: 14px; color: #FF4D4D; font-size: 0.6rem; font-weight: 800; }
 .together-text { font-weight: 800; letter-spacing: 2px; font-size: 0.95rem; color: var(--text-dark); }
 
-/* CLOSING PAGE */
-.closing-quote { font-size: 1.35rem; color: var(--text-dark); margin: 15px 0 20px; line-height: 1.4; }
-.made-with-badge { font-size: 0.75rem; color: var(--text-sub); font-weight: 600; }
-
-/* KONTROL BAWAH */
 .navigation-box {
   display: flex;
   align-items: center;
