@@ -7,12 +7,14 @@ let currentLocation = 1;
 const numOfPapers = papers.length;
 const maxLocation = numOfPapers + 1;
 
-// Mengatur tumpukan halaman (z-index) agar flipnya rapi
+// Mengatur tumpukan lembaran secara presisi saat animasi berjalan
 function updateZIndex() {
   papers.forEach((paper, index) => {
     if (paper.classList.contains('flipped')) {
+      // Kertas yang sudah dibalik ditumpuk sesuai urutannya di kiri
       paper.style.zIndex = index + 1;
     } else {
+      // Kertas yang belum dibalik ditumpuk urut dari atas di kanan
       paper.style.zIndex = numOfPapers - index;
     }
   });
@@ -21,9 +23,16 @@ function updateZIndex() {
 function goNextPage() {
   if (currentLocation < maxLocation) {
     const currentPaper = papers[currentLocation - 1];
+    
+    // Beri sedikit jeda z-index saat kertas membalik ke tengah
+    currentPaper.style.zIndex = numOfPapers + 1;
     currentPaper.classList.add('flipped');
+    
+    setTimeout(() => {
+      updateZIndex();
+    }, 300); // Sinkron dengan pertengahan animasi flip
+
     currentLocation++;
-    updateZIndex();
     updateIndicator();
   }
 }
@@ -31,9 +40,15 @@ function goNextPage() {
 function goPrevPage() {
   if (currentLocation > 1) {
     const prevPaper = papers[currentLocation - 2];
+    
+    prevPaper.style.zIndex = numOfPapers + 1;
     prevPaper.classList.remove('flipped');
+    
+    setTimeout(() => {
+      updateZIndex();
+    }, 300);
+
     currentLocation--;
-    updateZIndex();
     updateIndicator();
   }
 }
@@ -42,7 +57,6 @@ function updateIndicator() {
   pageNum.innerText = `${currentLocation} / ${maxLocation}`;
 }
 
-// Event listener klik pada area kanan/kiri kertas
 papers.forEach((paper) => {
   paper.addEventListener('click', (e) => {
     const rect = paper.getBoundingClientRect();
@@ -59,5 +73,5 @@ papers.forEach((paper) => {
 prevBtn.addEventListener('click', goPrevPage);
 nextBtn.addEventListener('click', goNextPage);
 
-// Initial setup
+// Inisialisasi awal
 updateZIndex();
