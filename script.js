@@ -1,14 +1,37 @@
 
-const btn = document.getElementById('openBtn');
-const cover = document.getElementById('cover');
-const book = document.getElementById('book');
+const pages = Array.from(document.querySelectorAll('.page'));
+const prev = document.getElementById('prev');
+const next = document.getElementById('next');
+const current = document.getElementById('current');
+const total = document.getElementById('total');
 
-btn.addEventListener('click', () => {
-  cover.style.opacity = '0';
-  cover.style.transform = 'scale(0.98)';
-  setTimeout(() => {
-    cover.style.display = 'none';
-    book.classList.remove('hidden');
-    window.scrollTo({top:0, behavior:'smooth'});
-  }, 350);
+let index = 0;
+total.textContent = pages.length;
+
+function render(){
+  pages.forEach((page,i)=>{
+    page.style.zIndex = pages.length - i;
+    if(i < index){
+      page.classList.add('flipped');
+    }else{
+      page.classList.remove('flipped');
+    }
+  });
+  current.textContent = index + 1;
+}
+
+next.addEventListener('click', ()=>{
+  if(index < pages.length - 1){
+    index++;
+    render();
+  }
 });
+
+prev.addEventListener('click', ()=>{
+  if(index > 0){
+    index--;
+    render();
+  }
+});
+
+render();
