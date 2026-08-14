@@ -2,17 +2,29 @@ const papers = Array.from(document.querySelectorAll('.paper'));
 const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
 const pageIndicator = document.getElementById('page-indicator');
+const flipbook = document.getElementById('flipbook');
+
+const candleArea = document.getElementById('candleArea');
+const mainFlame = document.getElementById('mainFlame');
 
 let currentLocation = 1;
-const numOfPapers = papers.length;
-const maxLocation = numOfPapers + 1;
+const totalPapers = papers.length;
+const maxLocation = totalPapers + 1;
+
+// Fitur Interaktif Tiup Lilin
+if (candleArea && mainFlame) {
+  candleArea.addEventListener('click', (e) => {
+    e.stopPropagation();
+    mainFlame.classList.toggle('blown-out');
+  });
+}
 
 function updateZIndex() {
   papers.forEach((paper, index) => {
     if (paper.classList.contains('flipped')) {
       paper.style.zIndex = index + 1;
     } else {
-      paper.style.zIndex = numOfPapers - index;
+      paper.style.zIndex = totalPapers - index;
     }
   });
 }
@@ -38,8 +50,8 @@ function goPrevPage() {
 }
 
 function updateIndicator() {
-  const currentShow = Math.min(currentLocation, numOfPapers);
-  pageIndicator.innerText = `${currentShow} / ${numOfPapers}`;
+  const displayNum = Math.min(currentLocation, totalPapers);
+  pageIndicator.innerText = `${displayNum} / ${totalPapers}`;
 }
 
 papers.forEach((paper) => {
@@ -65,4 +77,5 @@ nextBtn.addEventListener('click', (e) => {
   goNextPage();
 });
 
+// Setup Z-Index Awal
 updateZIndex();
