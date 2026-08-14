@@ -30,53 +30,62 @@ body {
   padding: 20px;
 }
 
-.story-container {
+/* Container Flipbook 3D */
+.scrapbook-wrapper {
   width: 370px;
   height: 560px;
+  perspective: 2000px;
   position: relative;
   margin-bottom: 20px;
 }
 
-.slides-wrapper {
+.flipbook {
   width: 100%;
   height: 100%;
   position: relative;
+  transform-style: preserve-3d;
 }
 
-/* Slide Card System */
-.slide {
+/* Kertas yang bisa membalik 3D */
+.paper {
+  width: 100%;
+  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.4s ease, transform 0.4s ease;
-  transform: scale(0.96);
+  transform-origin: left center;
+  transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transform-style: preserve-3d;
+  cursor: pointer;
+  border-radius: 20px;
 }
 
-.slide.active {
-  opacity: 1;
-  visibility: visible;
-  transform: scale(1);
-}
-
-.card-paper {
+.front, .back {
+  position: absolute;
   width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   background-color: var(--cream-card);
   border-radius: 20px;
   padding: 30px 24px;
   box-shadow: 
     0 15px 35px rgba(80, 95, 110, 0.15),
     0 5px 15px rgba(0, 0, 0, 0.04);
-  position: relative;
   overflow: hidden;
-  cursor: pointer;
 }
 
-.blue-bg-card {
+.back {
+  transform: rotateY(180deg);
+}
+
+.paper.flipped {
+  transform: rotateY(-180deg);
+}
+
+.blue-bg-page {
   background-color: #C2D7EA !important;
 }
 
@@ -231,10 +240,10 @@ body {
   font-size: 0.68rem;
 }
 
-.card-content { height: 100%; display: flex; flex-direction: column; }
+.page-content { height: 100%; display: flex; flex-direction: column; }
 .center-content { align-items: center; justify-content: center; text-align: center; }
 
-/* Nav Controls */
+/* Nav Bar */
 .navigation-bar {
   display: flex;
   align-items: center;
