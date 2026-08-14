@@ -327,3 +327,21 @@ h2 {
   color: var(--ink-text);
   font-weight: 500;
 }
+
+/* Ukuran Khusus Polaroid Kecil (Lembar 2: The Beginning) */
+.polaroid.small {
+  width: 70% !important;
+  max-width: 170px !important;
+  padding: 6px 6px 10px 6px !important;
+  margin: 6px auto !important;
+}
+
+.polaroid.small .photo-placeholder {
+  height: 110px !important;
+  max-height: 110px !important;
+}
+
+.polaroid.small .caption {
+  font-size: 1rem !important;
+  margin-top: 4px !important;
+}
