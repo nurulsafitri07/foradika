@@ -7,17 +7,16 @@
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <div class="scrapbook-wrapper">
     <div class="flipbook" id="flipbook">
       
-      <!-- LEMBAR 1: Cover Depan & Halaman 2 (Here's For Adika) -->
+      <!-- LEMBAR 1: Cover "For Adika" & Halaman 2 "Here's For Adika" -->
       <div class="paper" id="p1">
-        
-        <!-- Sisi Depan: Cover "For Adika" -->
+        <!-- Halaman 1 (Cover) -->
         <div class="front cover-page">
           <div class="washi-tape tape-left"></div>
           <div class="washi-tape tape-right"></div>
@@ -27,64 +26,90 @@
             <p class="description-text">
               A collection of little moments, tiny notes, and memories that deserve their own pages.
             </p>
-            <div class="pill-badge">
-              Tap next to flip the pages
-            </div>
+            <div class="pill-badge">Tap next to flip the pages</div>
           </div>
         </div>
 
-        <!-- Sisi Belakang: HALAMAN 2 (Persis Gambar Referensi Cloche Tray) -->
+        <!-- Halaman 2: Here's For Adika -->
         <div class="back page-cloche">
-          <!-- Text Kanan Atas -->
           <div class="cloche-heading-box">
             <h2 class="script-maroon cloche-title">Here's For<br><span class="name-highlight">Adika</span></h2>
           </div>
-
-          <!-- Komposisi Visual Cloche & Cupcake -->
           <div class="tray-scene">
-            <!-- Tutup Saji Terbuka (Cloche Lid) -->
             <div class="cloche-lid">
               <div class="lid-knob"></div>
-              <div class="lid-dome">
-                <div class="lid-reflection"></div>
-              </div>
+              <div class="lid-dome"><div class="lid-reflection"></div></div>
             </div>
-
-            <!-- Cupcake dengan Lilin Angka & Foto Wajah -->
             <div class="cupcake-wrapper">
               <span class="candle candle-left">2</span>
-              
-              <!-- Slot Foto Kepala Adika + Topi Ultah -->
               <div class="birthday-boy-head">
                 <div class="mini-party-hat"></div>
-                <!-- Ganti src foto wajah Adika di sini jika ada -->
-                <div class="face-placeholder">
-                  <span>[Foto]</span>
-                </div>
+                <div class="face-placeholder"><span>[Foto]</span></div>
               </div>
-
               <span class="candle candle-right">1</span>
-
-              <!-- Roti & Krim Cupcake -->
               <div class="cupcake-frosting"></div>
               <div class="cupcake-cup"></div>
             </div>
-
-            <!-- Piring Perak Saji -->
-            <div class="silver-platter">
-              <div class="platter-shine"></div>
-            </div>
-
-            <!-- Tangan Pelayan di Bawah -->
+            <div class="silver-platter"><div class="platter-shine"></div></div>
             <div class="waiter-hand"></div>
           </div>
         </div>
-
       </div>
 
-      <!-- LEMBAR 2: Halaman 3 & 4 -->
+      <!-- LEMBAR 2: Halaman 3 (Turning 21) & Halaman 4 (Your Present / Binder) -->
       <div class="paper" id="p2">
-        <div class="front">
+        <!-- HALAMAN 3: Turning 21 + Halftone + Slot Foto Adika -->
+        <div class="front page-turning21">
+          <!-- Heading Atas -->
+          <div class="turning21-header">
+            <h3 class="turning21-title">
+              <span class="name-red italic-bold">ADIKA</span> IS TURNING<br>
+              TWENTY ONE
+            </h3>
+          </div>
+
+          <!-- Komposisi Visual Tengah (Halftone & Foto Adika) -->
+          <div class="turning21-visual">
+            <div class="halftone-bg"></div>
+
+            <!-- Stiker Petir / Bintang Kiri-Kanan -->
+            <div class="sticker-thunder thunder-1">⚡</div>
+            <div class="sticker-thunder thunder-2">⚡</div>
+            <div class="sticker-star star-1">★</div>
+            <div class="sticker-star star-2">✦</div>
+
+            <!-- Frame Foto Kepala Adika (Bisa ganti <img> di sini) -->
+            <div class="adika-head-frame">
+              <!-- Topi Pesta Kuning -->
+              <div class="party-hat-yellow">
+                <span class="hat-text">HAPPY<br>BIRTHDAY</span>
+              </div>
+              <!-- Slot Foto -->
+              <div class="head-photo-slot">
+                <img src="" alt="" class="head-img" id="adika-face-img" style="display:none;">
+                <span class="photo-hint">[ Foto Masa Kecil / Lucu Adika ]</span>
+              </div>
+              <!-- Terompet Pesta Kecil -->
+              <div class="blower-sticker">🎺</div>
+              <!-- Cupcake Mini Samping -->
+              <div class="mini-cupcake-sticker">🧁</div>
+            </div>
+          </div>
+
+          <!-- Teks Coret Bawah -->
+          <div class="turning21-footer">
+            <p class="cute-status">
+              HE'S <span class="strike-red">NOT</span> CUTE<br>
+              ANYMORE
+            </p>
+          </div>
+        </div>
+
+        <!-- Halaman 4: Your Present & Envelope -->
+        <div class="back binder-page">
+          <div class="binder-rings">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
           <div class="page-content center-content">
             <h2 class="script-maroon title-large">Your present!</h2>
             <div class="envelope-layout">
@@ -93,19 +118,9 @@
             </div>
           </div>
         </div>
-        <div class="back">
-          <div class="page-content center-content">
-            <h3 class="sans-blue-heading">ADIKA IS TURNING<br>TWENTY ONE</h3>
-            <div class="halftone-circle">
-              <div class="head-photo-placeholder">[ Foto Adika ]</div>
-              <span class="party-hat">🎉</span>
-            </div>
-            <p class="crossed-text">HE'S <span class="strikethrough">NOT</span> CUTE ANYMORE</p>
-          </div>
-        </div>
       </div>
 
-      <!-- LEMBAR 3: Halaman 5 & 6 -->
+      <!-- LEMBAR 3: Halaman 5 (Vinyl) & Halaman 6 (Cake Candle) -->
       <div class="paper" id="p3">
         <div class="front blue-bg-page">
           <div class="page-content center-content">
@@ -133,15 +148,13 @@
         </div>
       </div>
 
-      <!-- LEMBAR 4: Halaman 7 & 8 -->
+      <!-- LEMBAR 4: Halaman 7 (Camera) & Halaman 8 (End) -->
       <div class="paper" id="p4">
         <div class="front">
           <div class="page-content center-content">
             <h2 class="script-maroon">To Many</h2>
             <div class="camera-body">
-              <div class="camera-screen">
-                <span>[ Foto Kamera Digital ]</span>
-              </div>
+              <div class="camera-screen"><span>[ Foto Kamera Digital ]</span></div>
             </div>
             <h2 class="script-maroon">More Birthday</h2>
             <p class="bold-sub">TOGETHER</p>
