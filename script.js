@@ -1,60 +1,55 @@
-const papers = Array.from(document.querySelectorAll('.paper'));
+const sheets = Array.from(document.querySelectorAll('.sheet'));
 const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
 const pageNum = document.getElementById('page-num');
 
-let currentLocation = 1;
-const numOfPapers = papers.length;
-const maxLocation = numOfPapers + 1;
+let currentIndex = 0;
+const totalSheets = sheets.length;
 
-function updateZIndex() {
-  papers.forEach((paper, index) => {
-    if (paper.classList.contains('flipped')) {
-      paper.style.zIndex = index + 1;
-    } else {
-      paper.style.zIndex = numOfPapers - index;
+function updateView() {
+  sheets.forEach((sheet, index) => {
+    sheet.classList.remove('active', 'flipped-out');
+
+    if (index === currentIndex) {
+      sheet.classList.add('active');
+    } else if (index < currentIndex) {
+      sheet.classList.add('flipped-out');
     }
   });
+
+  pageNum.innerText = `${currentIndex + 1} / ${totalSheets}`;
 }
 
-function goNextPage() {
-  if (currentLocation < maxLocation) {
-    const currentPaper = papers[currentLocation - 1];
-    currentPaper.classList.add('flipped');
-    currentLocation++;
-    updateZIndex();
-    updateIndicator();
+function goNext() {
+  if (currentIndex < totalSheets - 1) {
+    currentIndex++;
+    updateView();
   }
 }
 
-function goPrevPage() {
-  if (currentLocation > 1) {
-    const prevPaper = papers[currentLocation - 2];
-    prevPaper.classList.remove('flipped');
-    currentLocation--;
-    updateZIndex();
-    updateIndicator();
+function goPrev() {
+  if (currentIndex > 0) {
+    currentIndex--;
+    updateView();
   }
 }
 
-function updateIndicator() {
-  pageNum.innerText = `${currentLocation} / ${maxLocation}`;
-}
-
-prevBtn.onclick = goPrevPage;
-nextBtn.onclick = goNextPage;
-
-papers.forEach((paper) => {
-  paper.onclick = (e) => {
-    const rect = paper.getBoundingClientRect();
+// Tap sisi kanan kartu untuk Next, sisi kiri untuk Prev
+sheets.forEach((sheet) => {
+  sheet.addEventListener('click', (e) => {
+    const rect = sheet.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
 
     if (clickX > rect.width / 2) {
-      goNextPage();
+      goNext();
     } else {
-      goPrevPage();
+      goPrev();
     }
-  };
+  });
 });
 
-updateZIndex();
+prevBtn.onclick = goPrev;
+nextBtn.onclick = goNext;
+
+// Mulai halaman awal
+updateView();
