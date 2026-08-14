@@ -2,178 +2,144 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>A Little Scrapbook - For Adika 🤍</title>
-
-  <!-- Google Fonts -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Adika 🤍 - Aesthetic Blue Scrapbook</title>
+  <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <main class="mobile-wrapper">
-    
-    <!-- SCRAPBOOK CONTAINER -->
-    <div class="book-viewport" id="bookViewport">
-
-      <!-- PAGE 1: COVER -->
-      <article class="page active" id="page-1">
-        <div class="washi washi-top-left"></div>
-        <div class="washi washi-top-right"></div>
-        <div class="card-inner center-layout">
-          <p class="tagline">A LITTLE SCRAPBOOK</p>
-          <h1 class="font-hand title-cover">For Adika</h1>
-          <p class="body-desc">
-            A collection of little moments, tiny notes, and memories that deserve their own pages.
-          </p>
-          <div class="action-pill">Tap next to flip ➔</div>
-        </div>
-      </article>
-
-      <!-- PAGE 2: HERE'S FOR ADIKA -->
-      <article class="page" id="page-2">
-        <div class="card-inner space-between-layout">
-          <div class="align-right">
-            <h2 class="font-hand title-maroon">Here's For<br><span class="name-large">Adika</span></h2>
-          </div>
-
-          <div class="polaroid-card">
-            <div class="photo-placeholder">
-              <span>[ Foto Adika / Momen Spesial ]</span>
+  <div class="scraptbook-container">
+    <div class="flipbook" id="flipbook">
+      
+      <!-- Lembar 1: Cover & The Beginning -->
+      <div class="paper" id="p1" style="z-index: 4;">
+        <div class="front">
+          <div class="tape tape-top-left"></div>
+          <div class="tape tape-top-right"></div>
+          <div class="cover-content">
+            <span class="sticker-badge">SPECIAL EDITION</span>
+            <h1 class="cover-title">FOR ADIKA</h1>
+            <p class="cover-subtitle">A collection of quiet moments & sweet memories</p>
+            <div class="polaroid cover-photo">
+              <div class="photo-placeholder">
+                <span>[ Foto Cover Adika ]</span>
+              </div>
+              <p class="caption">Our Chapter 🤍</p>
             </div>
-            <p class="font-hand polaroid-label">Special Day 🎂</p>
-          </div>
-
-          <p class="quote-text">"Semoga harimu selalu dipenuhi hal-hal baik dan menyenangkan."</p>
-        </div>
-      </article>
-
-      <!-- PAGE 3: TURNING 21 -->
-      <article class="page" id="page-3">
-        <div class="card-inner space-between-layout text-center">
-          <h3 class="heading-blue-sans">
-            <span class="maroon-italic">ADIKA</span> IS TURNING<br>TWENTY ONE
-          </h3>
-
-          <div class="halftone-avatar-box">
-            <div class="halftone-disc"></div>
-            <div class="avatar-photo">
-              <span>[ Foto Adika ]</span>
-            </div>
-            <span class="sticker-accent sticker-bolt">⚡</span>
-            <span class="sticker-accent sticker-sparkle">✦</span>
-          </div>
-
-          <p class="strikethrough-status">
-            HE'S <span class="strike-line">NOT</span> CUTE ANYMORE
-          </p>
-        </div>
-      </article>
-
-      <!-- PAGE 4: MAKE A WISH & BLOW CANDLE -->
-      <article class="page" id="page-4">
-        <div class="card-inner center-layout text-center">
-          <h3 class="candle-title-maroon">
-            MAKE A WISH AND BLOW YOUR<br>CANDLE BEBSEU!!
-          </h3>
-
-          <div class="cake-illustration-box">
-            <!-- Kepala Cewek (Kiri) -->
-            <div class="head-item head-left">
-              <div class="party-hat pink-hat"></div>
-              <div class="head-circle-slot"><span>[Foto Kamu]</span></div>
-              <span class="fyuh-badge">FYUH 💨</span>
-            </div>
-
-            <!-- Lilin & Api Interaktif -->
-            <div class="candle-object" id="candleArea" title="Klik untuk tiup lilin">
-              <div class="flame-spark" id="flameSpark"></div>
-              <div class="candle-wick"></div>
-              <div class="candle-wax"></div>
-            </div>
-
-            <!-- Kepala Adika (Kanan) -->
-            <div class="head-item head-right">
-              <div class="party-hat blue-hat"></div>
-              <div class="head-circle-slot"><span>[Foto Adika]</span></div>
-            </div>
-
-            <!-- Kue Putih & Piring -->
-            <div class="white-cake-body">
-              <div class="frosting-edge"></div>
-            </div>
-            <div class="cake-platter"></div>
-          </div>
-
-          <p class="hint-small">(Tap lilinnya buat tiup 🕯️)</p>
-        </div>
-      </article>
-
-      <!-- PAGE 5: YOUR PRESENT -->
-      <article class="page" id="page-5">
-        <div class="binder-rings">
-          <span></span><span></span><span></span><span></span><span></span>
-        </div>
-        <div class="card-inner center-layout text-center">
-          <h2 class="font-hand title-maroon">Your present!</h2>
-          <div class="envelope-container">
-            <p class="font-hand letter-quote">
-              "I hope you love it as much as I loved picking it out for you."
-            </p>
-            <div class="envelope-emoji">✉️</div>
+            <p class="tap-hint">Tap kanan untuk buka ➔</p>
           </div>
         </div>
-      </article>
+        <div class="back">
+          <div class="page-content">
+            <h2>The Beginning</h2>
+            <div class="divider"></div>
+            <p class="handwritten">"Every story has a start, but ours is my absolute favorite."</p>
+            <div class="polaroid small">
+              <div class="photo-placeholder"><span>[ Foto Awal Kenal ]</span></div>
+              <p class="caption">Day One</p>
+            </div>
+            <div class="sticker star-sticker">✦</div>
+          </div>
+        </div>
+      </div>
 
-      <!-- PAGE 6: SPOTIFY RECORD -->
-      <article class="page page-blue-theme" id="page-6">
-        <div class="card-inner space-between-layout text-center">
-          <p class="tagline dark-tag">SONG THAT REMINDS ME OF YOU</p>
-
-          <div class="vinyl-record-wrap">
-            <div class="vinyl-disc-body">
-              <div class="vinyl-label-center">
-                <span class="disc-sub">HAPPY BIRTHDAY</span>
-                <span class="disc-main">ADIKA</span>
+      <!-- Lembar 2: Favorite Memories & Timeline -->
+      <div class="paper" id="p2" style="z-index: 3;">
+        <div class="front">
+          <div class="page-content">
+            <h2>Favorite Memories</h2>
+            <div class="polaroid-grid">
+              <div class="polaroid micro">
+                <div class="photo-placeholder"><span>[ Foto 1 ]</span></div>
+                <p class="caption">Random walk</p>
+              </div>
+              <div class="polaroid micro">
+                <div class="photo-placeholder"><span>[ Foto 2 ]</span></div>
+                <p class="caption">Coffee run</p>
               </div>
             </div>
-          </div>
-
-          <div class="spotify-capsule">
-            <span>Spotify Track • Playing Memories</span>
+            <p class="note-box">Gak pernah bosan kalau lagi sama kamu. Segala hal absurd jadi lucu.</p>
           </div>
         </div>
-      </article>
+        <div class="back">
+          <div class="page-content">
+            <h2>A Tiny Timeline</h2>
+            <ul class="timeline">
+              <li>
+                <span class="date">First Met</span>
+                <p>Awal ketemu yang serba canggung tapi nagih.</p>
+              </li>
+              <li>
+                <span class="date">First Favorite Moment</span>
+                <p>Ngobrol sampai lupa waktu jam 2 pagi.</p>
+              </li>
+              <li>
+                <span class="date">Right Now</span>
+                <p>Still my absolute favorite person.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-      <!-- PAGE 7: DIGITAL CAMERA & END -->
-      <article class="page" id="page-7">
-        <div class="card-inner space-between-layout text-center">
-          <h2 class="font-hand title-maroon-med">To Many More Birthday</h2>
-
-          <div class="vintage-camera-frame">
-            <div class="camera-lens-screen">
-              <span>[ Foto Momen Berdua ]</span>
+      <!-- Lembar 3: Things I Like & Little Letter -->
+      <div class="paper" id="p3" style="z-index: 2;">
+        <div class="front">
+          <div class="page-content">
+            <h2>Things I Like About You</h2>
+            <div class="tape tape-center"></div>
+            <ul class="checklist">
+              <li><span>✓</span> Senyum tenang kamu pas dengerin aku cerita</li>
+              <li><span>✓</span> Selalu sabar & gak gampang emosi</li>
+              <li><span>✓</span> Cara kamu ngasih perhatian kecil tapi pas</li>
+              <li><span>✓</span> Selera humor yang receh tapi lucu</li>
+            </ul>
+            <div class="sticker blue-heart">💙</div>
+          </div>
+        </div>
+        <div class="back">
+          <div class="page-content">
+            <h2>A Little Letter</h2>
+            <div class="letter-box">
+              <p>Hai Adika,</p>
+              <p>Terima kasih ya udah selalu jadi tempat yang aman dan tenang. Semoganya hal-hal baik selalu nemenin hari-hari kamu ke depannya.</p>
+              <p class="signature">With care, 🤍</p>
             </div>
-            <span class="recording-badge">● REC</span>
           </div>
-
-          <p class="together-footer">TOGETHER 🥂</p>
         </div>
-      </article>
+      </div>
+
+      <!-- Lembar 4: The Last Page & Back Cover -->
+      <div class="paper" id="p4" style="z-index: 1;">
+        <div class="front">
+          <div class="page-content">
+            <h2>The Last Page</h2>
+            <div class="polaroid large">
+              <div class="photo-placeholder"><span>[ Foto Favorit Bersama ]</span></div>
+              <p class="caption">To many more chapters ahead 🥂</p>
+            </div>
+            <p class="closing-text">Happy Special Day, Adika!</p>
+          </div>
+        </div>
+        <div class="back">
+          <div class="page-content back-cover">
+            <h3>THE END</h3>
+            <p>Made with 💙 for Adika</p>
+          </div>
+        </div>
+      </div>
 
     </div>
+  </div>
 
-    <!-- BOTTOM CONTROLS -->
-    <nav class="navigation-dock">
-      <button id="prevBtn" class="nav-control-btn" aria-label="Previous Page">◄ Prev</button>
-      <span id="pageIndicator">1 / 7</span>
-      <button id="nextBtn" class="nav-control-btn" aria-label="Next Page">Next ►</button>
-    </nav>
-
-  </main>
+  <div class="controls">
+    <button id="prev-btn">◄ Prev</button>
+    <span id="page-indicator">Halaman 1 / 4</span>
+    <button id="next-btn">Next ►</button>
+  </div>
 
   <script src="script.js"></script>
 </body>
