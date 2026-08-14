@@ -4,8 +4,19 @@ const nextBtn = document.getElementById('nextBtn');
 const pageCounter = document.getElementById('pageCounter');
 const flipbook = document.getElementById('flipbook');
 
+const candleArea = document.getElementById('candleFlameArea');
+const mainFlame = document.getElementById('mainFlame');
+
 let currentLocation = 1;
 const totalPapers = papers.length;
+
+// Fitur Tiup Lilin (Interaktif)
+if (candleArea && mainFlame) {
+  candleArea.addEventListener('click', (e) => {
+    e.stopPropagation(); // Biar gak auto-flip pas niup lilin
+    mainFlame.classList.toggle('blown-out');
+  });
+}
 
 function updateZIndex() {
   papers.forEach((paper, index) => {
@@ -52,7 +63,6 @@ prevBtn.addEventListener('click', (e) => {
   goPrevPage();
 });
 
-// Tap sisi kanan = Flip Maju, sisi kiri = Flip Balik
 flipbook.addEventListener('click', (e) => {
   const rect = flipbook.getBoundingClientRect();
   const clickX = e.clientX - rect.left;
@@ -64,5 +74,4 @@ flipbook.addEventListener('click', (e) => {
   }
 });
 
-// Initialize
 updateZIndex();
