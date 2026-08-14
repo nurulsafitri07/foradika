@@ -24,6 +24,8 @@ html, body {
 
 body {
   background-color: var(--dusty-blue);
+  background-image: radial-gradient(#CAD8E6 1.8px, transparent 1.8px);
+  background-size: 16px 16px;
   color: var(--ink-text);
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   min-height: 100vh;
@@ -31,17 +33,17 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 15px;
+  padding: 12px;
 }
 
-/* Container Flipbook */
+/* WADAH FLIPBOOK */
 .scraptbook-container {
   width: 330px;
-  height: 490px;
-  perspective: 1500px;
-  -webkit-perspective: 1500px;
+  height: 500px;
+  perspective: 1600px;
+  -webkit-perspective: 1600px;
   position: relative;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 
 .flipbook {
@@ -52,7 +54,7 @@ body {
   -webkit-transform-style: preserve-3d;
 }
 
-/* Lembaran Paper */
+/* LEMBARAN KERTAS */
 .paper {
   width: 100%;
   height: 100%;
@@ -61,12 +63,12 @@ body {
   left: 0;
   transform-origin: left center;
   -webkit-transform-origin: left center;
-  transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: transform 1.1s cubic-bezier(0.645, 0.045, 0.355, 1);
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
   cursor: pointer;
   border-radius: 8px 16px 16px 8px;
-  box-shadow: 0 8px 20px rgba(75, 93, 107, 0.15);
+  box-shadow: 0 8px 24px rgba(75, 93, 107, 0.15);
   will-change: transform;
 }
 
@@ -79,13 +81,13 @@ body {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   background-color: var(--cream-paper);
-  padding: 22px 18px;
+  padding: 20px 18px;
   border-radius: 8px 16px 16px 8px;
   border: 1px solid var(--powder-blue);
   overflow: hidden;
 }
 
-/* Sisi Kiri Polos Bersih */
+/* SISI KIRI POLOS BERSIH */
 .back.blank-page {
   transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg);
@@ -98,7 +100,7 @@ body {
   -webkit-transform: rotateY(-180deg);
 }
 
-/* Konten */
+/* KONTEN */
 .page-content {
   height: 100%;
   display: flex;
@@ -116,18 +118,18 @@ h1, h2, h3 {
 h2 {
   font-size: 1.2rem;
   border-bottom: 2px dashed var(--slate-blue);
-  padding-bottom: 6px;
-  margin-bottom: 8px;
+  padding-bottom: 5px;
+  margin-bottom: 6px;
 }
 
 .handwritten {
   font-family: 'Caveat', cursive;
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   color: var(--slate-blue);
-  line-height: 1.3;
+  line-height: 1.25;
 }
 
-/* Washi Tape */
+/* WASHI TAPE */
 .tape {
   position: absolute;
   background-color: var(--beige-tape);
@@ -136,52 +138,74 @@ h2 {
   z-index: 10;
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
-
 .tape-top-left { top: 8px; left: -10px; transform: rotate(-3deg); }
 .tape-top-right { top: 8px; right: -10px; transform: rotate(4deg); }
 
-/* Polaroid */
+/* POLAROID PORTRAIT STYLE (FOTO TEGAK) */
 .polaroid {
   background: white;
-  padding: 8px 8px 14px 8px;
+  padding: 7px 7px 12px 7px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
   border-radius: 4px;
   text-align: center;
   transform: rotate(-1.5deg);
-  margin: 6px 0;
-}
-
-.polaroid.small {
-  width: 70% !important;
-  max-width: 170px !important;
-  padding: 6px 6px 10px 6px !important;
-  margin: 6px auto !important;
-}
-
-.polaroid.small .photo-placeholder {
-  height: 110px !important;
-}
-
-.polaroid.micro {
-  padding: 6px 6px 10px 6px;
+  margin: 4px auto;
+  width: 82%;
+  max-width: 195px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .photo-placeholder {
   width: 100%;
-  height: 140px;
+  height: 200px; /* Ditinggikan agar pas foto portrait HP */
   background-color: var(--dusty-blue);
+  border-radius: 2px;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--ink-text);
-  font-size: 0.75rem;
-  border-radius: 2px;
-  overflow: hidden;
 }
 
-.polaroid.micro .photo-placeholder { height: 85px; }
-.polaroid.large .photo-placeholder { height: 180px; }
+/* Polaroid Lembar 2 */
+.polaroid.small {
+  width: 75%;
+  max-width: 175px;
+  padding: 6px 6px 10px 6px;
+  margin: 4px auto;
+}
+.polaroid.small .photo-placeholder {
+  height: 180px;
+}
 
+/* Polaroid Lembar 3 (Grid 2 Foto Portrait Berdampingan) */
+.polaroid-grid {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  width: 100%;
+}
+.polaroid.micro {
+  width: 48%;
+  padding: 5px 5px 8px 5px;
+  margin: 0;
+  transform: none;
+}
+.polaroid.micro .photo-placeholder {
+  height: 125px;
+}
+
+/* Polaroid Lembar 7 (The Last Page) */
+.polaroid.large {
+  width: 85%;
+  max-width: 200px;
+}
+.polaroid.large .photo-placeholder {
+  height: 210px;
+}
+
+/* Foto Otomatis Mengisi Frame Tanpa Gepeng */
 .scrapbook-img {
   width: 100%;
   height: 100%;
@@ -192,17 +216,11 @@ h2 {
 .caption {
   font-family: 'Caveat', cursive;
   font-size: 1.05rem;
-  margin-top: 6px;
+  margin-top: 5px;
   color: var(--navy-accent);
 }
 
-.polaroid-grid {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-}
-
-/* Cover Styling */
+/* COVER STYLING */
 .cover-content {
   height: 100%;
   display: flex;
@@ -211,7 +229,6 @@ h2 {
   justify-content: center;
   text-align: center;
 }
-
 .sticker-badge {
   background: var(--slate-blue);
   color: white;
@@ -220,54 +237,47 @@ h2 {
   letter-spacing: 1.2px;
   padding: 3px 8px;
   border-radius: 10px;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
-
 .cover-title {
   font-size: 1.8rem;
   color: var(--navy-accent);
   letter-spacing: 1.5px;
 }
-
 .cover-subtitle {
   font-size: 0.75rem;
   color: #7A8E9C;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
-
 .tap-hint {
   font-size: 0.7rem;
-  margin-top: 10px;
+  margin-top: 8px;
   color: var(--slate-blue);
   font-weight: 600;
 }
 
-/* Checklist & Letter Box */
+/* CHECKLIST & TIMELINE */
 .checklist {
   list-style: none;
   font-size: 0.8rem;
 }
-
 .checklist li {
   margin-bottom: 8px;
   display: flex;
   align-items: center;
   gap: 6px;
 }
-
 .checklist span {
   color: var(--slate-blue);
   font-weight: bold;
 }
-
 .note-box {
   background: #FFFFFF;
-  padding: 10px;
+  padding: 9px;
   border-radius: 6px;
   font-size: 0.78rem;
   border-left: 3px solid var(--slate-blue);
 }
-
 .letter-box {
   background: #FFFFFF;
   padding: 14px;
@@ -277,45 +287,39 @@ h2 {
   line-height: 1.5;
   box-shadow: 0 2px 6px rgba(0,0,0,0.03);
 }
-
 .signature {
   font-family: 'Caveat', cursive;
   font-size: 1.15rem;
   margin-top: 10px;
   text-align: right;
 }
-
 .timeline {
   list-style: none;
   border-left: 2px solid var(--powder-blue);
   padding-left: 12px;
 }
-
 .timeline li {
   margin-bottom: 12px;
   position: relative;
 }
-
 .timeline .date {
   font-size: 0.65rem;
   font-weight: 700;
   color: var(--slate-blue);
   text-transform: uppercase;
 }
-
 .timeline p {
   font-size: 0.75rem;
 }
-
 .closing-text {
   font-weight: 600;
   font-size: 0.85rem;
   color: var(--navy-accent);
   text-align: center;
-  margin-top: 6px;
+  margin-top: 4px;
 }
 
-/* Controls */
+/* CONTROLS BAWAH */
 .controls {
   display: flex;
   align-items: center;
@@ -325,7 +329,6 @@ h2 {
   border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
-
 .controls button {
   background: none;
   border: none;
@@ -336,11 +339,9 @@ h2 {
   border-radius: 4px;
   font-size: 0.8rem;
 }
-
 .controls button:hover {
   background: var(--dusty-blue);
 }
-
 #page-indicator {
   font-size: 0.78rem;
   color: var(--ink-text);
