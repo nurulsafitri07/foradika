@@ -1,112 +1,85 @@
-const papers = Array.from(document.querySelectorAll('.paper'));
+const pages = Array.from(document.querySelectorAll('.page'));
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
-const pageCounter = document.getElementById('pageCounter');
-const flipbook = document.getElementById('flipbook');
+const pageIndicator = document.getElementById('pageIndicator');
+const bookViewport = document.getElementById('bookViewport');
 
-const candleArea = document.getElementById('candleFlameArea');
-const mainFlame = document.getElementById('mainFlame');
+const candleArea = document.getElementById('candleArea');
+const flameSpark = document.getElementById('flameSpark');
 
-let currentLocation = 1;
-const totalPapers = papers.length;
-let isAnimating = false; // Mencegah spam klik yang bikin tumpuk
+let currentIndex = 0;
+const totalPages = pages.length;
+let isFlipping = false;
 
-// Fitur Tiup Lilin
-if (candleArea && mainFlame) {
+// Interaktif Tiup Lilin
+if (candleArea && flameSpark) {
   candleArea.addEventListener('click', (e) => {
     e.stopPropagation();
-    mainFlame.classList.toggle('blown-out');
+    flameSpark.classList.toggle('blown-out');
   });
 }
 
-function updateState() {
-  papers.forEach((paper, index) => {
-    const pageNum = index + 1;
-
-    // Atur Z-Index & Visibility agar halaman lain tidak tembus
-    if (paper.classList.contains('flipped')) {
-      paper.style.zIndex = pageNum;
-    } else {
-      paper.style.zIndex = totalPapers - index;
-    }
-
-    // Hanya tampilkan halaman saat ini & halaman sebelumnya/sesudahnya yang relevan
-    if (pageNum === currentLocation || pageNum === currentLocation - 1) {
-      paper.classList.add('is-visible');
-    } else {
-      paper.classList.remove('is-visible');
-    }
-  });
+function updateIndicator() {
+  pageIndicator.innerText = `${currentIndex + 1} / ${totalPages}`;
 }
 
-function goNextPage() {
-  if (isAnimating || currentLocation > totalPapers) return;
-  isAnimating = true;
+function flipToNext() {
+  if (isFlipping || currentIndex >= totalPages - 1) return;
+  isFlipping = true;
 
-  const currentPaper = papers[currentLocation - 1];
-  
-  // Pastikan kertas target terlihat sebelum animasi jalan
-  if (currentLocation < totalPapers) {
-    papers[currentLocation].classList.add('is-visible');
-  }
+  const currentPage = pages[currentIndex];
+  const nextPage = pages[currentIndex + 1];
 
-  currentPaper.style.zIndex = totalPapers + 10;
-  currentPaper.classList.add('flipped');
-
-  currentLocation++;
-  updateCounter();
+  // Jalankan animasi flip keluar
+  currentPage.classList.add('flipping-next');
 
   setTimeout(() => {
-    updateState();
-    isAnimating = false;
-  }, 750); // Sinkron dengan durasi CSS transition (0.75s)
+    currentPage.classList.remove('active', 'flipping-next');
+    nextPage.classList.add('active');
+    currentIndex++;
+    updateIndicator();
+    isFlipping = false;
+  }, 500);
 }
 
-function goPrevPage() {
-  if (isAnimating || currentLocation <= 1) return;
-  isAnimating = true;
+function flipToPrev() {
+  if (isFlipping || currentIndex <= 0) return;
+  isFlipping = true;
 
-  const prevPaper = papers[currentLocation - 2];
-  
-  // Kunci utama: jadikan kertas yang dibalik ke kanan sebagai prioritas tertinggi
-  prevPaper.classList.add('is-visible');
-  prevPaper.style.zIndex = totalPapers + 10;
-  prevPaper.classList.remove('flipped');
+  const currentPage = pages[currentIndex];
+  const prevPage = pages[currentIndex - 1];
 
-  currentLocation--;
-  updateCounter();
+  currentPage.classList.remove('active');
+  prevPage.classList.add('active', 'flipping-prev');
 
   setTimeout(() => {
-    updateState();
-    isAnimating = false;
-  }, 750);
-}
-
-function updateCounter() {
-  const displayNum = Math.min(currentLocation, totalPapers);
-  pageCounter.innerText = `${displayNum} / ${totalPapers}`;
+    prevPage.classList.remove('flipping-prev');
+    currentIndex--;
+    updateIndicator();
+    isFlipping = false;
+  }, 500);
 }
 
 nextBtn.addEventListener('click', (e) => {
   e.stopPropagation();
-  goNextPage();
+  flipToNext();
 });
 
 prevBtn.addEventListener('click', (e) => {
   e.stopPropagation();
-  goPrevPage();
+  flipToPrev();
 });
 
-flipbook.addEventListener('click', (e) => {
-  const rect = flipbook.getBoundingClientRect();
+// Tap sisi kanan = Next, tap sisi kiri = Prev
+bookViewport.addEventListener('click', (e) => {
+  const rect = bookViewport.getBoundingClientRect();
   const clickX = e.clientX - rect.left;
 
   if (clickX > rect.width / 2) {
-    goNextPage();
+    flipToNext();
   } else {
-    goPrevPage();
+    flipToPrev();
   }
 });
 
-// Jalankan set awal
-updateState();
+updateIndicator();
