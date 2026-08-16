@@ -405,35 +405,13 @@ h2 {
   color: var(--navy-title);
 }
 
-/* CHECKLIST & CUTOUT */
+/* CHECKLIST (LEMBAR 5) */
 .checklist-card {
-  position: relative !important;
   background: white;
-  padding: 12px 10px 10px 10px;
+  padding: 14px 12px;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-  margin-top: 28px !important;
-}
-
-.cutout-wrapper {
-  position: absolute !important;
-  top: -42px !important;
-  right: 8px !important;
-  width: 68px !important;
-  height: 68px !important;
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
-  z-index: 10 !important;
-  pointer-events: none;
-}
-
-.cutout-img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: contain !important;
-  filter: drop-shadow(0 4px 6px rgba(66, 82, 96, 0.25)) !important;
-  display: block !important;
+  margin: 8px 0;
 }
 
 .cute-checklist {
@@ -441,7 +419,7 @@ h2 {
   font-size: 0.74rem;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
 .cute-checklist li {
@@ -454,14 +432,6 @@ h2 {
 .check-icon {
   color: var(--slate-blue);
   font-weight: 800;
-}
-
-.sparkle-footer {
-  text-align: center;
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--slate-blue);
-  letter-spacing: 1px;
 }
 
 /* SPOTIFY PLAYER */
