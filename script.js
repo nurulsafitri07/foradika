@@ -3,9 +3,20 @@ const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
 const pageIndicator = document.getElementById('page-indicator');
 
+const candleArea = document.getElementById('candleArea');
+const mainFlame = document.getElementById('mainFlame');
+
 let currentLocation = 1;
 const numOfPapers = papers.length;
 const maxLocation = numOfPapers + 1;
+
+// Fitur Interaktif Tiup Lilin di Halaman 8
+if (candleArea && mainFlame) {
+  candleArea.addEventListener('click', (e) => {
+    e.stopPropagation();
+    mainFlame.classList.toggle('blown-out');
+  });
+}
 
 function updateZIndex() {
   papers.forEach((paper, index) => {
