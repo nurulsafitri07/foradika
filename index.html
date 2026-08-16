@@ -3,193 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>For Adika 🤍 - Aesthetic Scrapbook</title>
-  <link rel="stylesheet" href="style.css">
-
-/* Garis kecil di bagian binder */
-.paper .front::after {
-  content: "";
-  position: absolute;
-  left: 49px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-
-  background:
-    repeating-linear-gradient(
-      to bottom,
-      rgba(75, 93, 107, 0.12) 0px,
-      rgba(75, 93, 107, 0.12) 2px,
-      transparent 2px,
-      transparent 30px
-    );
-
-  z-index: 21;
-  pointer-events: none;
-}
-
-/* Lubang-lubang binder */
-.paper .front {
-  --hole-position:
-    radial-gradient(
-      circle at 27px 85px,
-      #aeb8be 0px,
-      #dfe4e6 5px,
-      #f7f4ee 8px,
-      transparent 9px
-    );
-}
-
-/* Isi halaman digeser sedikit supaya tidak ketutup binder */
-.paper .front .page-content {
-  position: relative;
-  z-index: 30;
-}
-
-/* Efek lubang binder menggunakan background tambahan */
-.paper .front .page-content::before {
-  content: "";
-  position: absolute;
-
-  left: -25px;
-  top: 38px;
-
-  width: 18px;
-  height: calc(100% - 76px);
-
-  background:
-    radial-gradient(
-      circle,
-      #b8c0c5 0px,
-      #e5e8e9 5px,
-      transparent 6px
-    );
-
-  background-size: 18px 92px;
-  background-repeat: repeat-y;
-
-  z-index: 40;
-  pointer-events: none;
-}
-
-/* Metal rings */
-.paper .front .page-content::after {
-  content: "";
-
-  position: absolute;
-  left: -30px;
-  top: 45px;
-
-  width: 28px;
-  height: calc(100% - 90px);
-
-  background:
-    repeating-linear-gradient(
-      to bottom,
-      transparent 0px,
-      transparent 5px,
-      #9ca5aa 5px,
-      #eef1f2 9px,
-      #7d878d 13px,
-      #bfc6c9 17px,
-      transparent 21px,
-      transparent 92px
-    );
-
-  border-radius: 20px;
-
-  filter:
-    drop-shadow(2px 2px 2px rgba(0,0,0,0.18));
-
-  z-index: 45;
-  pointer-events: none;
-}
-
-/* Supaya elemen dekorasi tidak ketutup binder */
-.paper .tape,
-.paper .sticker,
-.paper .polaroid,
-.paper .cute-fact-box,
-.paper .checklist-card,
-.paper .letter-envelope-wrap,
-.paper .timeline-cute,
-.paper .mini-quote-banner {
-  position: relative;
-  z-index: 50;
-}
-
-/* Cover lebih seperti halaman jurnal */
-#p1 .front {
-  background:
-    radial-gradient(
-      circle at 80% 20%,
-      rgba(143,183,216,0.20),
-      transparent 28%
-    ),
-    #f7f4ee !important;
-}
-
-/* Bayangan bagian kanan kertas */
-.paper .front {
-  border-radius: 2px 10px 10px 2px;
-}
-
-/* Efek kertas sedikit vintage */
-.paper .front {
-  background-image:
-    linear-gradient(
-      rgba(255,255,255,0.15),
-      rgba(255,255,255,0.15)
-    ),
-    radial-gradient(
-      rgba(75,93,107,0.035) 0.7px,
-      transparent 0.7px
-    ) !important;
-
-  background-size:
-    auto,
-    7px 7px !important;
-}
-
-/* =====================================================
-   MOBILE
-   ===================================================== */
-
-@media (max-width: 600px) {
-
-  body {
-    min-height: 100svh;
-    padding: 12px 0;
-  }
-
-  .scraptbook-container {
-    width: min(92vw, 430px);
-  }
-
-  .flipbook {
-    width: 100% !important;
-  }
-
-  .paper .front::before {
-    width: 52px;
-  }
-
-  .paper .front::after {
-    left: 41px;
-  }
-
-  .paper .front .page-content::before {
-    left: -22px;
-  }
-
-  .paper .front .page-content::after {
-    left: -28px;
-  }
-}
-</style>
+  <title>Happy 20th Birthday Adika! 🎉</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -197,211 +17,383 @@
     <div class="flipbook" id="flipbook">
       
       <!-- LEMBAR 1: COVER UTAMA -->
-      <div class="paper" id="p1" style="z-index: 7;">
+      <div class="paper" id="p1" style="z-index: 15;">
         <div class="front">
           <div class="tape tape-top-left"></div>
           <div class="tape tape-top-right"></div>
-          
           <div class="page-content center-content">
-            <span class="sticker-badge">✨ SPECIAL EDITION ✨</span>
+            <span class="sticker-badge">✨ CHAPTER 20 EDITION ✨</span>
             <h1 class="cover-title">FOR ADIKA</h1>
-            <p class="cover-subtitle">A tiny scrapbook full of good vibes & cute memories 🎂</p>
-            
+            <p class="cover-subtitle">A special aesthetic scrapbook to celebrate your 20th birthday! 🎂</p>
             <div class="polaroid cover-photo">
-              <div class="stamp-deco">★ 21</div>
+              <div class="stamp-deco">★ 20 YO</div>
               <div class="photo-placeholder">
-                <img src="adika1.jpeg" alt="Cover Adika" class="scrapbook-img">
+                <img src="adika1.jpeg" alt="Adika" class="scrapbook-img">
               </div>
               <p class="caption">The Birthday Boy 🤍</p>
             </div>
-            
             <div class="cute-tag-row">
-              <span class="mini-tag">#AwesomeDay</span>
-              <span class="mini-tag">#Chapter21</span>
+              <span class="mini-tag">#Entering20s</span>
+              <span class="mini-tag">#Level20</span>
+              <span class="mini-tag">#GoodVibes</span>
             </div>
-
             <p class="tap-hint">Tap kanan untuk buka ➔</p>
           </div>
         </div>
         <div class="back blank-page"></div>
       </div>
 
-      <!-- LEMBAR 2: THE BEGINNING / LEVEL UP -->
-      <div class="paper" id="p2" style="z-index: 6;">
+      <!-- LEMBAR 2: TURNING 20 / LEVEL UP -->
+      <div class="paper" id="p2" style="z-index: 14;">
         <div class="front">
           <div class="tape tape-top-center"></div>
           <div class="page-content">
             <div class="header-badge-row">
-              <h2>Level Up! 🚀</h2>
-              <span class="badge-round">+1 YO</span>
+              <h2>Level Up to 20! 🚀</h2>
+              <span class="badge-round">20 YO</span>
             </div>
-            
-            <p class="handwritten">"Another 365 days of being awesome!"</p>
-            
+            <p class="handwritten">"Officially leaving the teens & entering the roaring 20s!"</p>
             <div class="polaroid small">
               <div class="photo-placeholder">
-                <img src="adika2.jpeg" alt="Foto Adika" class="scrapbook-img">
+                <img src="adika2.jpeg" alt="Adika" class="scrapbook-img">
               </div>
-              <p class="caption">Cheers to 21! 🥂✨</p>
+              <p class="caption">Welcome to 20! 🥂✨</p>
             </div>
-
             <div class="cute-fact-box">
-              <span class="pin-icon">📍</span>
-              <p><strong>Fun Fact:</strong> Makin tua bukan berarti makin kalem, tapi makin banyak cerita random!</p>
+              <span class="pin-icon">📌</span>
+              <p><strong>Milestone:</strong> Selamat tinggal usia belasan, halo kepala dua yang seru!</p>
             </div>
-            
-            <div class="sticker star-sticker">✦</div>
-            <div class="sticker heart-sticker">💙</div>
+            <div class="sparkle-footer">✦ ✦ MORE MATURE & COOLER ✦ ✦</div>
           </div>
         </div>
         <div class="back blank-page"></div>
       </div>
 
-      <!-- LEMBAR 3: FAVORITE MEMORIES -->
-      <div class="paper" id="p3" style="z-index: 5;">
+      <!-- LEMBAR 3: MEMORY LANE 1 (PHOTO GRID) -->
+      <div class="paper" id="p3" style="z-index: 13;">
         <div class="front">
           <div class="page-content">
-            <h2>Favorite Moments 📸</h2>
-            <p class="sub-handwritten">"Captured tiny little moments that mean a lot."</p>
-
+            <h2>Memory Lane 📸</h2>
+            <p class="sub-handwritten">"Small candid moments that always bring a smile."</p>
             <div class="polaroid-grid">
               <div class="polaroid micro rot-left">
                 <div class="tape-micro"></div>
                 <div class="photo-placeholder">
                   <img src="adika3.jpeg" alt="Foto 1" class="scrapbook-img">
                 </div>
-                <p class="caption">Random vibes ✌️</p>
+                <p class="caption">Candid vibes ✌️</p>
               </div>
-              
               <div class="polaroid micro rot-right">
                 <div class="tape-micro"></div>
                 <div class="photo-placeholder">
                   <img src="adika4.jpeg" alt="Foto 2" class="scrapbook-img">
                 </div>
-                <p class="caption">Good times ✨</p>
+                <p class="caption">Random laughs ✨</p>
               </div>
             </div>
-
             <div class="sticky-note-yellow">
-              <p class="font-hand">Segala hal absurd selalu jadi lucu kalau dilewatin bareng kamu! 😂</p>
-            </div>
-
-            <div class="deco-doodles">
-              <span>〰️〰️</span>
-              <span>✦ ✦</span>
+              <p class="font-hand">Selalu ada cerita seru di setiap foto random yang diambil! 😂</p>
             </div>
           </div>
         </div>
         <div class="back blank-page"></div>
       </div>
 
-      <!-- LEMBAR 4: TIMELINE HIGHLIGHTS -->
-      <div class="paper" id="p4" style="z-index: 4;">
+      <!-- LEMBAR 4: 20TH TIMELINE -->
+      <div class="paper" id="p4" style="z-index: 12;">
         <div class="front">
           <div class="page-content">
-            <h2>A Tiny Timeline ⏳</h2>
-            
+            <h2>20 Years Journey ⏳</h2>
             <ul class="timeline-cute">
               <li>
-                <div class="time-bullet">🎈</div>
+                <div class="time-bullet">🌱</div>
                 <div class="time-body">
-                  <span class="date-tag">Chapter 20</span>
-                  <p>Banyak belajar, banyak ketawa, dan makin tahan banting!</p>
+                  <span class="date-tag">The Beginning</span>
+                  <p>Masa kecil lucu & penuh kepolosan.</p>
                 </div>
               </li>
               <li>
-                <div class="time-bullet">⚡</div>
+                <div class="time-bullet">🎒</div>
                 <div class="time-body">
-                  <span class="date-tag">The Process</span>
-                  <p>Makin tahu apa yang dipengenin & makin keren langkahnya.</p>
+                  <span class="date-tag">Teens Era</span>
+                  <p>Masa pencarian jati diri, belajar banyak hal, & penuh cerita.</p>
                 </div>
               </li>
               <li>
                 <div class="time-bullet">🌟</div>
                 <div class="time-body">
-                  <span class="date-tag">Chapter 21 (Now)</span>
-                  <p>Waktunya unlock level baru dengan lebih banyak hal hebat!</p>
+                  <span class="date-tag">The 20s (Now)</span>
+                  <p>Awal babak baru untuk mewujudkan semua mimpi besar!</p>
                 </div>
               </li>
             </ul>
-
             <div class="mini-quote-banner">
-              <p>"The best is yet to come! 🚀"</p>
+              <p>"Your 20s are going to be your best chapter yet!"</p>
             </div>
           </div>
         </div>
         <div class="back blank-page"></div>
       </div>
 
-      <!-- LEMBAR 5: THINGS I LIKE -->
-      <div class="paper" id="p5" style="z-index: 3;">
+      <!-- LEMBAR 5: THINGS ABOUT YOU (WITH CUTOUT) -->
+      <div class="paper" id="p5" style="z-index: 11;">
         <div class="front">
           <div class="page-content">
             <h2>Things About You ⭐</h2>
-            <p class="sub-handwritten">"Beberapa hal yang bikin kamu itu unik & keren:"</p>
-
+            <p class="sub-handwritten">"Karakter dan kebiasaan Adika yang paling khas:"</p>
             <div class="checklist-card">
+              <div class="cutout-wrapper">
+                <div class="cutout-sparkle-l">✨</div>
+                <img src="adika-cutout.png" alt="Adika Cutout" class="cutout-img">
+                <div class="cutout-sparkle-r">✦</div>
+              </div>
               <ul class="cute-checklist">
-                <li><span class="check-icon">✓</span> <strong>Sabar & Tenang:</strong> Jarang banget panik atau emosian.</li>
-                <li><span class="check-icon">✓</span> <strong>Humor Receh:</strong> Jokes random yang selalu sukses bikin ketawa.</li>
-                <li><span class="check-icon">✓</span> <strong>Perhatian Kecil:</strong> Gak berisik tapi selalu peduli hal detail.</li>
-                <li><span class="check-icon">✓</span> <strong>Ambis Diam-diam:</strong> Tahu-tahu kelar & hasilnya rapi.</li>
+                <li><span class="check-icon">✓</span> <strong>Sabar & Tenang:</strong> Jarang banget emosi atau panik.</li>
+                <li><span class="check-icon">✓</span> <strong>Humor Receh:</strong> Selera humor absurd yang selalu lucu.</li>
+                <li><span class="check-icon">✓</span> <strong>Perhatian Kecil:</strong> Tindakan kecilnya selalu pas.</li>
+                <li><span class="check-icon">✓</span> <strong>Ambis Diam-diam:</strong> Tiba-tiba selesai dengan hasil rapi.</li>
               </ul>
             </div>
+            <div class="sparkle-footer">✨ 100% Top Tier Human ✨</div>
+          </div>
+        </div>
+        <div class="back blank-page"></div>
+      </div>
 
-            <div class="sparkle-footer">
-              <span>✨ 10/10 Person ✨</span>
+      <!-- LEMBAR 6: SPOTIFY FAVORITE TRACK -->
+      <div class="paper" id="p6" style="z-index: 10;">
+        <div class="front page-theme-blue">
+          <div class="page-content center-content">
+            <p class="tagline-blue">🎵 SOUNDTRACK FOR ADIKA AT 20</p>
+            <div class="music-card-player">
+              <div class="music-cover-art">
+                <img src="adika5.jpeg" alt="Album Art" class="scrapbook-img">
+              </div>
+              <div class="music-info">
+                <h4>Chapter 20: New Beginning</h4>
+                <p>Adika’s Birthday Special Track</p>
+              </div>
+              <div class="music-progress-bar">
+                <div class="music-progress"></div>
+              </div>
+              <div class="spotify-soundwave">
+                <span class="sp-icon">●)))</span>
+                <span class="sp-bars">| |•| |||| •|| |•|| |</span>
+              </div>
+            </div>
+            <p class="quote-italic-white">"May every beat of this year bring happiness and luck!"</p>
+          </div>
+        </div>
+        <div class="back blank-page"></div>
+      </div>
+
+      <!-- LEMBAR 7: FUN FACTS ABOUT YOU -->
+      <div class="paper" id="p7" style="z-index: 9;">
+        <div class="front">
+          <div class="page-content">
+            <h2>Fun Facts at 20 🧩</h2>
+            <div class="fun-facts-list">
+              <div class="fact-card c-blue">
+                <span class="fact-icon">☕</span>
+                <p><strong>Energy Booster:</strong> Ngopi santai sambil ngobrol topik random.</p>
+              </div>
+              <div class="fact-card c-yellow">
+                <span class="fact-icon">🎧</span>
+                <p><strong>Vibe:</strong> Asik sendiri sama playlist favorit kalau lagi fokus.</p>
+              </div>
+              <div class="fact-card c-cream">
+                <span class="fact-icon">🛋️</span>
+                <p><strong>Recharge:</strong> Butuh me-time tenang setelah seharian beraktivitas.</p>
+              </div>
+            </div>
+            <div class="deco-doodles">
+              <span>✦ Always authentic ✦</span>
             </div>
           </div>
         </div>
         <div class="back blank-page"></div>
       </div>
 
-      <!-- LEMBAR 6: A LITTLE LETTER -->
-      <div class="paper" id="p6" style="z-index: 2;">
+      <!-- LEMBAR 8: MAKE A WISH / TIUP LILIN -->
+      <div class="paper" id="p8" style="z-index: 8;">
+        <div class="front page-blow-candle">
+          <div class="page-content center-content">
+            <h3 class="candle-top-title">MAKE A WISH & BLOW<br>YOUR 20th CANDLE! 🕯️</h3>
+            <div class="cake-scene-container">
+              <div class="candle-stick-item" id="candleArea">
+                <div class="flame-spark" id="mainFlame"></div>
+                <div class="candle-wick"></div>
+                <div class="candle-wax-body">20</div>
+              </div>
+              <div class="white-aesthetic-cake">
+                <div class="frosting-layer"></div>
+              </div>
+              <div class="cake-silver-plate"></div>
+            </div>
+            <p class="hint-small-tap">(Tap lilinnya buat tiup 🎂)</p>
+            <div class="sticky-note-yellow mini-note">
+              <p class="font-hand">"Semoga semua doa baik di usia 20 tahun ini dikabulkan satu per satu!"</p>
+            </div>
+          </div>
+        </div>
+        <div class="back blank-page"></div>
+      </div>
+
+      <!-- LEMBAR 9: 20TH BUCKET LIST -->
+      <div class="paper" id="p9" style="z-index: 7;">
         <div class="front">
           <div class="page-content">
-            <h2>A Little Letter 💌</h2>
-            
+            <h2>The 20s Bucket List 🎯</h2>
+            <p class="sub-handwritten">"Target dan hal-hal seru buat dicapai di umur 20:"</p>
+            <div class="bucket-box">
+              <div class="bucket-item">
+                <input type="checkbox" checked disabled>
+                <span>Berhasil masuk usia 20 tahun dengan keren!</span>
+              </div>
+              <div class="bucket-item">
+                <input type="checkbox" disabled>
+                <span>Eksplor tempat baru & dapetin pengalaman baru.</span>
+              </div>
+              <div class="bucket-item">
+                <input type="checkbox" disabled>
+                <span>Makin jago di hal-hal yang disukai.</span>
+              </div>
+              <div class="bucket-item">
+                <input type="checkbox" disabled>
+                <span>Selalu bahagia, sehat, & dompet makin tebal.</span>
+              </div>
+            </div>
+            <div class="mini-tag-badge">🚀 Let's make it happen!</div>
+          </div>
+        </div>
+        <div class="back blank-page"></div>
+      </div>
+
+      <!-- LEMBAR 10: FAVORITE MEMORIES 2 -->
+      <div class="paper" id="p10" style="z-index: 6;">
+        <div class="front">
+          <div class="page-content">
+            <h2>Unfiltered Memories 🎞️</h2>
+            <div class="polaroid-grid">
+              <div class="polaroid micro rot-left">
+                <div class="photo-placeholder">
+                  <img src="adika6.jpeg" alt="Foto 3" class="scrapbook-img">
+                </div>
+                <p class="caption">Chill moments ☕</p>
+              </div>
+              <div class="polaroid micro rot-right">
+                <div class="photo-placeholder">
+                  <img src="adika7.jpeg" alt="Foto 4" class="scrapbook-img">
+                </div>
+                <p class="caption">Best smiles 🌟</p>
+              </div>
+            </div>
+            <div class="cute-fact-box">
+              <span class="pin-icon">📸</span>
+              <p>Momen sederhana yang selalu berharga buat diingat.</p>
+            </div>
+          </div>
+        </div>
+        <div class="back blank-page"></div>
+      </div>
+
+      <!-- LEMBAR 11: A LITTLE LETTER (PART 1) -->
+      <div class="paper" id="p11" style="z-index: 5;">
+        <div class="front">
+          <div class="page-content">
+            <h2>A Special Letter 💌</h2>
             <div class="letter-envelope-wrap">
               <div class="wax-seal">💙</div>
               <div class="letter-paper">
                 <p class="salutation">Hai Adika,</p>
                 <p class="letter-body">
-                  Selamat ulang tahun yang ke-21! Terima kasih sudah selalu jadi tempat yang aman, tenang, dan menyenangkan.
+                  Selamat memasuki usia yang ke-20 tahun! Waktu cepat banget berlalu ya, sekarang kamu sudah resmi berkepala dua.
                 </p>
                 <p class="letter-body">
-                  Semoga langkahmu selalu dimudahkan, dikelilingi orang-orang baik, sehat terus, dan semua impianmu terwujud satu per satu.
+                  Terima kasih ya sudah tumbuh jadi sosok yang baik, selalu berusaha, dan tetap jadi tempat yang menyenangkan buat diajak ngobrol.
                 </p>
-                <p class="letter-sign">Always wishing you the best! ✨</p>
               </div>
             </div>
+            <p class="sub-handwritten text-right">Lanjut ke lembar berikutnya ➔</p>
+          </div>
+        </div>
+        <div class="back blank-page"></div>
+      </div>
 
+      <!-- LEMBAR 12: A LITTLE LETTER (PART 2) -->
+      <div class="paper" id="p12" style="z-index: 4;">
+        <div class="front">
+          <div class="page-content">
+            <h2>Birthday Wishes 🌟</h2>
+            <div class="letter-envelope-wrap">
+              <div class="letter-paper">
+                <p class="letter-body">
+                  Di usia 20 ini, aku selalu berdoa supaya setiap langkahmu dimudahkan, rezekimu dilancarkan, dijauhkan dari hal-hal buruk, dan semua impianmu tercapai.
+                </p>
+                <p class="letter-body">
+                  Jangan lupa buat selalu bangga sama proses dan pencapaian dirimu sendiri, ya!
+                </p>
+                <p class="letter-sign">With all good thoughts, 🤍</p>
+              </div>
+            </div>
             <div class="tape tape-bottom-right"></div>
           </div>
         </div>
         <div class="back blank-page"></div>
       </div>
 
-      <!-- LEMBAR 7: THE GRAND FINALE -->
-      <div class="paper" id="p7" style="z-index: 1;">
+      <!-- LEMBAR 13: DIGITAL CAMERA / SNAPSHOT -->
+      <div class="paper" id="p13" style="z-index: 3;">
+        <div class="front">
+          <div class="page-content between-content">
+            <h2 class="text-center font-hand title-large">Captured at 20 ✨</h2>
+            <div class="camera-body-frame">
+              <div class="camera-screen-slot">
+                <img src="adika8.jpeg" alt="Adika 20" class="scrapbook-img">
+              </div>
+              <span class="rec-dot-red">● REC [20:00]</span>
+            </div>
+            <p class="quote-italic">"Capturing this moment to celebrate how far you’ve come."</p>
+          </div>
+        </div>
+        <div class="back blank-page"></div>
+      </div>
+
+      <!-- LEMBAR 14: TO MORE CHAPTERS -->
+      <div class="paper" id="p14" style="z-index: 2;">
         <div class="front">
           <div class="page-content center-content">
-            <div class="party-confetti">🎉 🥳 🎂 🥂 ✨</div>
-            <h2 class="title-celebrate">Make a Wish! 🕯️</h2>
-            
+            <h2 class="font-hand title-large">To Many More</h2>
+            <div class="polaroid medium rot-center">
+              <div class="photo-placeholder">
+                <img src="adika9.jpeg" alt="Adika" class="scrapbook-img">
+              </div>
+              <p class="caption">Awesome Years Ahead 🥂</p>
+            </div>
+            <h2 class="font-hand title-large">Great Memories!</h2>
+            <p class="tag-bold">ALWAYS CHEERING FOR YOU 🎉</p>
+          </div>
+        </div>
+        <div class="back blank-page"></div>
+      </div>
+
+      <!-- LEMBAR 15: THE GRAND FINALE -->
+      <div class="paper" id="p15" style="z-index: 1;">
+        <div class="front">
+          <div class="page-content center-content">
+            <div class="party-confetti">🎉 🥳 🎂 🥂 🎈 ✨</div>
+            <h2 class="title-celebrate">HAPPY 20th BIRTHDAY!</h2>
+            <p class="font-hand subtitle-20">"Welcome to the best chapter of your life, Adika!"</p>
             <div class="polaroid large rot-center">
               <div class="photo-placeholder">
-                <img src="adika5.jpeg" alt="Foto Adika" class="scrapbook-img">
+                <img src="adika10.jpeg" alt="Foto Favorit" class="scrapbook-img">
               </div>
-              <p class="caption">Happy 21st Birthday, Adika! 🚀</p>
+              <p class="caption">Cheers to 20! 🌟</p>
             </div>
-
             <div class="final-wish-pill">
-              <span>May this year be your happiest chapter yet! 🤍</span>
+              <span>May this year be filled with laughter & great success! 🤍</span>
             </div>
-
-            <p class="end-credit">Made with 💙 for Adika</p>
+            <p class="end-credit">Made with 💙 specially for Adika</p>
           </div>
         </div>
         <div class="back blank-page"></div>
@@ -413,7 +405,7 @@
   <!-- KONTROL NAVIGASI -->
   <div class="controls">
     <button id="prev-btn">◄ Prev</button>
-    <span id="page-indicator">1 / 7</span>
+    <span id="page-indicator">1 / 15</span>
     <button id="next-btn">Next ►</button>
   </div>
 
