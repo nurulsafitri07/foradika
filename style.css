@@ -504,6 +504,45 @@ h2 {
 }
 
 #page-indicator {
+
+  /* FOTO CUTOUT TANPA BACKGROUND */
+.cutout-wrapper {
+  position: relative;
+  width: 100%;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4px 0;
+}
+
+.cutout-img {
+  max-height: 100%;
+  max-width: 150px;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 12px rgba(66, 82, 96, 0.18)); /* Efek bayangan stiker timbul */
+  animation: floatGentle 3s ease-in-out infinite alternate;
+}
+
+@keyframes floatGentle {
+  0% { transform: translateY(0px) rotate(-1deg); }
+  100% { transform: translateY(-5px) rotate(1.5deg); }
+}
+
+.cutout-sparkle-l {
+  position: absolute;
+  left: 20%;
+  top: 15%;
+  font-size: 0.9rem;
+}
+
+.cutout-sparkle-r {
+  position: absolute;
+  right: 20%;
+  bottom: 20%;
+  font-size: 0.85rem;
+  color: var(--slate-blue);
+}
   font-size: 0.78rem;
   color: var(--ink-text);
   font-weight: 600;
