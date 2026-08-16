@@ -952,3 +952,163 @@ h2 {
   line-height: 1.3;
   margin-top: 1px;
 }
+
+/* =======================================================
+   PENATAAN PADAT & ESTETIK UNTUK LEMBAR 13 & 14
+======================================================= */
+
+.fill-dense-page {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  height: 100% !important;
+}
+
+/* --- LEMBAR 13: KAMERA SEDANG & STORY BOX --- */
+.digicam-master-frame {
+  width: 78% !important;
+  max-width: 175px !important;
+  margin: 2px auto !important;
+  background: #23272A;
+  border-radius: 10px;
+  padding: 6px 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 2px solid #36393F;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.digicam-hud-top,
+.digicam-hud-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.55rem;
+  font-weight: 700;
+  color: #B9BBBE;
+}
+
+.digicam-display-screen {
+  width: 100%;
+  height: 130px !important; /* Ukuran foto sedang & proporsional */
+  background: #000;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.digicam-crosshair {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 35px;
+  height: 35px;
+  border: 1px dashed rgba(255, 255, 255, 0.65);
+  pointer-events: none;
+}
+
+.digicam-timestamp {
+  position: absolute;
+  bottom: 4px;
+  right: 6px;
+  color: #FFEAA7;
+  font-family: monospace;
+  font-size: 0.58rem;
+  background: rgba(0, 0, 0, 0.55);
+  padding: 1px 4px;
+  border-radius: 2px;
+}
+
+.candid-story-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  padding: 7px 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  border-left: 3px solid var(--slate-blue);
+  margin: 2px 0;
+}
+
+.story-icon {
+  font-size: 1.1rem;
+}
+
+.story-text strong {
+  font-size: 0.73rem;
+  color: var(--navy-title);
+  display: block;
+}
+
+.story-text p {
+  font-size: 0.67rem;
+  color: var(--ink-text);
+  line-height: 1.25;
+}
+
+/* --- LEMBAR 14: POLAROID SEDANG & CHEERING CARD --- */
+.polaroid-medium-sweet {
+  width: 72% !important;
+  max-width: 165px !important;
+  margin: 2px auto !important;
+  padding: 6px 6px 10px 6px !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08) !important;
+}
+
+.photo-placeholder-sweet {
+  width: 100%;
+  height: 135px !important; /* Ukuran foto sedang manis */
+  background-color: var(--dusty-blue-bg);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.cheering-card-full {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  border-radius: 8px;
+  padding: 7px 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  border-left: 3px solid var(--slate-blue);
+  margin: 2px 0;
+}
+
+.cheer-icon-badge {
+  font-size: 1.1rem;
+  background: #EBF3FA;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cheer-text-wrap strong {
+  font-size: 0.73rem;
+  color: var(--navy-title);
+  display: block;
+}
+
+.cheer-text-wrap p {
+  font-size: 0.67rem;
+  color: var(--ink-text);
+  line-height: 1.25;
+}
+
+.mini-wish-banner {
+  background: #EBF3FA;
+  padding: 6px 10px;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.69rem;
+  font-weight: 600;
+  color: var(--navy-title);
+  margin: 2px 0;
+}
