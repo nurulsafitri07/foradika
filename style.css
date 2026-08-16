@@ -405,7 +405,7 @@ h2 {
   color: var(--navy-title);
 }
 
-/* CHECKLIST (LEMBAR 5) */
+/* CHECKLIST */
 .checklist-card {
   background: white;
   padding: 14px 12px;
@@ -432,6 +432,14 @@ h2 {
 .check-icon {
   color: var(--slate-blue);
   font-weight: 800;
+}
+
+.sparkle-footer {
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--slate-blue);
+  letter-spacing: 1px;
 }
 
 /* SPOTIFY PLAYER */
@@ -464,7 +472,7 @@ h2 {
 .c-yellow { background: #FFF9E6; border-left: 3px solid #E5C358; }
 .c-cream { background: #F5EFEB; border-left: 3px solid #C4A482; }
 
-/* GOOD VIBES (LEMBAR 8) */
+/* GOOD VIBES */
 .reminder-card-clean {
   background: #FFFFFF;
   border-left: 3px solid var(--slate-blue);
