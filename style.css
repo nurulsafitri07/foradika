@@ -180,7 +180,7 @@ h2 {
   border-radius: 1px;
 }
 
-/* POLAROID PORTRAIT (TEGAK RAPI) */
+/* POLAROID PORTRAIT */
 .polaroid {
   background: white;
   padding: 6px 6px 10px 6px;
@@ -366,10 +366,6 @@ h2 {
   color: #554A2E;
   line-height: 1.2;
 }
-.sticky-note-yellow.mini-note {
-  font-size: 0.85rem;
-  margin-top: 6px;
-}
 
 /* TIMELINE */
 .timeline-cute {
@@ -498,20 +494,23 @@ h2 {
 .c-yellow { background: #FFF9E6; border-left: 3px solid #E5C358; }
 .c-cream { background: #F5EFEB; border-left: 3px solid #C4A482; }
 
-/* MAKE A WISH */
-.page-blow-candle { background-color: #FCFBF9; }
-.candle-top-title { font-size: 0.95rem; font-weight: 800; color: var(--maroon-accent); font-style: italic; letter-spacing: 0.8px; line-height: 1.3; }
-.cake-scene-container { position: relative; width: 220px; height: 150px; display: flex; justify-content: center; align-items: flex-end; margin: 6px 0; }
-.candle-stick-item { position: absolute; bottom: 58px; z-index: 4; display: flex; flex-direction: column; align-items: center; cursor: pointer; }
-.flame-spark { width: 8px; height: 16px; background: radial-gradient(circle, #FFE79A 20%, #FFA834 70%, transparent 100%); border-radius: 50% 50% 35% 35%; box-shadow: 0 0 10px #FFA834; animation: flickerFlame 0.15s infinite alternate; }
-.flame-spark.blown-out { display: none; }
-@keyframes flickerFlame { 0% { transform: scale(1); opacity: 0.9; } 100% { transform: scale(1.15) rotate(2deg); opacity: 1; } }
-.candle-wick { width: 2px; height: 4px; background: #333; }
-.candle-wax-body { width: 22px; height: 26px; background: linear-gradient(to right, #F9F9F9, #ECECEC); border-radius: 4px; font-size: 0.65rem; font-weight: 800; color: var(--slate-blue); display: flex; align-items: center; justify-content: center; }
-.white-aesthetic-cake { width: 145px; height: 60px; background: linear-gradient(to bottom, #FFFFFF, #F5F5F5); border-radius: 10px 10px 4px 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.06); position: relative; z-index: 2; }
-.frosting-layer { position: absolute; top: -6px; left: 0; width: 100%; height: 12px; background: radial-gradient(circle, #FFFFFF 60%, transparent 70%); background-size: 12px 12px; }
-.cake-silver-plate { position: absolute; bottom: 0; width: 175px; height: 12px; background: linear-gradient(to bottom, #ECECEC, #D0D0D0); border-radius: 50%; z-index: 1; }
-.hint-small-tap { font-size: 0.68rem; color: #7A8E9C; font-style: italic; margin-top: 2px; }
+/* GOOD VIBES (LEMBAR 8) */
+.reminder-card-clean {
+  background: #FFFFFF;
+  border-left: 3px solid var(--slate-blue);
+  padding: 10px 12px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.reminder-card-clean p {
+  font-size: 0.74rem;
+  line-height: 1.35;
+  color: var(--ink-text);
+  font-weight: 500;
+}
 
 /* BUCKET LIST */
 .bucket-box { background: white; padding: 10px; border-radius: 8px; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.03); }
