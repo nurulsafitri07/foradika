@@ -648,3 +648,161 @@ h2 {
 .t-yellow { background: #FFF9E6; border-left: 3px solid #E5C358; }
 .t-pink { background: #FDF0F3; border-left: 3px solid #E89FB5; }
 .t-green { background: #EDF7F2; border-left: 3px solid #82C4A2; }
+
+
+  /* =======================================
+   PENYEMPURNAAN LEMBAR 9, 10, 13, & 14
+======================================= */
+
+/* LEMBAR 9: BUCKET LIST FULL */
+.bucket-page-layout {
+  justify-content: flex-start !important;
+  gap: 6px;
+}
+
+.bucket-box-full {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 4px 0;
+}
+
+.bucket-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  padding: 6px 9px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.bucket-item.done {
+  background: #EDF7F2;
+  border-left: 3px solid #82C4A2;
+}
+
+.b-check {
+  font-weight: 800;
+  font-size: 0.8rem;
+  color: #82C4A2;
+}
+
+.circle-empty {
+  color: #B0C4D4;
+}
+
+.b-text strong {
+  font-size: 0.73rem;
+  color: var(--navy-title);
+  display: block;
+}
+
+.b-text p {
+  font-size: 0.67rem;
+  color: var(--ink-text);
+  line-height: 1.25;
+}
+
+/* LEMBAR 10: UNFILTERED MEMORIES (FOTO LEBIH TINGGI) */
+.memory-grid-tall .polaroid.micro {
+  width: 48% !important;
+  padding: 6px 6px 10px 6px !important;
+}
+
+.memory-grid-tall .photo-placeholder {
+  height: 175px !important; /* Ditinggikan memanjang ke bawah */
+}
+
+.memory-note-box {
+  margin: 4px 0 !important;
+  padding: 8px 10px !important;
+}
+
+/* LEMBAR 13: DIGITAL CAMERA SNAPSHOT (RETRO VIEWFINDER) */
+.camera-full-layout {
+  justify-content: flex-start !important;
+  gap: 6px;
+}
+
+.camera-body-frame-tall {
+  width: 100%;
+  max-width: 220px;
+  margin: 4px auto !important;
+  background: #2D3436;
+  border-radius: 12px;
+  padding: 8px 10px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.camera-top-bar, .camera-bottom-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: #DFE6E9;
+}
+
+.camera-screen-slot-tall {
+  width: 100%;
+  height: 185px !important; /* Kamera lebih tinggi dan proporsional */
+  background: #111;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+.cam-focus-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 45px;
+  height: 45px;
+  border: 1.5px dashed rgba(255, 255, 255, 0.7);
+  pointer-events: none;
+}
+
+/* LEMBAR 14: TO MORE CHAPTERS */
+.to-more-layout {
+  justify-content: flex-start !important;
+  gap: 6px;
+}
+
+.polaroid-tall-14 {
+  width: 78% !important;
+  max-width: 180px !important;
+  margin: 4px auto !important;
+  padding: 6px 6px 12px 6px !important;
+}
+
+.polaroid-tall-14 .photo-placeholder {
+  height: 175px !important; /* Foto diperpanjang ke bawah */
+}
+
+.cheering-card {
+  background: white;
+  border-radius: 8px;
+  padding: 8px 12px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  border-left: 3px solid var(--slate-blue);
+  margin: 2px 0;
+}
+
+.cheering-title {
+  font-size: 1.3rem;
+  color: var(--navy-title);
+  line-height: 1.1;
+}
+
+.cheering-text {
+  font-size: 0.69rem;
+  color: var(--ink-text);
+  line-height: 1.3;
+  margin-top: 2px;
+}
