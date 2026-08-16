@@ -547,3 +547,36 @@ h2 {
   color: var(--ink-text);
   font-weight: 600;
 }
+.checklist-card {
+  position: relative !important;
+  background: white;
+  padding: 14px 10px 10px 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  margin-top: 30px !important;
+}
+
+.cutout-wrapper {
+  position: absolute !important;
+  top: -45px !important;
+  right: 8px !important;
+  width: 70px !important;
+  height: 70px !important;
+  max-width: 70px !important;
+  max-height: 70px !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  z-index: 10 !important;
+  pointer-events: none;
+}
+
+.cutout-img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 70px !important;
+  max-height: 70px !important;
+  object-fit: contain !important;
+  filter: drop-shadow(0 4px 6px rgba(66, 82, 96, 0.25)) !important;
+  display: block !important;
+}
