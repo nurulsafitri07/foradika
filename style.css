@@ -612,6 +612,38 @@ h2 {
 }
 
 /* Variasi Warna Kartu */
+
+
+/* GAYA SURAT FULL LEMBAR 12 */
+.letter-full-page {
+  justify-content: flex-start !important;
+  gap: 8px;
+}
+
+.letter-envelope-full {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 4px 0 !important;
+  padding: 14px 12px !important;
+}
+
+.letter-envelope-full .letter-paper {
+  font-size: 1.05rem !important;
+  line-height: 1.4 !important;
+}
+
+.letter-envelope-full .letter-body {
+  margin-bottom: 8px !important;
+}
+
+.letter-envelope-full .letter-sign {
+  margin-top: 6px !important;
+  font-weight: 700;
+  color: var(--slate-blue);
+  text-align: right;
+}
 .t-blue { background: #EBF3FA; border-left: 3px solid var(--slate-blue); }
 .t-yellow { background: #FFF9E6; border-left: 3px solid #E5C358; }
 .t-pink { background: #FDF0F3; border-left: 3px solid #E89FB5; }
