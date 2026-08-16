@@ -6,7 +6,6 @@
   --ink-text: #425260;
   --navy-title: #2A3B4C;
   --maroon-accent: #8B1E2D;
-  --washi-tape-color: rgba(235, 225, 205, 0.9);
   --yellow-sticky: #FFF8D6;
 }
 
@@ -153,31 +152,6 @@ h2 {
   font-size: 0.95rem;
   color: var(--slate-blue);
   margin-top: -2px;
-}
-
-/* WASHI TAPE */
-.tape {
-  position: absolute;
-  background-color: var(--washi-tape-color);
-  height: 16px;
-  width: 65px;
-  z-index: 10;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  border-radius: 2px;
-}
-.tape-top-left { top: 8px; left: -8px; transform: rotate(-4deg); }
-.tape-top-right { top: 8px; right: -8px; transform: rotate(5deg); }
-.tape-top-center { top: 6px; left: 35%; transform: rotate(-1deg); }
-.tape-bottom-right { bottom: 8px; right: -8px; transform: rotate(-5deg); }
-
-.tape-micro {
-  position: absolute;
-  top: -6px;
-  left: 30%;
-  width: 35px;
-  height: 10px;
-  background: var(--washi-tape-color);
-  border-radius: 1px;
 }
 
 /* POLAROID PORTRAIT */
