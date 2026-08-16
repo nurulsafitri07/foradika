@@ -1113,18 +1113,15 @@ h2 {
   margin: 2px 0;
 }
 
-/* =======================================================
-   GAYA PROFIL CARD (LEMBAR 13)
-======================================================= */
+/* GAYA PROFIL CARD (LEMBAR 13) - RAPI & BERSIH */
 .id-profile-card {
-  background: white;
-  border-radius: 10px;
-  padding: 10px 12px;
-  box-shadow: 0 4px 12px rgba(66, 82, 96, 0.08);
-  border: 1px solid var(--powder-blue);
-  border-left: 4px solid var(--slate-blue);
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 4px 14px rgba(66, 82, 96, 0.08);
+  border: 1px solid #E2ECF5;
   display: flex;
-  gap: 10px;
+  gap: 12px;
   align-items: center;
   margin: 4px 0;
 }
@@ -1133,56 +1130,64 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   flex-shrink: 0;
 }
 
 .id-photo-box {
-  width: 90px;
+  width: 92px;
   height: 120px;
   background-color: var(--dusty-blue-bg);
-  border-radius: 6px;
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 2px solid #FFFFFF;
 }
 
 .id-status-pill {
-  font-size: 0.55rem;
+  font-size: 0.58rem;
   font-weight: 800;
-  color: #2E7D32;
+  color: #1E7E34;
   background: #E8F5E9;
-  padding: 2px 6px;
-  border-radius: 10px;
-  letter-spacing: 0.5px;
+  padding: 3px 8px;
+  border-radius: 20px;
+  letter-spacing: 0.4px;
 }
 
 .id-info-col {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
   flex: 1;
+  min-width: 0;
 }
 
-.id-info-item {
+.id-field-row {
+  background: #F4F8FC;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border-left: 2.5px solid var(--slate-blue);
   display: flex;
   flex-direction: column;
-  line-height: 1.15;
+  gap: 1px;
 }
 
 .id-label {
-  font-size: 0.52rem;
+  font-size: 0.5rem;
   font-weight: 800;
   color: var(--slate-blue);
-  letter-spacing: 0.8px;
+  letter-spacing: 0.6px;
 }
 
-.id-info-item strong {
-  font-size: 0.72rem;
+.id-val-highlight {
+  font-size: 0.76rem;
+  font-weight: 800;
   color: var(--navy-title);
 }
 
-.id-info-item p {
-  font-size: 0.65rem;
+.id-val {
+  font-size: 0.68rem;
+  font-weight: 600;
   color: var(--ink-text);
-  margin-top: 1px;
+  line-height: 1.2;
 }
