@@ -213,13 +213,13 @@ h2 {
 }
 
 .polaroid.micro {
-  width: 48%;
-  padding: 4px 4px 8px 4px;
+  width: 48% !important;
+  padding: 6px 6px 12px 6px !important;
 }
-.polaroid.micro .photo-placeholder { height: 115px; }
-.rot-left { transform: rotate(-2deg); }
-.rot-right { transform: rotate(2deg); }
-.rot-center { transform: rotate(-1deg); }
+
+.polaroid.micro .photo-placeholder {
+  height: 165px !important; /* Sebelumnya 115px, dinaikkan agar lebih tinggi dan panjang ke bawah */
+}
 
 .scrapbook-img {
   width: 100%;
